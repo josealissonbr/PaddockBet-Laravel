@@ -1,0 +1,17 @@
+-clientes (idCliente, cpf, nome, telefone, nascimento, saldo)
+-transacoes(idTransacao, tipo [+deposito,-aposta, -saque]
+-eventos (idEvento, data, cidade, situacao[ativo, inativo, cancelado])
+-provas (idProva, idEvento, nomeProva, altura, data, saldoAcumulado(0), situacao[inativo, recebendo apostas, aguardando prova, finalizado, cancelado], valor [R$ 20], taxa)
+-provasConjutos (idProvaConjunto, idProva, nomeConjunto, Situacao)
+-apostas (idAposta, idCliente, qtdeCotas[1], valorAposta[20], idProva, datahora, hash, -idProvaConjuntoEscolhido, , premi[0.00], resultado[aguardando, ganhou, perdeu, cancelada] )
+-resultados (idResultado, idProva, idConjuntoVencedor, timestamp)
+
+Conjunto id 10 Ganhou:
+1 - quando lançar o resultado da prova id=12345
+percorrer as apostas procurando a prova = 12345  e vencedor = idConjunto 10 (exemplo)
+2 - muda na tabela apostas o resultado pra = 1 pra quem acertou
+3 - COnta quantos acertaram. divide o saldoacumulado da prova pelos acertadores e atualiza a tabela de aposta com  o valor, muda a situacao da aposta para ganhou
+4 - Se perdeu, nao mexe no saldo; Se ganhou adiciona o valor do rateio ao saldo e cria uma transacao.
+
+obs:
+no admin precisa ter a opcao de cadastrar (evento, prova, conjuntos)
