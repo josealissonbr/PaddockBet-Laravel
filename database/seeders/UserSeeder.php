@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -18,9 +19,13 @@ class UserSeeder extends Seeder
     {
 
         User::create([
-            'name' => "Alisson Santos",
-            'email' => "josealisson2003@outlook.com",
-            'password' => Hash::make("123")
+            'nome'          => "Alisson Santos",
+            'cpf'           => "15788943442",
+            'email'         => "josealisson2003@outlook.com",
+            'telefone'      => "8292047888",
+            'nascimento'    => Carbon::createFromFormat('d/m/Y', '03/12/2003')->format('Y-m-d'),
+            'saldo'         => "900.00",
+            'password'         => Hash::make("123")
         ]);
     }
 }

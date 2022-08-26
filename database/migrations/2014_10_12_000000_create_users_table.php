@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
+        //(idCliente, cpf, nome, telefone, nascimento, saldo)
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nome');
+            $table->string('cpf');
             $table->string('email')->unique();
+            $table->string('telefone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->datetime('nascimento');
+            $table->double('saldo');
             $table->rememberToken();
             $table->timestamps();
         });

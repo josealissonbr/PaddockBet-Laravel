@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('dashboard', 'App\Http\Controllers\DashboardController@index');
+Route::get('dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::get('dashboard/apostas', 'App\Http\Controllers\ApostasController@index')->name('dashboard.apostas');
 
 
 
-Route::get('login', 'App\Http\Controllers\AuthController@index');
+Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');
+Route::get('cadastro', 'App\Http\Controllers\AuthController@cadastro')->name('login.cadastro');
+
 Route::post('login/process', 'App\Http\Controllers\AuthController@postLogin')->name('login.post');
+Route::get('login/logout', 'App\Http\Controllers\AuthController@logout')->name('login.logout');

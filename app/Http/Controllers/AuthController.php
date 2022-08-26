@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 
 class AuthController extends Controller
 {
@@ -14,6 +15,15 @@ class AuthController extends Controller
         }
 
         return view('pages.auth.login');
+    }
+
+    public function cadastro(){
+
+        if (Auth::Check()){
+            return redirect('dashboard');
+        }
+
+        return view('pages.auth.cadastro');
     }
 
     public function postLogin(Request $request)
@@ -30,5 +40,12 @@ class AuthController extends Controller
         }
 
         return redirect("login")->withErrors('Ops! Você inseriu credenciais inválidas');
+    }
+
+    public function logout(){
+        Session::flush();
+        Auth::logout();
+
+        return Redirect('login');
     }
 }
