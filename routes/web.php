@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::get('/', 'App\Http\Controllers\DashboardController@index');
+Route::get('dashboard', 'App\Http\Controllers\DashboardController@dashboard')->name('dashboard');
 Route::get('dashboard/apostas', 'App\Http\Controllers\ApostasController@index')->name('dashboard.apostas');
 
 

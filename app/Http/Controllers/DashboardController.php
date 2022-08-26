@@ -11,6 +11,12 @@ class DashboardController extends Controller
         if (!Auth::Check()){
             return redirect('login');
         }
+        return redirect('dashboard');
+    }
+    public function dashboard(){
+        if (!Auth::Check()){
+            return redirect('login');
+        }
         return view('pages.dashboard');
     }
 }

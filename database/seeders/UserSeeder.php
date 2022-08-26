@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         User::create([
             'nome'          => "Alisson Santos",
             'cpf'           => "15788943442",
-            'email'         => "josealisson2003@outlook.com",
+            'email'         => "josealissonbr2003@outlook.com",
             'telefone'      => "8292047888",
             'nascimento'    => Carbon::createFromFormat('d/m/Y', '03/12/2003')->format('Y-m-d'),
             'saldo'         => "900.00",
