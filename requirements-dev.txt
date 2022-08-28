@@ -1,4 +1,4 @@
--clientes (idCliente, cpf, nome, telefone, nascimento, saldo)
+-clientes (idCliente, cpf, nome, telefone, nascimento, saldo) (=> users)
 -transacoes(idTransacao, tipo [+deposito,-aposta, -saque]
 -eventos (idEvento, data, cidade, situacao[ativo, inativo, cancelado])
 -provas (idProva, idEvento, nomeProva, altura, data, saldoAcumulado(0), situacao[inativo, recebendo apostas, aguardando prova, finalizado, cancelado], valor [R$ 20], taxa)

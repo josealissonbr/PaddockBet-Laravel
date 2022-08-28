@@ -1,6 +1,4 @@
-<?php
-ini_set('display_errors', 0);
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zxx">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,30 +9,30 @@ ini_set('display_errors', 0);
         <!-- favicon -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <!-- bootstrap -->
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
         <!-- fontawesome icon  -->
-        <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
         <!-- flaticon css -->
-        <link rel="stylesheet" href="../assets/fonts/flaticon.css">
+        <link rel="stylesheet" href="{{asset('assets/fonts/flaticon.css')}}">
         <!-- animate.css -->
-        <link rel="stylesheet" href="../assets/css/animate.css">
+        <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
         <!-- Owl Carousel -->
-        <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
         <!-- magnific popup -->
-        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="../assets/css/odometer.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/odometer.min.css')}}">
         <!-- stylesheet -->
-        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
         <!-- responsive -->
-        <link rel="stylesheet" href="../assets/css/responsive.css">
-        <link rel="stylesheet" href="../assets/css/dashboard-responsive.css">
+        <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/dashboard-responsive.css')}}">
     </head>
 
     <body>
 
         <!-- preloader begin -->
         <div class="preloader">
-            <img src="../assets/img/preloader.gif" alt="">
+            <img src="{{asset('assets/img/preloader.gif')}}" alt="">
             <span>{{env('PaddockBet')}}</span>
         </div>
         <!-- preloader end -->
@@ -93,7 +91,7 @@ ini_set('display_errors', 0);
                                 <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="index.php">
-                                            <img src="../assets/img/logo.png" alt="logo">
+                                            <img src="{{asset('assets/img/logo.png')}}" alt="logo">
                                         </a>
                                     </div>
                                 </div>
@@ -135,7 +133,7 @@ ini_set('display_errors', 0);
                     <div class="col-xl-4 col-lg-5 col-md-10">
                         <div class="about-widget">
                             <a class="logo" href="index.html">
-                                <img src="../assets/img/logo.png" alt="">
+                                <img src="{{asset('assets/img/logo.png')}}" alt="">
                             </a>
                             <p>Riders Bet: Seu site de apostas em Saltos</p>
                             <div class="social">
@@ -163,7 +161,7 @@ ini_set('display_errors', 0);
                                 <ul>
                                     <li>
                                         <span class="icon">
-                                            <img src="../assets/img/svg/email.svg" alt="">
+                                            <img src="{{asset('assets/img/svg/email.svg')}}" alt="">
                                         </span>
                                         <span class="text">
                                             <span class="title">E-mail</span>
@@ -172,7 +170,7 @@ ini_set('display_errors', 0);
                                     </li>
                                     <li>
                                         <span class="icon">
-                                            <img src="../assets/img/svg/phone-call.svg" alt="">
+                                            <img src="{{asset('assets/img/svg/phone-call.svg')}}" alt="">
                                         </span>
                                         <span class="text">
                                             <span class="title">Phone</span>
@@ -237,26 +235,26 @@ ini_set('display_errors', 0);
 
         <!-- jquery -->
         <!-- <script src="assets/js/jquery.js"></script> -->
-        <script src="../assets/js/jquery-3.4.1.min.js"></script>
+        <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
         <!-- bootstrap -->
-        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <!-- owl carousel -->
-        <script src="../assets/js/owl.carousel.js"></script>
+        <script src="{{asset('assets/js/owl.carousel.js')}}"></script>
         <!-- magnific popup -->
-        <script src="../assets/js/jquery.magnific-popup.js"></script>
+        <script src="{{asset('assets/js/jquery.magnific-popup.js')}}"></script>
         <!-- filterizr js -->
-        <script src="../assets/js/jquery.filterizr.min.js"></script>
+        <script src="{{asset('assets/js/jquery.filterizr.min.js')}}"></script>
         <!-- wow js-->
-        <script src="../assets/js/wow.min.js"></script>
+        <script src="{{asset('assets/js/wow.min.js')}}"></script>
         <!-- clock js -->
-        <script src="../assets/js/clock.min.js"></script>
-        <script src="../assets/js/jquery.appear.min.js"></script>
-        <script src="../assets/js/odometer.min.js"></script>
+        <script src="{{asset('assets/js/clock.min.js')}}"></script>
+        <script src="{{asset('assets/js/jquery.appear.min.js')}}"></script>
+        <script src="{{asset('assets/js/odometer.min.js')}}"></script>
         <!-- chart js -->
-        <script src="../assets/js/Chart.min.js"></script>
-        <script src="../assets/js/chart-activate.js"></script>
-        <script src="../assets/js/utils.js"></script>
+        <script src="{{asset('assets/js/Chart.min.js')}}"></script>
+        <script src="{{asset('assets/js/chart-activate.js')}}"></script>
+        <script src="{{asset('assets/js/utils.js')}}"></script>
         <!-- main -->
-        <script src="../assets/js/main.js"></script>
+        <script src="{{asset('assets/js/main.js')}}"></script>
     </body>
 </html>
