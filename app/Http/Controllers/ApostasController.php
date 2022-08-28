@@ -16,8 +16,10 @@ class ApostasController extends Controller
         return view('pages.apostas', compact('apostas'));
     }
 
-    public function palpite(){
-        return view('pages.palpite');
+    public function palpite($idProva){
+        $prova = Provas::find($idProva);
+        //return $prova->conjuntos;
+        return view('pages.palpite', compact('prova'));
     }
 
     public function provas($idEvento){

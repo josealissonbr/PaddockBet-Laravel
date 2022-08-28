@@ -14,4 +14,8 @@ class Provas extends Model
     public function evento(){
         return $this->belongsTo(Eventos::class, 'idEvento', 'idEvento');
     }
+
+    public function conjuntos(){
+        return $this->hasMany(provasConjuntos::class, 'idProva', 'idProva');
+    }
 }

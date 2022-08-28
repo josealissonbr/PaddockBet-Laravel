@@ -9,7 +9,7 @@
             <div class="col-xl-8 col-lg-8">
                 <div class="user-panel-title ">
                     <h3 class="">Apostas</h3>
-                    <a href="{{route('dashboard.apostas.palpite')}}" class="vew-more-news bet-btn bet-btn-dark-light offset-sm-6">
+                    <a href="{{route('dashboard.eventos')}}" class="vew-more-news bet-btn bet-btn-dark-light offset-sm-6">
                         <i class="fas fa-redo"></i> Nova Aposta
                     </a>
                 </div>
