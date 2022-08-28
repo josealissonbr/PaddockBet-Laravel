@@ -25,53 +25,40 @@
                                 <th scope="col">Data Aposta</th>
                                 <th scope="col">Codigo Bilhete	</th>
                                 <th scope="col">Prova</th>
-                                 <th scope="col">Data Prova</th>
-                                <th scope="col">Situação	</th>
-                                <th scope="col">Pontos</th>
+                                <th scope="col">Data Prova</th>
+                                <th scope="col">Situação</th>
+                                <th scope="col">Cotas</th>
+                                <th scope="col">Resultado</th>
                                 <th scope="col">Prêmio</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($apostas as $aposta)
                             <tr>
-                                <td>15/08/2022</td>
-                                 <td><a href="detalheBilhete.php">#123456</a></td>
-                                <th scope="row" class="d-flex"><a href="prova.php?id=1"?>Campeonato Brasileiro Série Especial</a></th>
-                               <td>18/08/2022</td>
+                                <td>{{Carbon\Carbon::parse($aposta->created_at)->format('d/m/Y h:i')}}</td>
+                                 <td><a href="detalheBilhete.php">#{{$aposta->idAposta}}</a></td>
+                                <th scope="row" class="d-flex"><a href="prova.php?id=1"?>{{$aposta->prova->evento->nomeEvento}} - {{$aposta->prova->nomeProva}}</a></th>
+                               <td>{{Carbon\Carbon::parse($aposta->prova->dataProva)->format('d/m/Y h:i')}}</td>
 
-                                <td>Aguardando Prova</td>
-                                <td>0</td>
-                                <td>R$ 0,00</td>
+                                <td>
+                                    @php
+                                        if ($aposta->prova->situacao == 0)
+                                            echo "Inativo";
+                                        else if ($aposta->prova->situacao == 1)
+                                            echo "Recebendo Apostas";
+                                        else if ($aposta->prova->situacao == 2)
+                                            echo "Aguardando Prova";
+                                        else if ($aposta->prova->situacao == 3)
+                                            echo "Finalizado";
+                                        else if ($aposta->prova->situacao == 4)
+                                            echo "Cancelado";
+                                    @endphp
+                                </td>
+                                <td>{{$aposta->qtdeCotas}}</td>
+                                <td>N/A</td>
+                                <td>R$ {{number_format($aposta->premio, 2, ',', ' ')}}</td>
                             </tr>
-                              <tr>
-                                <td>15/08/2022</td>
-                                 <td>#123458</td>
-                                <th scope="row" class="d-flex"><a href="prova.php?id=1"?>Campeonato Brasileiro Série Especial</a></th>
-                               <td>18/08/2022</td>
-
-                                <td>Aguardando Prova</td>
-                                <td>0</td>
-                                 <td>R$ 0,00</td>
-                            </tr>
-                              <tr>
-                                <td>15/08/2022</td>
-                                 <td>#123459</td>
-                               <th scope="row" class="d-flex"><a href="prova.php?id=1"?>Campeonato Brasileiro Série Especial</a></th>
-                               <td>18/08/2022</td>
-
-                                <td>Aguardando Prova</td>
-                                <td>0</td>
-                                 <td>R$ 0,00</td>
-                            </tr>
-                              <tr>
-                                <td>15/08/2022</td>
-                                 <td>#123456</td>
-                               <th scope="row" class="d-flex"><a href="prova.php?id=1"?>Campeonato Brasileiro Série Especial</a></th>
-                               <td>18/08/2022</td>
-
-                                <td>Finalizado</td>
-                                <td>11</td>
-                                 <td>R$ 0,00</td>
-                            </tr>
+                            @endforeach
 
 
                         </tbody>

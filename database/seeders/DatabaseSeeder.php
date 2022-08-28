@@ -23,6 +23,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            EventosSeeder::class,
+            TransacoesSeeder::class,
+            ProvasSeeder::class,
+            ApostasSeeder::class,
+            ProvasConjuntosSeeder::class,
         ]);
     }
 }
