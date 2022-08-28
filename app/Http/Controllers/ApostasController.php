@@ -32,4 +32,8 @@ class ApostasController extends Controller
         $eventos = Eventos::get();
         return view('pages.eventos', compact('eventos'));
     }
+
+    public function _EfetuarPalpite(Request $request){
+        return $request->all();
+    }
 }

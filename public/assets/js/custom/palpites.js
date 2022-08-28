@@ -42,14 +42,12 @@ $('.input-number').change(function() {
     if(valueCurrent >= minValue) {
         $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
     } else {
-        alert('Sorry, the minimum value was reached');
-        $(this).val($(this).data('oldValue'));
+        $(this).val(minValue);
     }
     if(valueCurrent <= maxValue) {
         $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
     } else {
-        alert('Sorry, the maximum value was reached');
-        $(this).val($(this).data('oldValue'));
+        $(this).val(maxValue);
     }
 });
 
@@ -67,4 +65,8 @@ $(".input-number").keydown(function (e) {
     if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
         e.preventDefault();
     }
+});
+
+$('.efetuar-palpite-frm').submit(function (){
+    e.preventDefault();
 });

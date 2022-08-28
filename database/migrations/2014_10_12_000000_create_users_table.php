@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->datetime('nascimento');
             $table->double('saldo');
+            $table->string('apikey');
             $table->rememberToken();
             $table->timestamps();
         });
