@@ -1,11 +1,28 @@
-* text=auto
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
 
-*.blade.php diff=html
-*.css diff=css
-*.html diff=html
-*.md diff=markdown
-*.php diff=php
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
 
-/.github export-ignore
-CHANGELOG.md export-ignore
-.styleci.yml export-ignore
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Laravel 5 & Lumen specific with changed public path
+public_html/storage
+public_html/hot
+
+# Gerente Local Images
+images/*.jpg
+images_tmp_raw
+
+storage/*.key
+.env
+.htaccess
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
