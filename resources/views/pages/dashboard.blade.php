@@ -30,7 +30,7 @@
                         <img src="../assets/img/svg/payment.svg" alt="">
                     </div>
                     <div class="part-text">
-                        <span class="number">R$ {{number_format(0.00, 2    , ",", ".")}}</span>
+                        <span class="number">R$ {{number_format($emApostas, 2    , ",", ".")}}</span>
                         <span class="title">Em Apostas</span>
                     </div>
                 </div>
@@ -127,64 +127,48 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Tipo e Transação</th>
-                                <th scope="col">Codigo Operação	</th>
+                                <th scope="col">Tipo de Transação</th>
+                                <th scope="col">ID #</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Método	</th>
                                 <th scope="col">Valor</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row" class="d-flex">Depósitos</th>
-                                <td>X N 0465 4364 74 457</td>
-                                <td>18/07/2022</td>
-                                <td>Pix</td>
-                                <td>R$ 300</td>
-                            </tr>
 
+                            @foreach ($transacoes as $transacao)
                             <tr>
-                                <th scope="row" class="d-flex">Solicitação Resgate</th>
-                                <td>X N 0465 4364 74 457</td>
-                                 <td>18/07/2022</td>
-                                <td>Pix</td>
-                                <td>R$ 300</td>
+                                <th scope="row" class="d-flex">@php
+                                    if ($transacao->tipo == 1)
+                                        echo "Depósito";
+                                    else if ($transacao->tipo == 2)
+                                        echo "Aposta";
+                                    else if ($transacao->tipo == 3)
+                                        echo "Saque";
+                                    else if ($transacao->tipo == 4)
+                                        echo "Repasse";
+                                    else if ($transacao->tipo == 5)
+                                        echo "Bônus";
+                                @endphp</th>
+                                <td>#{{$transacao->idTransacao}}</td>
+                                <td>{{Carbon\Carbon::parse($transacao->created_at)->format('d/m/Y h:i')}}</td>
+                                <td>Saldo</td>
+                                <td>R$ {{number_format($transacao->valor, 2    , ",", ".")}}</td>
                             </tr>
+                            @endforeach
 
-                            <tr>
-                                <th scope="row" class="d-flex">Saque Confirmado</th>
-                                <td>X N 0465 4364 74 457</td>
-                                 <td>18/07/2022</td>
-                                <td>Pix</td>
-                                <td>R$ 300</td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row" class="d-flex">Depósitos</th>
-                                <td>X N 0465 4364 74 457</td>
-                                <td>18/07/2022</td>
-                                <td>Pix</td>
-                                <td>R$ 300</td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row" class="d-flex">Solicitação Resgate</th>
-                                <td>X N 0465 4364 74 457</td>
-                                <td>18/07/2022</td>
-                                <td>Pix</td>
-                                <td>R$ 300</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="d-flex">Saque Confirmado</th>
-                                <td>X N 0465 4364 74 457</td>
-                               <td>18/07/2022</td>
-                                <td>Pix</td>
-                                <td>R$ 300</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
+
+                <div class="text-center">
+                    <a href="javascript:void;" class="vew-more-news bet-btn bet-btn-base">
+                        <i class="fas fa-redo"></i> Carregar mais
+                    </a>
+                </div>
+
             </div>
+
         </div>
     </div>
 </div>

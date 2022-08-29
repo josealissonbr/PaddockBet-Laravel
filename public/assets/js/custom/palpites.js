@@ -78,10 +78,12 @@ $(".input-number").keydown(function (e) {
 $('#efetuar-palpite-frm').submit(function (e){
     e.preventDefault();
 
-    var submitBtn  = document.getElementById('palpite_btn');
+    var submitBtn  = $('#palpite_btn');
     var form = $(this);
     var actionUrl = form.attr('action');
-    //submitBtn.setAttribute('disabled', 'disabled');
+    submitBtn.attr('disabled', 'disabled');
+    submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Fazer Palpite`);
+
     $.ajax({
         type: "POST",
         url: actionUrl,
@@ -89,11 +91,12 @@ $('#efetuar-palpite-frm').submit(function (e){
         success: function(data)
         {
             window.location.href=data.redirector;
+            submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Redirecionando...`);
         },
         error: function(data)
         {
             console.log('Falha ao processar request');
-            //submitBtn.removeAttribute('disabled');
+            submitBtn.html(`<i class="fa fa-save"></i> Fazer Palpite`);
         }
     });
 

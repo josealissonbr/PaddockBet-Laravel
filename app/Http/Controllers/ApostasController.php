@@ -8,6 +8,7 @@ use App\Models\Apostas;
 use App\Models\Eventos;
 use App\Models\Provas;
 use App\Models\provasConjuntos;
+use App\Models\Transacoes;
 use Carbon\Carbon;
 
 class ApostasController extends Controller
@@ -37,6 +38,7 @@ class ApostasController extends Controller
         //return $provas;
         return view('pages.provas', compact('evento','provas'));
     }
+
     public function eventos(){
         $eventos = Eventos::get();
         return view('pages.eventos', compact('eventos'));
@@ -107,10 +109,18 @@ class ApostasController extends Controller
             ]);
         }
 
-    $prova->increment('saldoAcumulado', ($prova->valor * $qtdCotas) - (($prova->valor * $qtdCotas) * 0.3));
+        $prova->increment('saldoAcumulado', ($prova->valor * $qtdCotas) - (($prova->valor * $qtdCotas) * 0.3));
 
         $user->saldo = ($user->saldo - ($prova->valor * $qtdCotas));
 
+        $transacao = new Transacoes;
+
+        $transacao->tipo = 2;//1- deposito, 2-aposta, 3- saque
+        $transacao->idCliente = $user->id;
+        $transacao->valor = ($prova->valor * $qtdCotas);
+        $transacao->situacao = 1;
+
+        $transacao->save();
         $user->save();
         //$prova->save();
 

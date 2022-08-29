@@ -56,7 +56,17 @@
                                     @endphp
                                 </td>
                                 <td>{{$aposta->qtdeCotas}}</td>
-                                <td>N/A</td>
+                                <td>@php
+                                    if ($aposta->prova->situacao == 3){
+                                        if ($aposta->resultado == 1){
+                                            echo "<a style='color: green'>Ganhou</a>";
+                                        }else{
+                                            echo "<a style='color: red'>Perdeu</a>";
+                                        }
+                                    }else{
+                                        echo "N/A";
+                                    }
+                                @endphp</td>
                                 <td>R$ {{number_format($aposta->premio, 2, ',', ' ')}}</td>
                             </tr>
                             @endforeach

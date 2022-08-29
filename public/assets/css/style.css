@@ -1,14 +1,14 @@
 /* =================================
- Temlate Name : 
- Author Name : 
- Date: 
+ Temlate Name :
+ Author Name :
+ Date:
  Version: 1.0
  =================================
 
 /* =================================
  css indexH
  =================================
- 
+
 ================================= */
 /*==========================================
     typography
@@ -429,7 +429,7 @@ ul {
   transition: all 0.3s ease-in; }
 
 .bet-btn-base {
-  background: #f9ee56;
+  background: #c9c044;
   color: #fff; }
   .bet-btn-base:hover {
     background: #2a2a2a;
@@ -439,7 +439,7 @@ ul {
   background: #2a2a2a;
   color: #fff; }
   .bet-btn-dark-light:hover {
-    background: #f9ee56;
+    background: #c9c044;
     color: #fff; }
 
 .bet-btn-border {
@@ -447,7 +447,7 @@ ul {
   border: 1px solid #fff;
   line-height: 48px; }
   .bet-btn-border:hover {
-    background: #f9ee56;
+    background: #c9c044;
     color: #fff;
     border-color: transparent; }
 
@@ -4611,4 +4611,3 @@ ul {
 
 
 
-   
