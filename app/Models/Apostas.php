@@ -15,4 +15,8 @@ class Apostas extends Model
         return $this->belongsTo(Provas::class, 'idProva', 'idProva')->with('evento');
     }
 
+    public function conjuntoSelecionado(){
+        return $this->belongsTo(provasConjuntos::class, 'ConjuntoEscolhido', 'idProvaConjunto');
+    }
+
 }

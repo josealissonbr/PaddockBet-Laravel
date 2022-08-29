@@ -16,6 +16,7 @@ Route::middleware(['authenticated'])->group(function () {
     Route::get('/', 'App\Http\Controllers\DashboardController@index');
     Route::get('dashboard', 'App\Http\Controllers\DashboardController@dashboard')->name('dashboard');
     Route::get('dashboard/apostas', 'App\Http\Controllers\ApostasController@index')->name('dashboard.apostas');
+    Route::get('dashboard/apostas/{idAposta}', 'App\Http\Controllers\ApostasController@detalhesBilhete')->name('dashboard.apostas.detalhes');
     Route::get('dashboard/eventos', 'App\Http\Controllers\ApostasController@eventos')->name('dashboard.eventos');
     Route::get('dashboard/provas/{idEvento}', 'App\Http\Controllers\ApostasController@provas')->name('dashboard.provas');
     Route::get('dashboard/provas/palpite/{idProva}', 'App\Http\Controllers\ApostasController@palpite')->name('dashboard.provas.palpite');

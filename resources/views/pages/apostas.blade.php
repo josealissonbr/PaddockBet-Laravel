@@ -37,7 +37,8 @@
                             <tr>
                                 <td>{{Carbon\Carbon::parse($aposta->created_at)->format('d/m/Y h:i')}}</td>
                                  <td><a href="detalheBilhete.php">#{{$aposta->idAposta}}</a></td>
-                                <th scope="row" class="d-flex"><a href="prova.php?id=1"?>{{$aposta->prova->evento->nomeEvento}} - {{$aposta->prova->nomeProva}}</a></th>
+                                <th scope="row" class="d-flex">
+                                    <a href="{{route('dashboard.apostas.detalhes', $aposta->idAposta)}}">{{$aposta->prova->evento->nomeEvento}} - {{$aposta->prova->nomeProva}}</a></th>
                                <td>{{Carbon\Carbon::parse($aposta->prova->dataProva)->format('d/m/Y h:i')}}</td>
 
                                 <td>

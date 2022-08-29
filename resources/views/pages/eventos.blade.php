@@ -4,7 +4,7 @@
 <!-- standing begin -->
 <div class="standing">
     <div class="container">
-        <div class="filter-menu">
+        {{--<div class="filter-menu">
             <div class="row">
                 <div class="col-xl-4 col-lg-4">
                     <div class="form-group">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
         <div class="standing-list-cover">
             <div class="standing-team-list">
                 <h4 class="result-title">Eventos</h4>

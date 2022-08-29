@@ -41,14 +41,18 @@
                                 </div>
 
                             </div>
-                           <form class="efetuar-palpite-frm" action="{{route('api.provas.fazerPalpite')}}" method="POST">
+                           <form id="efetuar-palpite-frm" action="{{route('api.provas.fazerPalpite')}}" method="POST">
+                                <input type="hidden" name="idProva" value="{{$prova->idProva}}">
+                                <input type="hidden" name="apikey" value="{{auth()->user()->apikey}}">
+                                <input type="hidden" id="valorProva" value="{{$prova->valor}}">
+                                <input type="hidden" id="userSaldo" value="{{auth()->user()->saldo}}">
                                 <div class="row">
                                     <div class="left-side col-md-6">
                                         <span class="bet-place"></span>
                                         <span class="bet-price">
                                             <label> Selecione o conjunto vencedor</label>
-                                            <select name="conjuntoSelecionado" class="form-control formulario">
-                                                <option value="0">Selecione</option>
+                                            <select name="conjuntoSelecionado" class="form-control formulario" required>
+                                                <option value="">Selecione</option>
                                                 @foreach ($prova->conjuntos as $conjunto)
                                                 <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}}</option>
                                                 @endforeach
@@ -68,13 +72,18 @@
                                                     <span class="fa fa-minus"></span>
                                                 </button>
                                             </span>
-                                            <input type="text" name="qtdCotas" class="form-control input-number" value="1" min="1" max="99" style="text-align: center;">
+                                            <input type="text" name="qtdCotas" class="form-control input-number" value="1" min="1" max="99" style="text-align: center;" required>
                                             <span class="input-group-append">
                                                 <button type="button" class="btn btn-outline-secondary btn-number" data-type="plus" data-field="qtdCotas">
                                                     <span class="fa fa-plus"></span>
                                                 </button>
+
                                             </span>
+
                                         </div>
+                                    </div>
+                                    <div class="col-sm-3" style="padding-top: 7px">
+                                        <a id="totalPalpiteValor">R$ 20,00</a>
                                     </div>
                                 </div>
 
@@ -83,7 +92,7 @@
 
                                         <br>
                                         <div class="buttons">
-                                            <button type="submit" class="buy-ticket bet-btn bet-btn-dark-light">
+                                            <button type="submit" id="palpite_btn" class="buy-ticket bet-btn bet-btn-dark-light">
                                                 <i class="fa fa-save"></i> Fazer Palpite
                                             </button>
                                         </div>

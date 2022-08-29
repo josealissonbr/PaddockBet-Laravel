@@ -31,6 +31,10 @@ $('.btn-number').click(function(e){
 });
 $('.input-number').focusin(function(){
    $(this).data('oldValue', $(this).val());
+
+    var palpiteBaseValor = $('#valorProva').val();
+    var valorTotal = palpiteBaseValor * $(this).val();
+    $('#totalPalpiteValor').text(`R$ ${valorTotal.toFixed(2)}`);
 });
 $('.input-number').change(function() {
 
@@ -49,6 +53,10 @@ $('.input-number').change(function() {
     } else {
         $(this).val(maxValue);
     }
+
+    var palpiteBaseValor = $('#valorProva').val();
+    var valorTotal = palpiteBaseValor * valueCurrent;
+    $('#totalPalpiteValor').text(`R$ ${valorTotal.toFixed(2)}`);
 });
 
 $(".input-number").keydown(function (e) {
@@ -67,6 +75,26 @@ $(".input-number").keydown(function (e) {
     }
 });
 
-$('.efetuar-palpite-frm').submit(function (){
+$('#efetuar-palpite-frm').submit(function (e){
     e.preventDefault();
+
+    var submitBtn  = document.getElementById('palpite_btn');
+    var form = $(this);
+    var actionUrl = form.attr('action');
+    //submitBtn.setAttribute('disabled', 'disabled');
+    $.ajax({
+        type: "POST",
+        url: actionUrl,
+        data: form.serialize(),
+        success: function(data)
+        {
+            window.location.href=data.redirector;
+        },
+        error: function(data)
+        {
+            console.log('Falha ao processar request');
+            //submitBtn.removeAttribute('disabled');
+        }
+    });
+
 });
