@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> PerediOn - eSports Prediction HTML Template</title>
+        <title>{{env('APP_NAME')}}</title>
         <!-- favicon -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <!-- bootstrap -->
@@ -94,110 +94,10 @@
                     </div>
                 </div>
             </div>
-            <div id="navbar" class="header-bottom">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
-                            <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
-                                    <div class="logo">
-                                        <a href="index.html">
-                                            <img src="assets/img/logo.png" alt="logo">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-6 d-xl-none d-lg-none d-block">
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <i class="fas fa-bars"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-9 col-lg-9">
-                            <div class="mainmenu">
-                                <nav class="navbar navbar-expand-lg">
-                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <ul class="navbar-nav ml-auto">
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                  Home
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                  <a class="dropdown-item" href="index.html">Home One</a>
-                                                  <a class="dropdown-item" href="index-2.html">Home Two</a>
-                                                </div>
-                                              </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="about.html">About</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="statics.html">Statics</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="promotions.html">Promotions</a>
-                                            </li>
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                  Blog
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                                    <a class="dropdown-item" href="blog.html">Blog Post</a>
-                                                    <a class="dropdown-item" href="blog-details.html">Blog Details</a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                  Pages
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <a class="dropdown-item" href="result.html">Result</a>
-                                                    <a class="dropdown-item" href="latest-result.html">Latest Result</a>
-                                                    <a class="dropdown-item" href="standing.html">Standing</a>
-                                                    <a class="dropdown-item" href="schedule.html">Schedule</a>
-                                                    <a class="dropdown-item" href="bet-slip.html">Bet Slip</a>
-                                                    <a class="dropdown-item" href="login.html">Login</a>
-                                                    <a class="dropdown-item" href="register.html">Register</a>
-                                                    <a class="dropdown-item" href="error.html">Error 404</a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="contact.html">Contact US</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                  </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <!-- header end -->
 
-        <!-- breadcrumb begin -->
-        <div class="breadcrumb-bettix register-page">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="breadcrumb-content">
-                            <h2>Login</h2>
-                            <ul>
-                                <li>
-                                    <a href="#">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#">Pages</a>
-                                </li>
-                                <li>
-                                    Login
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- breadcrumb end -->
 
         <!-- login begin -->
         <div class="login">
@@ -205,8 +105,8 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6 col-md-8">
                         <div class="section-title">
-                            <h2>Login To Place bets</h2>
-                            <p>Bettix is the most advanced sports trading & affialiate platform and highest stakes across multiple bookmakers and exchanges.</p>
+                            <h2>Paddock.Bet</h2>
+                            <p>Insira suas credenciais.</p>
                         </div>
                     </div>
                 </div>
@@ -229,16 +129,19 @@
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                                 @endif
-                                <input type="email" name="email" placeholder="Enter Your Mail">
+                                <input type="email" name="email" placeholder="Insira seu email">
 
                                 @if ($errors->has('email'))
                                 <div>
                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                 </div>
                                 @endif
-                                <input type="password" name="password" placeholder="Enter Your Password">
+                                <input type="password" name="password" placeholder="Insira sua senha">
 
-                                <button type="submit">Login</button>
+                                <div class="row justify-content-center">
+                                    <button type="submit" class="align-middle">Login</button>
+                                </div>
+
                             </form>
                         </div>
                     </div>
