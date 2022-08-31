@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('transacoes', function (Blueprint $table) {
             $table->id('idTransacao'); //id de incremento da transacao (unico)
-            $table->integer('tipo'); // +Deposito, -Aposta, -Saque
+            $table->integer('tipo'); //1- +Deposito,2- -Aposta,3- -Saque
             $table->integer('idCliente'); // id do cliente que esta efetuando a transacao
             $table->double('valor'); //Valor referente ao deposito, aposta ou saque
-            $table->integer('situacao'); // se refe ao status, seja Pendente, processado, cancelado
+            $table->integer('situacao'); // se refe ao status, seja 0- Pendente, 1- processado, 2- cancelado
             $table->timestamps(); //adiciona os timestamps basicos (created_at/updated_at)
         });
     }

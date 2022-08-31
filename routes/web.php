@@ -26,4 +26,5 @@ Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');
 Route::get('cadastro', 'App\Http\Controllers\AuthController@cadastro')->name('login.cadastro');
 
 Route::post('login/process', 'App\Http\Controllers\AuthController@postLogin')->name('login.post');
+Route::post('cadastro/process', 'App\Http\Controllers\AuthController@postRegistration')->name('login.cadastro.post');
 Route::get('login/logout', 'App\Http\Controllers\AuthController@logout')->name('login.logout');

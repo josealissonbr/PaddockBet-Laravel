@@ -44,7 +44,7 @@
                         <img src="../assets/img/svg/transfer1.svg" alt="">
                     </div>
                     <div class="part-text">
-                        <span class="number">R$ {{number_format(0.00, 2    , ",", ".")}}</span>
+                        <span class="number">R$ {{number_format($emTransferencia, 2    , ",", ".")}}</span>
                         <span class="title">Em Transferência</span>
                     </div>
                 </div>

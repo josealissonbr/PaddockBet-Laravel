@@ -66,7 +66,7 @@
                                 Prêmio Total
                             </span>
                             <span class="number">
-                                R$ 19.500
+                                R$ {{number_format($acumuladoEvento, 2, ",", " ")}}
                             </span>
                         </div>
 

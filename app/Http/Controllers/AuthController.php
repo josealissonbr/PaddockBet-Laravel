@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use Illuminate\Support\Str;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -40,6 +44,48 @@ class AuthController extends Controller
         }
 
         return redirect("login")->withErrors('Ops! Você inseriu credenciais inválidas');
+    }
+
+    public function postRegistration(Request $request)
+    {
+        //return $request->all();
+        //return User::where('email', $request->input('email'))->count();
+        if (User::where('email', $request->input('email'))->count() > 0){
+            return response()->json([
+                'status' => false,
+                'msg'    => 'Email já está cadastrado!'
+            ]);
+        }
+
+        if (User::where('cpf', $request->input('cpf'))->count() > 0){
+            return response()->json([
+                'status' => false,
+                'msg'    => 'CPF já está cadastrado!'
+            ]);
+        }
+
+        $data = $request->all();
+        $check = $this->create($data);
+
+        return response()->json([
+            'status' => true,
+            'msg'    => 'Conta criada com sucesso!'
+        ]);
+
+        //return redirect(route("dashboard"))->withSuccess('Great! You have Successfully loggedin');
+    }
+
+    public function create(array $data)
+    {
+      return User::create([
+        'nome'          => $data['firstName']." ".$data['lastName'],
+        'cpf'           => $data['cpfNumber'],
+        'email'         => $data['emailAdd'],
+        'telefone'      => $data['mobileNumber'],
+        'nascimento'    => Carbon::parse($data['dataNascimento']),
+        'apikey'        => Str::random(16),
+        'password'      => Hash::make($data['passwordNo'])
+      ]);
     }
 
     public function logout(){

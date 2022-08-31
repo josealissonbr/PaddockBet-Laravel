@@ -34,13 +34,16 @@ class ApostasController extends Controller
 
     public function provas($idEvento){
         $evento = Eventos::find($idEvento);
-        $provas = Provas::where('idEvento', $idEvento)->get();
+        $provas = Provas::where('idEvento', $idEvento)->where('situacao', 1)->get();
+        $acumuladoEvento = Provas::where('idEvento', $idEvento)->where('situacao', 1)->sum('saldoAcumulado');
+
         //return $provas;
-        return view('pages.provas', compact('evento','provas'));
+        return view('pages.provas', compact('evento', 'provas', 'acumuladoEvento'));
     }
 
     public function eventos(){
         $eventos = Eventos::get();
+
         return view('pages.eventos', compact('eventos'));
     }
 

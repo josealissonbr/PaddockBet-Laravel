@@ -23,7 +23,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->datetime('nascimento');
-            $table->double('saldo');
+            $table->double('saldo')->default(0.00);
             $table->string('apikey');
             $table->rememberToken();
             $table->timestamps();
