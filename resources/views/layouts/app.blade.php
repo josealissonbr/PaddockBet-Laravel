@@ -255,6 +255,8 @@
         <!-- main -->
         <script src="{{asset('assets/js/main.js')}}"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+
         @yield('script')
     </body>
 </html>

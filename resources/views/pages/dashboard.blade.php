@@ -79,23 +79,15 @@
                     <ul>
                         <li>
                             <span class="title">Cadastro</span>
-                            <span class="details"> 01/07/2022 11:20:37</span>
-                        </li>
-                        <li>
-                            <span class="title">Último Acesso</span>
-                            <span class="details">  03/07/2022 07:06:36</span>
+                            <span class="details"> {{Carbon\Carbon::parse(auth()->user()->created_at)->format('d/m/Y H:i')}}</span>
                         </li>
                         <li>
                             <span class="title">Acesso Atual </span>
-                            <span class="details"> 18/07/2022 02:47:23</span>
-                        </li>
-                        <li>
-                            <span class="title">IP do Último Acesso</span>
-                            <span class="details">  27.57.18.1</span>
+                            <span class="details"> @if (\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->count() > 0) {{Carbon\Carbon::parse((\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->get()->last())->created_at)->format('d/m/Y H:i')}} @else Desconhecido @endif </span>
                         </li>
                         <li>
                             <span class="title">IP Acesso Atual</span>
-                            <span class="details"> 122.175.131.51</span>
+                            <span class="details"> @if (\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->count() > 0) {{(\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->get()->last())->ip}} @else Desconhecido @endif </span>
                         </li>
                     </ul>
                 </div>

@@ -90,8 +90,18 @@ $('#efetuar-palpite-frm').submit(function (e){
         data: form.serialize(),
         success: function(data)
         {
-            window.location.href=data.redirector;
-            submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Redirecionando...`);
+            if (data.status){
+                window.location.href=data.redirector;
+                submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Redirecionando...`);
+            }else{
+                submitBtn.removeAttr('disabled');
+                submitBtn.html(`<i class="fa fa-save"></i> Fazer Palpite`);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Poxa...',
+                    text: data.msg
+                })
+            }
         },
         error: function(data)
         {

@@ -7,6 +7,7 @@ use Auth;
 use Session;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\authenticationLogs;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
@@ -39,6 +40,12 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+            $user = User::where('email', $request->input('email'))->get('id')->first();
+            authenticationLogs::create([
+                'idCliente' => $user->id,
+                'ip'        => $request->ip(),
+                'agent'     => $request->userAgent(),
+            ]);
             return redirect()->intended('dashboard')
                 ->withSuccess('You have Successfully loggedin');
         }
@@ -50,14 +57,14 @@ class AuthController extends Controller
     {
         //return $request->all();
         //return User::where('email', $request->input('email'))->count();
-        if (User::where('email', $request->input('email'))->count() > 0){
+        if (User::where('email', $request->input('emailAdd'))->count() > 0){
             return response()->json([
                 'status' => false,
                 'msg'    => 'Email já está cadastrado!'
             ]);
         }
 
-        if (User::where('cpf', $request->input('cpf'))->count() > 0){
+        if (User::where('cpf', $request->input('cpfNumber'))->count() > 0){
             return response()->json([
                 'status' => false,
                 'msg'    => 'CPF já está cadastrado!'
@@ -66,6 +73,15 @@ class AuthController extends Controller
 
         $data = $request->all();
         $check = $this->create($data);
+
+        $credentials = ['email' => $request->input('emailAdd'), 'password' => $request->input('passwordNo')];
+
+        Auth::attempt($credentials);
+
+        /*if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+                ->withSuccess('You have Successfully loggedin');
+        }*/
 
         return response()->json([
             'status' => true,

@@ -50,7 +50,22 @@ $(document).ready(function(){
                 _token: CSRFtoken,
             },
             function(response){
-                console.log(responseText);
+                if (response.status){
+                    $('#third-step').hide(500);
+                    $('#fourth-step').show(0);
+                    finalConfirm.addClass('active');
+
+                    setInterval(function(){
+                        window.location.href="/dashboard";
+                    }, 2500);
+
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Poxa...',
+                        text: response.msg
+                        })
+                }
             },"json"
         );
 

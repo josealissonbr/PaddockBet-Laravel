@@ -214,7 +214,7 @@
                                         <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
                                     </svg>
                                     <span class="text">Tudo certo!</span>
-                                    <span class="text">Estamos te redirecionando a sua conta</span>
+                                    <span class="text">Você será redirecionado para sua conta!</span>
                                 </div>
                             </div>
                         </div>
