@@ -37,7 +37,7 @@ class DashboardController extends Controller
 
         $emTransferencia = Transacoes::where('idCliente', auth()->user()->id)->where('tipo', 3)->where('situacao', 0)->sum('valor');
 
-        $transacoes = Transacoes::where('idCliente', auth()->user()->id)->orderBy('idTransacao', 'desc')->paginate(1);
+        $transacoes = Transacoes::where('idCliente', auth()->user()->id)->orderBy('idTransacao', 'desc')->paginate(10);
 
         return view('pages.dashboard', compact('emApostas', 'transacoes', 'emTransferencia'));
     }
@@ -47,4 +47,9 @@ class DashboardController extends Controller
         $user = User::where('apikey', $request->input('apikey'))->get()->first();
 
     }
+
+    public function editarPerfil(Request $request){
+        return view('pages.editarPerfil');
+    }
+
 }

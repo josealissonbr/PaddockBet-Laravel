@@ -22,6 +22,9 @@ Route::middleware(['authenticated'])->group(function () {
     Route::get('dashboard/provas/palpite/{idProva}', 'App\Http\Controllers\ApostasController@palpite')->name('dashboard.provas.palpite');
 
     Route::get('dashboard/depositos', 'App\Http\Controllers\DepositoController@historico')->name('dashboard.depositos.historico');
+
+
+    Route::get('dashboard/perfil/editar', 'App\Http\Controllers\DashboardController@editarPerfil')->name('dashboard.perfil.editar');
 });
 
 Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');
