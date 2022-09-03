@@ -7,7 +7,7 @@
 
                         <div class="part-name">
                             <span class="welcome-text">Bem Vindo</span>
-                            <span class="user-name-text">{{auth()->user()->nome}}</span>
+                            <span class="user-name-text">@if(Auth::check()) {{auth()->user()->nome}} @endif</span>
                         </div>
                     </div>
                     <div class="part-right">
@@ -42,18 +42,18 @@
                             </a>
                         </li>
                         <li>
-                            <a href="depositos.php" class="menu-item {{--<?=$depositos?>--}}">
+                            <a href="{{route('dashboard.depositos.historico')}}" class="menu-item @if (\Request::route()->getName() == "dashboard.depositos.historico") active @endif">
                                 Depósitos
                             </a>
                         </li>
-                        <li>
-                            <a href="bonus.php" class="menu-item {{--<?=$bonus?>--}}">
+                        {{--<li>
+                            <a href="bonus.php" class="menu-item">
                                 Bônus de Indicações
                             </a>
-                        </li>
+                        </li>--}}
 
                         <li>
-                            <a href="deposito.php" class="menu-item {{--<?=$fazer?>--}}">
+                            <a href="deposito.php" class="menu-item ">
                                 Fazer Depósito
                             </a>
                         </li>
