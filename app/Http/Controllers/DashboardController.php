@@ -37,7 +37,7 @@ class DashboardController extends Controller
 
         $emTransferencia = Transacoes::where('idCliente', auth()->user()->id)->where('tipo', 3)->where('situacao', 0)->sum('valor');
 
-        $transacoes = Transacoes::where('idCliente', auth()->user()->id)->orderBy('idTransacao', 'desc')->limit(5)->get();
+        $transacoes = Transacoes::where('idCliente', auth()->user()->id)->orderBy('idTransacao', 'desc')->paginate(1);
 
         return view('pages.dashboard', compact('emApostas', 'transacoes', 'emTransferencia'));
     }

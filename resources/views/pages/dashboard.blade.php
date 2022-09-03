@@ -153,10 +153,13 @@
                     </table>
                 </div>
 
-                <div class="text-center">
-                    <a href="javascript:void;" class="vew-more-news bet-btn bet-btn-base">
+                <div class="d-flex justify-content-center align-items-center" style="padding-top: 20px">
+
+                    {{$transacoes->links()}}
+
+                    {{--<a href="javascript:void;" class="vew-more-news bet-btn bet-btn-base">
                         <i class="fas fa-redo"></i> Carregar mais
-                    </a>
+                    </a>--}}
                 </div>
 
             </div>
