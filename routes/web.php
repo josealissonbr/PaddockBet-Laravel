@@ -27,6 +27,8 @@ Route::middleware(['authenticated'])->group(function () {
     Route::get('dashboard/perfil/editar', 'App\Http\Controllers\DashboardController@editarPerfil')->name('dashboard.perfil.editar');
 });
 
+Route::get('admin', 'App\Http\Controllers\AdminController@home')->name('admin.home');
+
 Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');
 Route::get('cadastro', 'App\Http\Controllers\AuthController@cadastro')->name('login.cadastro');
 
