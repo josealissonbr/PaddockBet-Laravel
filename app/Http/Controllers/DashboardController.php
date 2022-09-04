@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Models\Apostas;
 use App\Models\Transacoes;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -50,6 +52,33 @@ class DashboardController extends Controller
 
     public function editarPerfil(Request $request){
         return view('pages.editarPerfil');
+    }
+
+    public function _atualizarPerfil(Request $request){
+        //return $request->all();
+
+        $user = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        $passwordOld = $request->input('passwordNo');
+
+        if (!$user){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       => 'Falha ao autenticar.'
+            ]);
+        }
+
+        if ($passwordOld){
+            $user->password = Hash::make($passwordOld);
+        }
+
+        $user->save();
+
+        return response()->json([
+            'status'    =>  true,
+            'msg'       => 'Alterações aplicadas com sucesso!'
+        ]);
+
     }
 
 }

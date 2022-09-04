@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             ProvasSeeder::class,
             ApostasSeeder::class,
             ProvasConjuntosSeeder::class,
+            SiteSettingsSeeder::class,
         ]);
     }
 }

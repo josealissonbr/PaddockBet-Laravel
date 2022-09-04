@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('provas/palpites/efetuar', 'App\Http\Controllers\ApostasController@_EfetuarPalpite')->name('api.provas.fazerPalpite');
 Route::post('dashboard/home', 'App\Http\Controllers\DashboardController@_dashboardValues')->name('api.dashboard.home');
+
+
+//Editar perfil
+Route::post('user/atualizarPerfil', 'App\Http\Controllers\DashboardController@_atualizarPerfil')->name('api.perfil.atualizarPerfil');
