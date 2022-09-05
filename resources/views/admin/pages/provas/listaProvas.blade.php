@@ -74,10 +74,10 @@
 
                         <td>
                             <a href="#" class="btn btn-info btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
-                                <i class="fas fa-edit"></i>
+                                <i class="fa fa-edit"></i>
                             </a>
                             <a href="#" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
-                                <i class="fas fa-trash"></i>
+                                <i class="fa fa-trash"></i>
                             </a>
                         </td>
                     </tr>

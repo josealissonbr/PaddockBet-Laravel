@@ -46,7 +46,7 @@
                         <td>#{{$evento->idEvento}}</td>
                         <td><strong>{{$evento->nomeEvento}}</strong></td>
                         <td>{{$evento->cidade}}</td>
-                        <td>{{$evento->provas->count()}}</td>
+                        <td>{{$evento->provas ? $evento->provas->count() : 0}}</td>
                         <td>
                             @php
                                 if ($evento->situacao == 0)
@@ -61,10 +61,10 @@
 
                         <td>
                             <a href="#" class="btn btn-info btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
-                                <i class="fas fa-edit"></i>
+                                <i class="fa fa-edit"></i>
                             </a>
                             <a href="#" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
-                                <i class="fas fa-trash"></i>
+                                <i class="fa fa-trash"></i>
                             </a>
                         </td>
                     </tr>

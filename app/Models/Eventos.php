@@ -11,6 +11,13 @@ class Eventos extends Model
 
     protected $primaryKey  = "idEvento";
 
+    protected $fillable = [
+        'nomeEvento',
+        'imagem',
+        'cidade',
+        'situacao',
+    ];
+
     public function provas(){
         return $this->belongsTo(Provas::class, 'idEvento', 'idEvento');
     }

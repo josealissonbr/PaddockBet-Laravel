@@ -22,5 +22,10 @@ Route::post('provas/palpites/efetuar', 'App\Http\Controllers\ApostasController@_
 Route::post('dashboard/home', 'App\Http\Controllers\DashboardController@_dashboardValues')->name('api.dashboard.home');
 
 
+Route::middleware(['AdminApi'])->group(function () {
+    Route::post('admin/eventos/_novo', 'App\Http\Controllers\AdminController@_addEvento')->name('api.admin.eventos.novo');
+});
+
+
 //Editar perfil
 Route::post('user/atualizarPerfil', 'App\Http\Controllers\DashboardController@_atualizarPerfil')->name('api.perfil.atualizarPerfil');
