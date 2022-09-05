@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Eventos;
+use App\Models\Provas;
 
 class AdminController extends Controller
 {
@@ -15,4 +16,10 @@ class AdminController extends Controller
         $eventos = Eventos::all();
         return view('admin.pages.eventos.listaEventos', compact('eventos'));
     }
+
+    public function listaProvas(Request $request){
+        $provas = Provas::all();
+        return view('admin.pages.provas.listaProvas', compact('provas'));
+    }
+
 }

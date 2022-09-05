@@ -32,6 +32,7 @@ Route::middleware(['Admin'])->group(function () {
 
     Route::get('admin', 'App\Http\Controllers\AdminController@home')->name('admin.home');
     Route::get('admin/eventos', 'App\Http\Controllers\AdminController@listaEventos')->name('admin.eventos');
+    Route::get('admin/provas', 'App\Http\Controllers\AdminController@listaProvas')->name('admin.provas');
 
 });
 

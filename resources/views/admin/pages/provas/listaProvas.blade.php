@@ -17,13 +17,13 @@
 
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Eventos</h1>
+<h1 class="h3 mb-2 text-gray-800">Provas</h1>
 <p class="mb-4"></p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Lista de eventos criados</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Lista de provas criadas</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -31,33 +31,46 @@
                 <thead>
                     <tr>
                         <th>#ID</th>
-                        <th>Nome</th>
-                        <th>Cidade</th>
-                        <th>Provas</th>
+                        <th>Prova</th>
+                        <th>Evento</th>
+                        <th>Altura</th>
+                        <th>Saldo Acumulado</th>
+                        <th>Valor</th>
+                        <th>Taxa</th>
                         <th>Situação</th>
                         <th>Criado em</th>
+                        <th>Data Prova</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach($eventos as $evento)
+                    @foreach($provas as $prova)
                     <tr>
-                        <td>#{{$evento->idEvento}}</td>
-                        <td><strong>{{$evento->nomeEvento}}</strong></td>
-                        <td>{{$evento->cidade}}</td>
-                        <td>{{$evento->provas->count()}}</td>
+                        <td>#{{$prova->idProva}}</td>
+                        <td><strong>{{$prova->nomeProva}}</strong></td>
+                        <td><strong>{{$prova->evento->nomeEvento}}</strong></td>
+                        <td>{{$prova->altura}}</td>
+                        <td>R$ {{number_format($prova->saldoAcumulado, 2, ',', ' ')}}</td>
+                        <td>R$ {{number_format($prova->valor, 2, ",", " ")}}</td>
+                        <td>R$ {{number_format($prova->taxa, 2, ',', ' ')}}</td>
                         <td>
                             @php
-                                if ($evento->situacao == 0)
+                                if ($prova->situacao == 0)
                                     echo "Inativo";
-                                else if ($evento->situacao == 1)
-                                    echo "Ativo";
-                                else if ($evento->situacao == 2)
+                                else if ($prova->situacao == 1)
+                                    echo "Recebendo Apostas";
+                                else if ($prova->situacao == 2)
+                                    echo "Aguardando Prova";
+                                else if ($prova->situacao == 3)
+                                    echo "Finalizado";
+                                else if ($prova->situacao == 4)
                                     echo "Cancelado";
-                                @endphp
+                            @endphp
                         </td>
-                        <td>{{Carbon\Carbon::parse($evento->created_at)->format('d/m/Y H:i:s')}}</td>
+                        <td>{{Carbon\Carbon::parse($prova->created_at)->format('d/m/Y H:i:s')}}</td>
+
+                        <td>{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i:s')}}</td>
 
                         <td>
                             <a href="#" class="btn btn-info btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
