@@ -10,4 +10,8 @@ class Eventos extends Model
     use HasFactory;
 
     protected $primaryKey  = "idEvento";
+
+    public function provas(){
+        return $this->belongsTo(Provas::class, 'idEvento', 'idEvento');
+    }
 }
