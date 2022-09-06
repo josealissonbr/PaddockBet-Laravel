@@ -18,10 +18,14 @@
     <link href="{{asset('admin-assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Main styles -->
     <link href="{{asset('admin-assets/css/admin.css')}}" rel="stylesheet">
+
+    <link href="{{asset('admin-assets/css/jquery.datetimepicker.min.css')}}" rel="stylesheet">
     <!-- Icon fonts-->
     <link href="{{asset('admin-assets/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
     <!-- Plugin styles -->
     <link href="{{asset('admin-assets/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Your custom styles -->
     <link href="{{asset('admin-assets/css/custom.css')}}">
 </head>
@@ -48,10 +52,25 @@
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseMylistings">
                         <li>
-                            <a href="{{route('admin.eventos')}}">Todos os eventos <span class="badge badge-pill badge-primary">6</span></a>
+                            <a href="{{route('admin.eventos')}}">Todos os Eventos <span class="badge badge-pill badge-primary">6</span></a>
                         </li>
                         <li>
-                            <a href="{{route('admin.eventos.novo')}}">Novo evento</a>
+                            <a href="{{route('admin.eventos.novo')}}">Novo Evento</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProvas">
+                        <i class="fa fa-fw fa-list"></i>
+                        <span class="nav-link-text">Provas</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseProvas">
+                        <li>
+                            <a href="{{route('admin.provas')}}">Todos as provas <span class="badge badge-pill badge-primary">6</span></a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.provas.novo')}}">Nova Prova</a>
                         </li>
                     </ul>
                 </li>
@@ -255,6 +274,8 @@
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('admin-assets/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{asset('admin-assets/js/jquery.datetimepicker.full.js')}}"></script>
     <script src="{{asset('admin-assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{asset('admin-assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
@@ -267,6 +288,8 @@
     <script src="{{asset('admin-assets/js/admin.js')}}"></script>
     <!-- Custom scripts for this page-->
     <script src="{{asset('admin-assets/js/admin-charts.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
 
     @yield('script')
 </body>
