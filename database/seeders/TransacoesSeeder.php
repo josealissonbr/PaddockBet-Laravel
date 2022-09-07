@@ -16,7 +16,7 @@ class TransacoesSeeder extends Seeder
     public function run()
     {
         Transacoes::create([
-            'tipo'                      => 1, //1- Deposito, 2- Aposta, 3- Saque
+            'tipo'                      => 1, //1- Deposito, 2- Aposta, 3- Saque, 4- Receb. Aposta, 5- Bonus;
             'idCliente'                 => 1,
             'valor'                     => 900,
             'situacao'                  => 1,

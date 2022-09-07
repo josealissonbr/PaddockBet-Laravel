@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-3" style="padding-top: 7px">
-                                        <a id="totalPalpiteValor">R$ 20,00</a>
+                                        <a id="totalPalpiteValor">R$ {{number_format($prova->valor, 2, ".", " ")}}</a>
                                     </div>
                                 </div>
 

@@ -15,7 +15,7 @@ class ApostasSeeder extends Seeder
      */
     public function run()
     {
-        $now = Carbon::now();
+        /*$now = Carbon::now();
         Apostas::create([
             'idCliente'                         => 1,
             'qtdeCotas'                         => 5,
@@ -25,6 +25,6 @@ class ApostasSeeder extends Seeder
             'ConjuntoEscolhido'                 => 1,
             'resultado'                         => 0, //0- Aguardando, 1- ganhou, 2- perdeu, 3- cancelado
             'created_at'                        => $now,
-        ]);
+        ]);*/
     }
 }

@@ -24,7 +24,10 @@ Route::post('dashboard/home', 'App\Http\Controllers\DashboardController@_dashboa
 
 Route::middleware(['AdminApi'])->group(function () {
     Route::post('admin/eventos/_novo', 'App\Http\Controllers\AdminController@_addEvento')->name('api.admin.eventos.novo');
+    Route::post('admin/eventos/_editar', 'App\Http\Controllers\AdminController@_editEvento')->name('api.admin.eventos.editar');
     Route::post('admin/provas/_novo', 'App\Http\Controllers\AdminController@_addProva')->name('api.admin.provas.novo');
+    Route::post('admin/provas/_editar', 'App\Http\Controllers\AdminController@_editProva')->name('api.admin.provas.editar');
+    Route::post('admin/provas/_definirVencedorProva', 'App\Http\Controllers\AdminController@_definirVencedorProva')->name('api.admin.provas.definirvencedor');
 });
 
 

@@ -47,12 +47,12 @@
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings">
-                        <i class="fa fa-fw fa-list"></i>
+                        <i class="fa fa-fw fa-calendar"></i>
                         <span class="nav-link-text">Eventos</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseMylistings">
                         <li>
-                            <a href="{{route('admin.eventos')}}">Todos os Eventos <span class="badge badge-pill badge-primary">6</span></a>
+                            <a href="{{route('admin.eventos')}}">Todos os Eventos <span class="badge badge-pill badge-primary">{{\App\Models\Eventos::where('situacao', 1)->count()}}</span></a>
                         </li>
                         <li>
                             <a href="{{route('admin.eventos.novo')}}">Novo Evento</a>
@@ -67,7 +67,7 @@
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseProvas">
                         <li>
-                            <a href="{{route('admin.provas')}}">Todos as provas <span class="badge badge-pill badge-primary">6</span></a>
+                            <a href="{{route('admin.provas')}}">Todas as provas <span class="badge badge-pill badge-primary">{{\App\Models\Provas::where('situacao', 1)->count()}}</span></a>
                         </li>
                         <li>
                             <a href="{{route('admin.provas.novo')}}">Nova Prova</a>
@@ -75,56 +75,6 @@
                     </ul>
                 </li>
 
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookmarks">
-                    <a class="nav-link" href="bookmarks.html">
-                        <i class="fa fa-fw fa-heart"></i>
-                        <span class="nav-link-text">Bookmarks</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
-                    <a class="nav-link" href="add-listing.html">
-                        <i class="fa fa-fw fa-plus-circle"></i>
-                        <span class="nav-link-text">Add listing</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing + Menu List">
-                    <a class="nav-link" href="add-listing-with-menu-list.html">
-                        <i class="fa fa-fw fa-plus-circle"></i>
-                        <span class="nav-link-text">Add listing + Menu List</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Orders Page">
-                    <a class="nav-link" href="orders.html">
-                        <i class="fa fa-fw fa-shopping-basket"></i>
-                        <span class="nav-link-text">Orders Page</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Edit Order">
-                    <a class="nav-link" href="orders.html">
-                        <i class="fa fa-fw fa-pencil"></i>
-                        <span class="nav-link-text">Edit Order</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-                    <a class="nav-link" href="user-profile.html">
-                        <i class="fa fa-fw fa-user"></i>
-                        <span class="nav-link-text">My Profile</span>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
-                        <i class="fa fa-fw fa-gear"></i>
-                        <span class="nav-link-text">Components</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="collapseComponents">
-                        <li>
-                            <a href="charts.html">Charts</a>
-                        </li>
-                        <li>
-                            <a href="tables.html">Tables</a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">

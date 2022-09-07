@@ -138,7 +138,7 @@
                                     else if ($transacao->tipo == 3)
                                         echo "Saque";
                                     else if ($transacao->tipo == 4)
-                                        echo "Repasse";
+                                        echo "Receb. Aposta";
                                     else if ($transacao->tipo == 5)
                                         echo "Bônus";
                                 @endphp</th>

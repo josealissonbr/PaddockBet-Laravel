@@ -33,8 +33,10 @@ Route::middleware(['Admin'])->group(function () {
     Route::get('admin', 'App\Http\Controllers\AdminController@home')->name('admin.home');
     Route::get('admin/eventos', 'App\Http\Controllers\AdminController@listaEventos')->name('admin.eventos');
     Route::get('admin/eventos/novo', 'App\Http\Controllers\AdminController@novoEvento')->name('admin.eventos.novo');
+    Route::get('admin/eventos/editar/{idEvento}', 'App\Http\Controllers\AdminController@editarEvento')->name('admin.eventos.editar');
     Route::get('admin/provas', 'App\Http\Controllers\AdminController@listaProvas')->name('admin.provas');
     Route::get('admin/provas/novo', 'App\Http\Controllers\AdminController@novaProva')->name('admin.provas.novo');
+    Route::get('admin/provas/editar/{idProva}', 'App\Http\Controllers\AdminController@editarProva')->name('admin.provas.editar');
 
 });
 

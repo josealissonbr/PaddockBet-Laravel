@@ -73,7 +73,7 @@
                         <td>{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i:s')}}</td>
 
                         <td>
-                            <a href="#" class="btn btn-info btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
+                            <a href="{{route('admin.provas.editar', $prova->idProva)}}" class="btn btn-info btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a href="#" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
