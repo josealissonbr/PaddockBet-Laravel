@@ -223,7 +223,7 @@ class AdminController extends Controller
         if ($qtdVencedores < 1){
             return response()->json([
                 'status' => false,
-                'msg'       =>  'É necessário um mínimo de 1 aposta para definir o vencedor',
+                'msg'       =>  'É necessário um mínimo de 1 aposta neste conjunto para defini-lo como vencedor',
             ]);
         }
 

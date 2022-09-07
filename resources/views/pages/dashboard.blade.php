@@ -122,7 +122,7 @@
                                 <th scope="col">Tipo de Transação</th>
                                 <th scope="col">ID #</th>
                                 <th scope="col">Data</th>
-                                <th scope="col">Método	</th>
+                                <th scope="col">Última Atualização</th>
                                 <th scope="col">Valor</th>
                             </tr>
                         </thead>
@@ -145,7 +145,11 @@
                                 <td>#{{$transacao->idTransacao}}</td>
                                 <td>{{Carbon\Carbon::parse($transacao->created_at)->format('d/m/Y H:i')}}</td>
                                 <td>Saldo</td>
-                                <td>R$ {{number_format($transacao->valor, 2    , ",", ".")}}</td>
+                                <td style="color: @php if ($transacao->tipo == 2 || $transacao->tipo == 3) {
+                                    echo "red;";
+                                }else echo "green;"; @endphp">@php if ($transacao->tipo == 2 || $transacao->tipo == 3) {
+                                    echo "-";
+                                }else echo "+"; @endphpR$ {{number_format($transacao->valor, 2    , ",", ".")}}</td>
                             </tr>
                             @endforeach
 
