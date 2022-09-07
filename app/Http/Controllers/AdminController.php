@@ -258,4 +258,9 @@ class AdminController extends Controller
         ]);
 
     }
+
+    public function listaUsuarios(Request $request){
+        $users = User::all();
+        return view('admin.pages.usuarios.listaUsuarios', compact('users'));
+    }
 }

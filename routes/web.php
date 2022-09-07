@@ -38,6 +38,8 @@ Route::middleware(['Admin'])->group(function () {
     Route::get('admin/provas/novo', 'App\Http\Controllers\AdminController@novaProva')->name('admin.provas.novo');
     Route::get('admin/provas/editar/{idProva}', 'App\Http\Controllers\AdminController@editarProva')->name('admin.provas.editar');
 
+    Route::get('admin/usuarios', 'App\Http\Controllers\AdminController@listaUsuarios')->name('admin.usuarios');
+
 });
 
 Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');
