@@ -143,7 +143,7 @@
                                         echo "Bônus";
                                 @endphp</th>
                                 <td>#{{$transacao->idTransacao}}</td>
-                                <td>{{Carbon\Carbon::parse($transacao->created_at)->format('d/m/Y h:i')}}</td>
+                                <td>{{Carbon\Carbon::parse($transacao->created_at)->format('d/m/Y H:i')}}</td>
                                 <td>Saldo</td>
                                 <td>R$ {{number_format($transacao->valor, 2    , ",", ".")}}</td>
                             </tr>
