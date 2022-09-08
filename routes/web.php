@@ -39,6 +39,7 @@ Route::middleware(['Admin'])->group(function () {
     Route::get('admin/provas/editar/{idProva}', 'App\Http\Controllers\AdminController@editarProva')->name('admin.provas.editar');
 
     Route::get('admin/usuarios', 'App\Http\Controllers\AdminController@listaUsuarios')->name('admin.usuarios');
+    Route::get('admin/usuarios/novo', 'App\Http\Controllers\AdminController@novoUsuario')->name('admin.usuarios.novo');
 
 });
 

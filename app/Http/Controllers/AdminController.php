@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use App\Models\Eventos;
 use App\Models\Provas;
 use App\Models\Apostas;
@@ -262,5 +264,41 @@ class AdminController extends Controller
     public function listaUsuarios(Request $request){
         $users = User::all();
         return view('admin.pages.usuarios.listaUsuarios', compact('users'));
+    }
+
+    public function novoUsuario(Request $request){
+        return view('admin.pages.usuarios.novoUsuario');
+    }
+
+    public function _addUsuario(Request $request){
+
+        if (User::where('cpf', $request->input('cpf'))->count() != 0){
+            return response()->json([
+                'status' => false,
+                'msg'    =>  'Cpf já está em uso'
+            ]);
+        }elseif (User::where('email', $request->input('email'))->count() != 0){
+            return response()->json([
+                'status' => false,
+                'msg'    =>  'Cpf já está em uso'
+            ]);
+        }
+
+        $user = new User;
+
+        $user->nome = $request->input('nome');
+        $user->cpf = $request->input('cpf');
+        $user->email = $request->input('email');
+        $user->telefone = $request->input('telefone');
+        $user->permission = $request->input('permission');
+        $user->nascimento = Carbon::createFromFormat('d/m/Y H:i', $request->input('nascimento'))->format('Y/m/d H:i:s');
+        $user->apikey = Str::random(16);
+        $user->password = Hash::make($request->input('password'));
+
+        $status = $user->save();
+
+        return response()->json([
+            'status' => (bool)$status,
+        ]);
     }
 }

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Ansonika">
-    <title>FOOGRA - Admin dashboard</title>
+    <title>{{env('APP_NAME')}}</title>
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="{{asset('admin-assets/img/apple-touch-icon-57x57-precomposed.png')}}">
@@ -84,7 +84,7 @@
                             <a href="{{route('admin.usuarios')}}">Todas os Usuários <span class="badge badge-pill badge-primary">{{\App\Models\User::count()}}</span></a>
                         </li>
                         <li>
-                            <a href="{{route('admin.provas.novo')}}">Novo Usuário</a>
+                            <a href="{{route('admin.usuarios.novo')}}">Novo Usuário</a>
                         </li>
                     </ul>
                 </li>
