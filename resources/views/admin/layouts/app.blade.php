@@ -74,6 +74,20 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span class="nav-link-text">Usuários</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseUsers">
+                        <li>
+                            <a href="{{route('admin.usuarios')}}">Todas os Usuários <span class="badge badge-pill badge-primary">{{\App\Models\User::count()}}</span></a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.provas.novo')}}">Novo Usuário</a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
             <ul class="navbar-nav sidenav-toggler">
