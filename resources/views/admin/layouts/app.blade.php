@@ -257,8 +257,7 @@
     <script src="{{asset('admin-assets/vendor/jquery.magnific-popup.min.js')}}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{asset('admin-assets/js/admin.js')}}"></script>
-    <!-- Custom scripts for this page-->
-    <script src="{{asset('admin-assets/js/admin-charts.js')}}"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
 

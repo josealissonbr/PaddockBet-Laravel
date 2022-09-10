@@ -1,5 +1,67 @@
 @extends('admin.layouts.app')
 
+@section('script')
+
+<script>
+    // Chart.js scripts
+// -- Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+// -- Area Chart Example
+var ctx = document.getElementById("myAreaChart");
+var myLineChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: {{json_encode($days)}},
+    datasets: [{
+      label: "R$ Apostados",
+      lineTension: 0.3,
+      backgroundColor: "rgba(2,117,216,0.2)",
+      borderColor: "rgba(2,117,216,1)",
+      pointRadius: 5,
+      pointBackgroundColor: "rgba(2,117,216,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(2,117,216,1)",
+      pointHitRadius: 20,
+      pointBorderWidth: 2,
+      data: {{json_encode($DataChart)}},
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 7
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: {{min($DataChart)}},
+          max: {{max($DataChart)}},
+          maxTicksLimit: 5
+        },
+        gridLines: {
+          color: "rgba(0, 0, 0, .125)",
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }
+});
+
+</script>
+
+@endsection
+
 @section('content')
 
 
@@ -76,6 +138,18 @@
             </a>
         </div>
     </div>
+
+
+
+
+</div>
+
+<h2></h2>
+<div class="box_general padding_bottom">
+    <div class="header_box version_2">
+        <h2><i class="fa fa-bar-chart"></i>Gráfico de apostas | Dia {{min($days)}} até dia {{max($days)}}</h2>
+    </div>
+    <canvas id="myAreaChart" width="100%" height="30" style="margin:45px 0 15px 0;"></canvas>
 </div>
 
 @endsection
