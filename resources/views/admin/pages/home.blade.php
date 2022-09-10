@@ -147,7 +147,7 @@ var myLineChart = new Chart(ctx, {
 <h2></h2>
 <div class="box_general padding_bottom">
     <div class="header_box version_2">
-        <h2><i class="fa fa-bar-chart"></i>Gráfico de apostas | Dia {{min($days)}} até dia {{max($days)}}</h2>
+        <h2><i class="fa fa-bar-chart"></i>Gráfico de Depósitos | Dia {{min($days)}} até dia {{max($days)}}</h2>
     </div>
     <canvas id="myAreaChart" width="100%" height="30" style="margin:45px 0 15px 0;"></canvas>
 </div>
