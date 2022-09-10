@@ -120,7 +120,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Tipo de Transação</th>
-                                <th scope="col">ID #</th>
+                                <th scope="col">#ID</th>
                                 <th scope="col">Data</th>
                                 <th scope="col">Última Atualização</th>
                                 <th scope="col">Valor</th>

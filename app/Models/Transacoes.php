@@ -10,4 +10,8 @@ class Transacoes extends Model
     use HasFactory;
 
     protected $primaryKey  = "idTransacao";
+
+    public function user(){
+        return $this->belongsTo(User::class, 'idCliente', 'id');
+    }
 }

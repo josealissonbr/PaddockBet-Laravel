@@ -40,7 +40,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                    <a class="nav-link" href="{{'admin.home'}}">
+                    <a class="nav-link" href="{{route('admin.home')}}">
                         <i class="fa fa-fw fa-dashboard"></i>
                         <span class="nav-link-text">Dashboard</span>
                     </a>
@@ -87,6 +87,13 @@
                             <a href="{{route('admin.usuarios.novo')}}">Novo Usuário</a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transacoes">
+                    <a class="nav-link" href="{{route('admin.transacoes')}}">
+                        <i class="fa fa-fw fa-money"></i>
+                        <span class="nav-link-text">Transações</span>
+                    </a>
                 </li>
 
             </ul>

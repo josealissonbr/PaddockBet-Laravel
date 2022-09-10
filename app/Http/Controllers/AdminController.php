@@ -301,4 +301,9 @@ class AdminController extends Controller
             'status' => (bool)$status,
         ]);
     }
+
+    public function listaTransacoes(Request $request){
+        $transacoes = Transacoes::all();
+        return view('admin.pages.transacoes.listaTransacoes', compact('transacoes'));
+    }
 }

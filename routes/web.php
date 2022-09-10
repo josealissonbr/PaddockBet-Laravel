@@ -41,6 +41,8 @@ Route::middleware(['Admin'])->group(function () {
     Route::get('admin/usuarios', 'App\Http\Controllers\AdminController@listaUsuarios')->name('admin.usuarios');
     Route::get('admin/usuarios/novo', 'App\Http\Controllers\AdminController@novoUsuario')->name('admin.usuarios.novo');
 
+    Route::get('admin/transacoes', 'App\Http\Controllers\AdminController@listaTransacoes')->name('admin.transacoes');
+
 });
 
 Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');
