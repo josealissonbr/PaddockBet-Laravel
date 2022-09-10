@@ -92,7 +92,7 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transacoes">
                     <a class="nav-link" href="{{route('admin.transacoes')}}">
                         <i class="fa fa-fw fa-money"></i>
-                        <span class="nav-link-text">Transações</span>
+                        <span class="nav-link-text">Transações</span> <span class="badge badge-pill badge-primary">{{\App\Models\Transacoes::count()}}</span>
                     </a>
                 </li>
 
@@ -105,7 +105,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
+                {{--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-fw fa-envelope"></i>
                         <span class="d-lg-none">Messages
@@ -193,9 +193,9 @@
                             </span>
                         </div>
                     </form>
-                </li>
+                </li>--}}
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                    <a class="nav-link" {{--data-toggle="modal" data-target="#exampleModal"--}} href="{{route('dashboard')}}"><i class="fa fa-fw fa-sign-out"></i>Sair do Admin</a>
                 </li>
             </ul>
         </div>

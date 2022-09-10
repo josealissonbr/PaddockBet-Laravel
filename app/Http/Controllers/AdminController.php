@@ -81,6 +81,35 @@ class AdminController extends Controller
         ]);
     }
 
+    public function _deleteEvento(Request $request){
+        $idEvento = $request->input('idEvento');
+
+        if (!$idEvento){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Evento não encontrado',
+            ]);
+        }
+
+        $evento = Eventos::find($idEvento);
+
+        if (Provas::where('situacao', 1)->orWhere('situacao', 2)->where('idEvento', $evento->idEvento)->count() > 0){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Não se pode excluir um evento com Provas ativas',
+            ]);
+        }
+
+        Provas::where('idEvento', $evento->idEvento)->delete();
+
+        $status = $evento->delete();
+
+        return response()->json([
+            'status'    =>  (bool)$status,
+        ]);
+
+    }
+
     public function _addProva(Request $request){
         //return $request->all();
         $strNomeProva = $request->input('nomeProva');

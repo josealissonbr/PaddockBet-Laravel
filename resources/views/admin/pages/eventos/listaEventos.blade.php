@@ -5,10 +5,57 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <script>
-
     $(document).ready(function() {
         $('#dataTable').DataTable();
       });
+
+      function deleteEvento(idEvento){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    type: "POST",
+                    url: '{{route('api.admin.eventos.excluir')}}',
+                    data: {apikey: '{{auth()->user()->apikey}}',idEvento: idEvento},
+                    success: function(data)
+                    {
+                        if (data.status){
+                            $('.eventoTr_'+idEvento).remove();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Sucesso!',
+                                text: 'Evento excluído com sucesso!'
+                            })
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: data.msg
+                            })
+                        }
+                    },
+                    error: function(data)
+                    {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Ocorreu um erro, verifique se todos os campos foram digitados corretamente.'
+                        })
+                    }
+                });
+
+            }
+        })
+    }
+
 </script>
 
 @endsection
@@ -42,7 +89,7 @@
 
                 <tbody>
                     @foreach($eventos as $evento)
-                    <tr>
+                    <tr class="eventoTr_{{$evento->idEvento}}">
                         <td>#{{$evento->idEvento}}</td>
                         <td><strong>{{$evento->nomeEvento}}</strong></td>
                         <td>{{$evento->cidade}}</td>
@@ -63,7 +110,7 @@
                             <a href="{{route('admin.eventos.editar', $evento->idEvento)}}" class="btn btn-info btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
+                            <a onclick="deleteEvento({{$evento->idEvento}})" class="btn btn-danger btn-circle btn-sm" style="margin-left: 5px; margin-right: 5px">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>
