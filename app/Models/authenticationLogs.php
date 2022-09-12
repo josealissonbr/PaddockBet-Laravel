@@ -9,7 +9,7 @@ class authenticationLogs extends Model
 {
     use HasFactory;
 
-    protected $table = 'authenticationlogs';
+    protected $table = 'authenticationLogs';
 
     protected $fillable = [
         'idCliente',
