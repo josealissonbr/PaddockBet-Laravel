@@ -22,6 +22,7 @@ Route::middleware(['authenticated'])->group(function () {
     Route::get('dashboard/provas/palpite/{idProva}', 'App\Http\Controllers\ApostasController@palpite')->name('dashboard.provas.palpite');
 
     Route::get('dashboard/depositos', 'App\Http\Controllers\DepositoController@historico')->name('dashboard.depositos.historico');
+    Route::get('dashboard/saques', 'App\Http\Controllers\DashboardController@saques')->name('dashboard.saques');
 
 
     Route::get('dashboard/perfil/editar', 'App\Http\Controllers\DashboardController@editarPerfil')->name('dashboard.perfil.editar');
@@ -42,6 +43,7 @@ Route::middleware(['Admin'])->group(function () {
     Route::get('admin/usuarios/novo', 'App\Http\Controllers\AdminController@novoUsuario')->name('admin.usuarios.novo');
 
     Route::get('admin/transacoes', 'App\Http\Controllers\AdminController@listaTransacoes')->name('admin.transacoes');
+    Route::get('admin/saques/pendentes', 'App\Http\Controllers\AdminController@listaSaquesPendentes')->name('admin.saques.pendentes');
 
 });
 

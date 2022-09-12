@@ -8,6 +8,7 @@ use Auth;
 use App\Models\Apostas;
 use App\Models\Transacoes;
 use App\Models\User;
+use App\Models\Saques;
 
 class DashboardController extends Controller
 {
@@ -79,6 +80,11 @@ class DashboardController extends Controller
             'msg'       => 'Alterações aplicadas com sucesso!'
         ]);
 
+    }
+
+    public function Saques(Request $request){
+        $saques = Saques::where('idCliente', auth()->user()->id)->get();
+        return view('pages.saques', compact('saques'));
     }
 
 }

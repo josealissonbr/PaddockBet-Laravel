@@ -11,10 +11,12 @@ use App\Models\Apostas;
 use App\Models\Transacoes;
 use App\Models\provasConjuntos;
 use App\Models\User;
+use App\Models\Saques;
 use Carbon\Carbon;
 
 class AdminController extends Controller
 {
+
     public function home(Request $request){
 
         $days =
@@ -250,6 +252,26 @@ class AdminController extends Controller
         ]);
     }
 
+    public function _deleteProva(Request $request){
+
+        $idProva = $request->input('idProva');
+
+        if (!$idProva){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Prova não encontrada',
+            ]);
+        }
+
+        $prova = Provas::find($idProva);
+
+        $status = $prova->delete();
+
+        return response()->json([
+            'status'    =>  (bool)$status,
+        ]);
+
+    }
 
     public function novaProva(Request $request){
         $eventos = Eventos::all();
@@ -261,7 +283,6 @@ class AdminController extends Controller
 
     public function editarProva($idProva, Request $request){
         $prova = Provas::find($idProva);
-
         return view('admin.pages.provas.editarProva', compact('prova'));
     }
 
@@ -382,4 +403,100 @@ class AdminController extends Controller
         $transacoes = Transacoes::all();
         return view('admin.pages.transacoes.listaTransacoes', compact('transacoes'));
     }
+
+    public function listaSaquesPendentes(Request $request){
+        $saques = Saques::where('situacao', 0)->get();
+        return view('admin.pages.saques.listaSaques', compact('saques'));
+    }
+
+    public function _cancelarSaque(Request $request){
+        $idSaque = $request->input('idSaque');
+
+        if (!$idSaque){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Parametros de request inválidos',
+            ]);
+        }
+
+        $saque = Saques::find($idSaque);
+
+        if (!$saque){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Saque não encontrado',
+            ]);
+        }
+
+        if ($saque->situacao != 0){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Este saque já foi cancelado anteriormente',
+            ]);
+        }
+
+        $saque->situacao = 2;
+
+        $status = $saque->save();
+
+
+        $user = User::find($saque->idCliente);
+
+        if(!$user->increment('saldo', $saque->valor)){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Falha ao restabelecer saldo ao usuário',
+            ]);
+        }
+
+        return response()->json([
+            'status'    =>  (bool)$status,
+        ]);
+    }
+
+    public function _aprovarSaque(Request $request){
+        $idSaque = $request->input('idSaque');
+
+        if (!$idSaque){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Parametros de request inválidos',
+            ]);
+        }
+
+        $saque = Saques::find($idSaque);
+
+        if (!$saque){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Saque não encontrado',
+            ]);
+        }
+
+        if ($saque->situacao != 0){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Este saque já foi cancelado anteriormente',
+            ]);
+        }
+
+        $saque->situacao = 1;
+
+        $status = $saque->save();
+
+
+        $user = User::find($saque->idCliente);
+
+        /*if(!$user->increment('saldo', $saque->valor)){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Falha ao restabelecer saldo ao usuário',
+            ]);
+        }*/
+
+        return response()->json([
+            'status'    =>  (bool)$status,
+        ]);
+    }
+
 }

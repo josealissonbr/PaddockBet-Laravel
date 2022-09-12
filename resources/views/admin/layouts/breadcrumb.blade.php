@@ -20,6 +20,8 @@
                 echo "Novo Usuário";
             elseif (\Request::route()->getName() == 'admin.transacoes')
                 echo "Transacões";
+            elseif (\Request::route()->getName() == 'admin.saques.pendentes')
+                echo "Saques Pendentes";
 
 
         @endphp
