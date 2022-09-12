@@ -61,8 +61,8 @@
                         </li>--}}
 
                         <li>
-                            <a href="#" class="menu-item ">
-                                Fazer Depósito
+                            <a href="{{route('dashboard.saques')}}" class="menu-item ">
+                                Saques
                             </a>
                         </li>
                     </ul>
