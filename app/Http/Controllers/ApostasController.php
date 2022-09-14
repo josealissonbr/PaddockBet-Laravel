@@ -112,6 +112,10 @@ class ApostasController extends Controller
             ]);
         }
 
+        $aposta->hash = md5($aposta->idAposta.env('HASH_PASSWD').$aposta->ConjuntoEscolhido);
+
+        $aposta->save();
+
         $prova->increment('saldoAcumulado', ($prova->valor * $qtdCotas) - (($prova->valor * $qtdCotas) * 0.3));
 
         $user->saldo = ($user->saldo - ($prova->valor * $qtdCotas));

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('saques', function (Blueprint $table) {
             $table->id();
             $table->integer('idCliente');
+            $table->integer('idTransacao');
             $table->double('valor');
             $table->integer('situacao');
             $table->timestamps();

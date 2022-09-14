@@ -65,6 +65,7 @@ class AdminController extends Controller
 
             }
 
+
         return view('admin.pages.home', compact('DataChart', 'days'));
     }
 
@@ -81,6 +82,12 @@ class AdminController extends Controller
         $evento = Eventos::find($idEvento);
 
         return view('admin.pages.eventos.editarEvento', compact('evento'));
+    }
+
+    public function provasEvento($idEvento, Request $request){
+        $evento = Eventos::find($idEvento);
+
+        return view('admin.pages.eventos.provasEvento', compact('evento'));
     }
 
     public function listaProvas(Request $request){
@@ -349,7 +356,7 @@ class AdminController extends Controller
         }
 
         $prova->situacao = 3; //0- inativo, 1- recebendo apostas, 2- aguardando prova, 3- finalizado, 4- cancelado
-
+        $prova->idConjuntoVencedor = $conjunto->idProvaConjunto;
         $status = $prova->save();
 
         return response()->json([
@@ -483,6 +490,12 @@ class AdminController extends Controller
         $saque->situacao = 1;
 
         $status = $saque->save();
+
+        $transacao = Transacoes::find($saque->idTransacao);
+
+        $transacao->situacao = 1;
+
+        $transacao->save();
 
 
         $user = User::find($saque->idCliente);

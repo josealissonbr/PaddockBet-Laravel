@@ -9,7 +9,7 @@
             <div class="col-xl-8 col-lg-8">
                 <div class="user-panel-title ">
                     <h3 class="">Saques</h3>
-                    <a href="#" class="vew-more-news bet-btn bet-btn-dark-light offset-sm-6">
+                    <a href="{{route('dashboard.saques.novo')}}" class="vew-more-news bet-btn bet-btn-dark-light offset-sm-6">
                         <i class="fas fa-redo"></i> Novo Saque
                     </a>
                 </div>

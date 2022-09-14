@@ -60,7 +60,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
+                {{--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProvas">
                         <i class="fa fa-fw fa-list"></i>
                         <span class="nav-link-text">Provas</span>
@@ -73,7 +73,7 @@
                             <a href="{{route('admin.provas.novo')}}">Nova Prova</a>
                         </li>
                     </ul>
-                </li>
+                </li>--}}
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers">
                         <i class="fa fa-fw fa-users"></i>
@@ -89,12 +89,25 @@
                     </ul>
                 </li>
 
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSaques">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span class="nav-link-text">Saques</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseSaques">
+                        <li>
+                            <a href="{{route('admin.saques.pendentes')}}">Saques Pendentes <span class="badge badge-pill badge-primary">{{\App\Models\Saques::where('situacao',0)->count()}}</span></a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transacoes">
                     <a class="nav-link" href="{{route('admin.transacoes')}}">
                         <i class="fa fa-fw fa-money"></i>
                         <span class="nav-link-text">Transações</span> <span class="badge badge-pill badge-primary">{{\App\Models\Transacoes::count()}}</span>
                     </a>
                 </li>
+
 
             </ul>
             <ul class="navbar-nav sidenav-toggler">

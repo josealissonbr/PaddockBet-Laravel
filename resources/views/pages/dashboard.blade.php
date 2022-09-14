@@ -122,7 +122,7 @@
                                 <th scope="col">Tipo de Transação</th>
                                 <th scope="col">#ID</th>
                                 <th scope="col">Data</th>
-                                <th scope="col">Última Atualização</th>
+                                <th scope="col">Situação</th>
                                 <th scope="col">Valor</th>
                             </tr>
                         </thead>
@@ -144,7 +144,16 @@
                                 @endphp</th>
                                 <td>#{{$transacao->idTransacao}}</td>
                                 <td>{{Carbon\Carbon::parse($transacao->created_at)->format('d/m/Y H:i')}}</td>
-                                <td>Saldo</td>
+                                <td>
+                                    @php
+                                    if ($transacao->situacao == 0)
+                                        echo "Pendente";
+                                    else if ($transacao->situacao == 1)
+                                        echo 'Processado';
+                                    else if ($transacao->situacao == 2)
+                                        echo "Cancelado";
+                                @endphp
+                                </td>
                                 <td style="color: @php if ($transacao->tipo == 2 || $transacao->tipo == 3) {
                                     echo "red;";
                                 }else echo "green;"; @endphp">@php if ($transacao->tipo == 2 || $transacao->tipo == 3) {

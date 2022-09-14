@@ -87,4 +87,74 @@ class DashboardController extends Controller
         return view('pages.saques', compact('saques'));
     }
 
+    public function novoSaque(){
+        return view('pages.novoSaque');
+    }
+
+    public function _solicitarSaque(Request $request){
+        $valorSaque = $request->input('valorSaque');
+        //Converter comma "," em dot "."
+        $valorSaque = str_replace(',','.', $valorSaque);
+
+        if (!$valorSaque){
+            return response()->json([
+                'status' => false,
+                'msg'       =>  'Parametros inválidos',
+            ]);
+        }
+
+        $user = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        if(!$user){
+            return response()->json([
+                'status' => false,
+                'msg'       =>  'Falha ao obter o usuário',
+            ]);
+        }
+
+        if ($user->saldo < $valorSaque){
+            return response()->json([
+                'status' => false,
+                'msg'       =>  'Saldo insuficiente',
+            ]);
+        }
+
+        $transacao = new Transacoes;
+
+        $transacao->tipo = 3;
+        $transacao->idCliente = $user->id;
+        $transacao->valor = $valorSaque;
+        $transacao->situacao = 0;
+        $transacao->save();
+
+        $saque = new Saques;
+
+        $saque->idCliente = $user->id;
+        $saque->valor = $valorSaque;
+        $saque->situacao = 0;
+        $saque->idTransacao = $transacao->idTransacao;
+
+        $status = $saque->save();
+
+        if ($status){
+
+            $user->decrement('saldo', $saque->valor);
+
+
+
+            return response()->json([
+                'status'    => true,
+                'msg'       =>  'Saque solicitado com sucesso',
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'msg'       =>  'Falha ao solicitar Saque',
+            ]);
+        }
+
+
+
+    }
+
 }

@@ -13,4 +13,8 @@ class DepositoController extends Controller
         //return $transacoes;
         return view('pages.depositos', compact('transacoes'));
     }
+
+    public function novoDeposito(Request $request){
+        return view('pages.novoDeposito');
+    }
 }

@@ -26,6 +26,7 @@
         <!-- responsive -->
         <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/dashboard-responsive.css')}}">
+        @yield('css')
     </head>
 
     <body>
@@ -239,6 +240,10 @@
         <!-- jquery -->
         <!-- <script src="assets/js/jquery.js"></script> -->
         <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
+
+        <!-- PopperJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
         <!-- bootstrap -->
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <!-- owl carousel -->

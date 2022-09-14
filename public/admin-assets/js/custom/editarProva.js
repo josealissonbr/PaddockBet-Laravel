@@ -46,13 +46,14 @@ function definirConjuntoVencedor(idConjunto, idProva){
     console.log(URL);
 
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Tem certeza?',
+        text: "Definir um vencedor é irreversível.",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Sim, definir como vencedor'
+        confirmButtonText: 'Sim, definir como vencedor',
+        cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.isConfirmed) {
 
@@ -66,6 +67,10 @@ function definirConjuntoVencedor(idConjunto, idProva){
                 {
                     console.log('Sucesso!');
                     if (data.status){
+
+                        $('.conjunto-btn').attr('disabled','disabled');
+                        $('#conjunto_'+idConjunto).text('Vencedor');
+
                         Swal.fire({
                             icon: 'success',
                             title: 'Sucesso!'

@@ -93,9 +93,20 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <button type="button" onclick="definirConjuntoVencedor({{$conjunto->idProvaConjunto}}, {{$prova->idProva}});" class="btn_1 gray small" href="#" style="border-radius: 4px">
+                                        @if ($prova->situacao == 1)
+                                        <button type="button" id="conjunto_{{$conjunto->idProvaConjunto}}" onclick="definirConjuntoVencedor({{$conjunto->idProvaConjunto}}, {{$prova->idProva}});" class="btn_1 gray small conjunto-btn" href="#" style="border-radius: 4px">
                                             <i class="fa fa-fw fa-check"></i> Definir como vencedor
                                         </button>
+                                        @else
+                                        <button type="button" id="conjunto_{{$conjunto->idProvaConjunto}}" onclick="definirConjuntoVencedor({{$conjunto->idProvaConjunto}}, {{$prova->idProva}});" class="btn_1 gray small conjunto-btn" href="#" style="border-radius: 4px" disabled>
+                                            <i class="fa fa-fw fa-check"></i> Prova finalizada
+                                        </button>
+                                        @endif
+                                        @if ($prova->idConjuntoVencedor && $conjunto->idProvaConjunto == $prova->idConjuntoVencedor)
+                                        &nbsp;
+                                        <i class="fa fa-trophy">&nbsp;</i>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
