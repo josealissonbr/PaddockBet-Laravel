@@ -12,6 +12,7 @@ use App\Models\Transacoes;
 use App\Models\provasConjuntos;
 use App\Models\User;
 use App\Models\Saques;
+use App\Models\Depositos;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -61,7 +62,7 @@ class AdminController extends Controller
 
             $DataChart = [];
             foreach ($days as $key => $value) {
-                $DataChart[] = Transacoes::where('tipo', 1)->whereDay('created_at', $value)->sum('valor');
+                $DataChart[] = Depositos::where('situacao', 1)->whereDay('created_at', $value)->sum('valor');
 
             }
 
@@ -506,6 +507,113 @@ class AdminController extends Controller
                 'msg'       =>  'Falha ao restabelecer saldo ao usuário',
             ]);
         }*/
+
+        return response()->json([
+            'status'    =>  (bool)$status,
+        ]);
+    }
+
+    public function listaDepositos(Request $request){
+        $depositos = Depositos::where('situacao', 0)->get();
+        return view('admin.pages.depositos.listaDepositos', compact('depositos'));
+    }
+
+    public function _cancelarDeposito(Request $request){
+        $idDeposito = $request->input('idDeposito');
+
+        if (!$idDeposito){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Parametros de request inválidos',
+            ]);
+        }
+
+        $deposito = Depositos::find($idDeposito);
+
+        if (!$deposito){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Depósito não encontrado',
+            ]);
+        }
+
+        if ($deposito->situacao != 0){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Este depósito já foi cancelado anteriormente',
+            ]);
+        }
+
+        $deposito->situacao = 2;
+
+        $status = $deposito->save();
+
+        $transacao = Transacoes::find($deposito->idTransacao);
+
+        $transacao->situacao = 2;
+
+        $transacao->save();
+
+
+        //$user = User::find($deposito->idCliente);
+
+        /*if(!$user->increment('saldo', $deposito->valor)){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Falha ao restabelecer saldo ao usuário',
+            ]);
+        }*/
+
+        return response()->json([
+            'status'    =>  (bool)$status,
+        ]);
+    }
+
+    public function _aprovarDeposito(Request $request){
+        $idDeposito = $request->input('idDeposito');
+
+        if (!$idDeposito){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Parametros de request inválidos',
+            ]);
+        }
+
+        $deposito = Depositos::find($idDeposito);
+
+        if (!$deposito){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'deposito não encontrado',
+            ]);
+        }
+
+        if ($deposito->situacao != 0){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Este deposito já foi cancelado anteriormente',
+            ]);
+        }
+
+        $deposito->situacao = 1;
+
+        $status = $deposito->save();
+
+        $transacao = Transacoes::find($deposito->idTransacao);
+
+        $transacao->situacao = 1;
+
+        $transacao->save();
+
+
+        $user = User::find($deposito->idCliente);
+
+        if(!$user->increment('saldo', $deposito->valor)){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Falha ao adicionar saldo ao Usuário',
+            ]);
+        }
 
         return response()->json([
             'status'    =>  (bool)$status,

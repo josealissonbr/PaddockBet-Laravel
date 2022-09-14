@@ -22,6 +22,7 @@ Route::post('provas/palpites/efetuar', 'App\Http\Controllers\ApostasController@_
 Route::post('dashboard/home', 'App\Http\Controllers\DashboardController@_dashboardValues')->name('api.dashboard.home');
 
 Route::post('dashboard/saques/_solicitar', 'App\Http\Controllers\DashboardController@_solicitarSaque')->name('api.dashboard.saques.solicitar');
+Route::post('dashboard/depositos/_novoDeposito', 'App\Http\Controllers\DepositoController@_novoDeposito')->name('api.dashboard.depositos.novo');
 
 
 Route::middleware(['AdminApi'])->group(function () {
@@ -37,6 +38,9 @@ Route::middleware(['AdminApi'])->group(function () {
 
     Route::post('admin/saques/_cancelar', 'App\Http\Controllers\AdminController@_cancelarSaque')->name('api.admin.saques.cancelar');
     Route::post('admin/saques/_aprovar', 'App\Http\Controllers\AdminController@_aprovarSaque')->name('api.admin.saques.aprovar');
+
+    Route::post('admin/depositos/_cancelarDeposito', 'App\Http\Controllers\AdminController@_cancelarDeposito')->name('api.admin.depositos.cancelar');
+    Route::post('admin/depositos/_aprovarDeposito', 'App\Http\Controllers\AdminController@_aprovarDeposito')->name('api.admin.depositos.aprovar');
 });
 
 

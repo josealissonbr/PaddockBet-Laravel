@@ -101,6 +101,18 @@
                     </ul>
                 </li>
 
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseDepositos">
+                        <i class="fa fa-fw fa-bank"></i>
+                        <span class="nav-link-text">Depósitos</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseDepositos">
+                        <li>
+                            <a href="{{route('admin.depositos')}}">Depósitos Pendentes <span class="badge badge-pill badge-primary">{{\App\Models\Depositos::where('situacao',0)->count()}}</span></a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transacoes">
                     <a class="nav-link" href="{{route('admin.transacoes')}}">
                         <i class="fa fa-fw fa-money"></i>

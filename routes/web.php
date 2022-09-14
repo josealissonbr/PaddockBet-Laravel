@@ -48,6 +48,8 @@ Route::middleware(['Admin'])->group(function () {
     Route::get('admin/transacoes', 'App\Http\Controllers\AdminController@listaTransacoes')->name('admin.transacoes');
     Route::get('admin/saques/pendentes', 'App\Http\Controllers\AdminController@listaSaquesPendentes')->name('admin.saques.pendentes');
 
+    Route::get('admin/depositos', 'App\Http\Controllers\AdminController@listaDepositos')->name('admin.depositos');
+
 });
 
 Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');

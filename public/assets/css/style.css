@@ -4247,7 +4247,7 @@ ul {
       background: linear-gradient(160deg, #f9ee56, #2ab34b); }
 
 .user-panel-dashboard {
-  padding: 0 0 120px; }
+  padding: 0 0 40px; }
 
 .player-statics {
   padding-bottom: 50px; }
@@ -4374,7 +4374,8 @@ ul {
     payment history
 ==========================================*/
 .payment-history {
-  margin-top: 68px; }
+  margin-top: 2px;
+}
   .payment-history .transaction-area .nav-tabs {
     border-bottom: none;
     display: -webkit-inline-box;
@@ -4455,7 +4456,7 @@ ul {
   position: relative;
   z-index: 2;
   padding: 60px 0 0;
-  margin-bottom: 120px; }
+  margin-bottom: 40px; }
   .user-panel-header:after {
     position: absolute;
     content: '';

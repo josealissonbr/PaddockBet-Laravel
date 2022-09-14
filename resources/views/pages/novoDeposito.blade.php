@@ -110,7 +110,7 @@
         <div class="row no-gutters" id="pix-frm-div">
             <div class="col-xl-12">
                 <div class="contact-form">
-                    <form class="novoDeposito-frm" action="{{route('api.dashboard.saques.solicitar')}}">
+                    <form class="novoDeposito-frm" action="{{route('api.dashboard.depositos.novo')}}">
                         <input type="hidden" name="apikey" value="{{auth()->user()->apikey}}">
                         <div class="row">
                             <div class="col-xl-6 col-lg-6">
@@ -119,7 +119,7 @@
                             </div>
                         </div>
 
-                        <button class="submit-btn">Depositar</button>
+                        <button class="submit-btn"><i class="fa fa-plus"></i> Depositar</button>
                     </form>
                     <br>
                 </div>
@@ -136,15 +136,15 @@
                         <DIV class="container">
 
                             <DIV class="payment-values">
-                                <strong>Valor do depósito:</strong>
+                                <strong>Valor do pagamento:</strong>
                                 <strong>
-                                    <SPAN>R$ 0,00</SPAN>
+                                    <SPAN id="pix-payment-value">R$ 0,00</SPAN>
                                 </strong>
 
-                                <P>Receba de volta <strong>R$ 0,00</strong> em até 30 dias.</P>
+                                <P>Certifique-se de que o remetente do Pix corresponde ao CPF da sua conta.</P>
                             </DIV>
 
-                            <IMG class="qrcode" src="https://img.ibxk.com.br/materias/890270071.jpg" alt="QR Code Ame Digital">
+                            <IMG class="qrcode" src="https://cache.olhardigital.com.br/uploads/acervo_imagens/2019/06/20190628211430.jpg" alt="QR Code PaddockBet">
 
                             <DIV class="payment-info d-flex justify-content-center">
                                 <strong>Linha do Pix (copia e cola)</strong>
