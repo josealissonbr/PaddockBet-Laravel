@@ -10,11 +10,27 @@ $('.novoEventoFrm').submit(function(e) {
         data: form.serialize(), // serializes the form's elements.
         success: function(data)
         {
-            console.log(data);
+            if (data.status){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso!',
+                    text: data.msg
+                })
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Ocorreu um erro, verifique se todos os campos foram digitados corretamente'
+                })
+            }
         },
         error: function(data)
         {
-           console.log(data);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Erro no Backend'
+            })
         }
     });
 
