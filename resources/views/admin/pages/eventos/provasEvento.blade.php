@@ -63,14 +63,15 @@
 @section('content')
 
 
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">{{$evento->nomeEvento}}</h1>
-<p class="mb-4"></p>
-
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Lista de provas do evento</h6>
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+          <h3 class="mr-auto p-3">{{$evento->nomeEvento}} | Provas</h3>
+          <div class="btn-group" role="group">
+            <a class="btn btn-primary" href="{{route('admin.provas.novo')}}">Adicionar Prova</a>
+          </div>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">

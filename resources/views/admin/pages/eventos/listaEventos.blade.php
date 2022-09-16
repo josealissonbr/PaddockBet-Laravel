@@ -63,14 +63,15 @@
 @section('content')
 
 
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Eventos</h1>
-<p class="mb-4"></p>
-
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Lista de eventos criados</h6>
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+          <h3 class="mr-auto p-3">Eventos</h3>
+          <div class="btn-group" role="group">
+            <a class="btn btn-primary" href="{{route('admin.eventos.novo')}}">Adicionar Evento</a>
+          </div>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">

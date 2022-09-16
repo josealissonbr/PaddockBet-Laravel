@@ -14,11 +14,30 @@ $('.novoProvaFrm').submit(function(e) {
         success: function(data)
         {
             if (data.status){
+
+                let timerInterval
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Sucesso!',
-                    text: data.msg
+                title: 'Sucesso!',
+                html: 'Estamos te redirecionando a tela de edição',
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+                }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    window.location.href = window.location.origin + "/admin/provas/editar/"+data.idProva;
+                }
                 })
+
             }else{
                 Swal.fire({
                     icon: 'error',

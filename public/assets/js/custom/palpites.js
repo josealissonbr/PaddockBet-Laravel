@@ -98,7 +98,7 @@ $('#efetuar-palpite-frm').submit(function (e){
                 submitBtn.html(`<i class="fa fa-save"></i> Fazer Palpite`);
                 Swal.fire({
                     icon: 'error',
-                    title: 'Poxa...',
+                    title: 'Poxa',
                     text: data.msg
                 })
             }
@@ -106,7 +106,14 @@ $('#efetuar-palpite-frm').submit(function (e){
         error: function(data)
         {
             console.log('Falha ao processar request');
+            submitBtn.removeAttr('disabled');
             submitBtn.html(`<i class="fa fa-save"></i> Fazer Palpite`);
+            Swal.fire({
+                icon: 'error',
+                title: ':(',
+                text: 'Ocorreu um erro na solicitação, tente atualizar a página'
+            });
+
         }
     });
 

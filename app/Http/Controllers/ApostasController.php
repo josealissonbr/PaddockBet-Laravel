@@ -92,6 +92,13 @@ class ApostasController extends Controller
             ]);
         }
 
+        if (Carbon::parse($prova->dataProva)->isPast()){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Esta Prova já começou'
+            ]);
+        }
+
         $aposta = new Apostas;
 
         $now = Carbon::now();

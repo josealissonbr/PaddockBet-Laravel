@@ -189,7 +189,7 @@ class AdminController extends Controller
         $prova->valor = bcadd($strCusto, '0', 2);
         $prova->taxa = bcadd($strTaxa, '0', 2);
         $prova->situacao = 1;
-        $prova->dataProva = Carbon::parse($strDataProva)->format('Y/m/d H:i:s');
+        $prova->dataProva = Carbon::createFromFormat('d/m/Y H:i', $strDataProva)->format('Y/m/d H:i:s');
 
         $status = $prova->save();
 
@@ -205,7 +205,8 @@ class AdminController extends Controller
 
 
         return response()->json([
-            'status' => (bool)$status
+            'status'    => (bool)$status,
+            'idProva'   => $prova->idProva,
         ]);
 
     }
@@ -247,7 +248,7 @@ class AdminController extends Controller
 
         $prova->nomeProva = $request->input('nomeProva');
         $prova->altura = $request->input('altura');
-        $prova->dataProva = Carbon::parse($request->input('dataProva'))->format('Y/d/m H:i:s');
+        $prova->dataProva = Carbon::createFromFormat('d/m/Y H:i', $request->input('dataProva'))->format('Y/m/d H:i:s');
         $prova->valor = $request->input('valor');
         $prova->taxa = $request->input('taxa');
 
