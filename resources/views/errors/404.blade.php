@@ -167,7 +167,7 @@
                             <a class="logo" href="index.html">
                                 <img src="{{asset('assets/img/logo.png')}}" alt="">
                             </a>
-                            <p>Riders Bet: Seu site de apostas em Saltos</p>
+                            <p>{{env('APP_NAME')}}: Seu site de apostas em Saltos</p>
                             <div class="social">
                                 <ul>
                                     <li>
@@ -197,7 +197,7 @@
                                         </span>
                                         <span class="text">
                                             <span class="title">E-mail</span>
-                                            <span class="descr">suporte@ridersbet.com</span>
+                                            <span class="descr">{{env('MAIL_SUPPORT')}}</span>
                                         </span>
                                     </li>
                                     <li>
@@ -205,7 +205,7 @@
                                             <img src="{{asset('assets/img/svg/phone-call.svg')}}" alt="">
                                         </span>
                                         <span class="text">
-                                            <span class="title">Phone</span>
+                                            <span class="title">Telefone</span>
                                             <span class="descr">+155000000000</span>
                                         </span>
                                     </li>
@@ -239,7 +239,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-10 col-lg-10">
-                        Ridersbet © 2022.
+                        PaddockBet &copy; {{Carbon\Carbon::now()->format('Y')}} |  Todos os direitos reservados.
                     </div>
                 </div>
             </div>
@@ -252,7 +252,7 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-5 col-md-6 col-lg-6 d-lg-flex d-lg-flex d-block align-items-center">
                         <p class="copyright-text">
-                            <a href="#">RidersBet</a> © 2022. POLÍTICA DE PRIVACIDADE
+                            <a href="#">{{env('APP_NAME')}}</a> © {{Carbon\Carbon::now()->format('Y')}}. POLÍTICA DE PRIVACIDADE
                         </p>
                     </div>
                     <div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">

@@ -302,7 +302,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-10 col-lg-10">
-                        Ridersbet © 2022.
+                        PaddockBet &copy; {{Carbon\Carbon::now()->format('Y')}} |  Todos os direitos reservados.
                     </div>
                 </div>
             </div>

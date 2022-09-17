@@ -94,7 +94,7 @@
             </div>
             <div class="col-xl-8 col-lg-8">
                 <div class="user-panel-title">
-                    <h3>Histórico de Saldo</h3>
+                    <h3>Meus ganhos em Apostas</h3>
                 </div>
                 <canvas id="chart-0" height="168"></canvas>
             </div>
@@ -109,7 +109,7 @@
         <div class="row">
             <div class="col-xl-8 col-lg-8">
                 <div class="user-panel-title">
-                    <h3>Histórico de Saldo</h3>
+                    <h3>Transações</h3>
                 </div>
             </div>
         </div>
