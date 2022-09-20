@@ -141,17 +141,17 @@
                                     <SPAN id="pix-payment-value">R$ 0,00</SPAN>
                                 </strong>
 
-                                <P>Certifique-se de que o remetente do Pix corresponde ao CPF da sua conta.</P>
+                                <!--<P>Certifique-se de que o remetente do Pix corresponde ao CPF da sua conta.</P>-->
                             </DIV>
 
-                            <IMG class="qrcode" src="https://cache.olhardigital.com.br/uploads/acervo_imagens/2019/06/20190628211430.jpg" alt="QR Code PaddockBet">
+                            <IMG class="qrcode" id="pix-qrcode" src="https://cache.olhardigital.com.br/uploads/acervo_imagens/2019/06/20190628211430.jpg" alt="QR Code PaddockBet">
 
                             <DIV class="payment-info d-flex justify-content-center">
                                 <strong>Linha do Pix (copia e cola)</strong>
                             </DIV>
 
                             <DIV class="payment-info d-flex justify-content-center">
-                                <input type="text" class="form-control" id="linhaPix" value="00020126580014BR.GOV.BCB.PIX013664c21329-043b-4417-80b6-ca4f621c700f520400005303986540510.005802BR5912ERIC MARTINS6006MACEIO62100506010001630494F8" />
+                                <input type="text" class="form-control" id="linhaPix">
                                 <button role="button" style="margin-left: 5px;" class="btn btn-primary" id="copy-btn" data-toggle="popover" data-trigger="focus" title="Copiado!">
                                     <i class="fa fa-copy"></i>
                                 </button>
