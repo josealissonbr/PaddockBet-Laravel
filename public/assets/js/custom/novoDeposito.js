@@ -5,6 +5,8 @@ window.onload = function(){
     initFunction();
 };
 
+var TXID_PROCESSED = false;
+
 var ClipboardHelper = {
 
     copyElement: function ($element)
@@ -131,7 +133,11 @@ function startVisualCountdownTimer(){
 }
 
 function startCheckerTimer(depositID){
-    setInterval(function(txid = depositID) {_CheckRequest(txid)},10000); //10 segundos
+    setInterval(function(txid = depositID) {
+        if (TXID_PROCESSED)
+            return;
+        _CheckRequest(txid)
+    },10000); //10 segundos
 }
 
 function _CheckRequest(depositID){
@@ -146,6 +152,7 @@ function _CheckRequest(depositID){
         success: function(data)
         {
             if (data.status){
+                TXID_PROCESSED = true;
                 console.log('sucesso!');
                 Swal.fire({
                     icon: 'success',

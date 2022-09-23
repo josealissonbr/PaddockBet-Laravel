@@ -180,6 +180,49 @@ class DepositoController extends Controller
         return $arrResponse;
     }
 
+    public function sicoob_ChecarCobranca_raw($access_token, $txid){
+        $curl = curl_init();
+
+        $certFile = base_path('resources/pix_res')."/cert.p12";
+        $certPass = "equestrian";
+
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.sicoob.com.br/pix/api/v2/cob/$txid");
+        curl_setopt($ch, CURLOPT_PORT , 443);
+        curl_setopt($ch, CURLOPT_VERBOSE, 0);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSLCERT, base_path('resources/pix_res') . "/client.pem");
+        curl_setopt($ch, CURLOPT_SSLKEY, base_path('resources/pix_res') . "/key.pem");
+        //curl_setopt($ch, CURLOPT_CAINFO, "/etc/ssl/certs/ca-certificates.crt");
+        //curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Authorization: Bearer $access_token",
+            'client_id: 93055852-9d4b-48e4-8eca-43bc992edd44',
+            'Content-Type: application/json'
+          ));
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, '{
+        //     "tipoCob": "cob"
+        //   }');
+
+        $response = curl_exec($ch);
+        $info =curl_errno($ch)>0 ? array("curl_error_".curl_errno($ch)=>curl_error($ch)) : curl_getinfo($ch);
+
+        curl_close($ch);
+
+        $arrResponse = json_decode($response);
+
+        return $arrResponse;
+    }
+
+    public function bCheckCobranca($txid){
+        $access_token = $this->sicoob_RequisitarToken();
+        $response = $this->sicoob_ChecarCobranca_raw($access_token, $txid);
+        return ($response->status == "CONCLUIDA") ? true : false;
+    }
+
     public function historico(Request $request){
 
         $depositos = Depositos::where('idCliente', auth()->user()->id)->orderBy('created_at','DESC')->paginate(15);
@@ -214,7 +257,7 @@ class DepositoController extends Controller
             ]);
         }
 
-        if ($valorDeposito < 1.00){
+        if ($valorDeposito < 0.01){
             return response()->json([
                 'status' => false,
                 'msg' => 'Valor mínimo para depósito é de R$1,00'
@@ -339,6 +382,12 @@ class DepositoController extends Controller
                 'msg'        => 'Invalid Deposit ID'
             ]);
         }
+
+        if ($this->bCheckCobranca($deposito->txid)){
+            $deposito->situacao = 1;
+        }
+
+        $deposito->save();
 
         return response()->json([
             'status'   => ($deposito->situacao == 1) ? true : false,
