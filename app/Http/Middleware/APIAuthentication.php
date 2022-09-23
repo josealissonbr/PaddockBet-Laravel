@@ -17,6 +17,10 @@ class APIAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
+        if ($request->input('apikey') == env('CRON_APIKEY')){
+            return $next($request);
+        }
+
         if (User::where('apikey', $request->input('apikey'))->count() != 1){
             return response()->json([
                 'status' =>  false,

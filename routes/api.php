@@ -41,8 +41,10 @@ Route::middleware(['AdminApi'])->group(function () {
 
     Route::post('admin/depositos/_cancelarDeposito', 'App\Http\Controllers\AdminController@_cancelarDeposito')->name('api.admin.depositos.cancelar');
     Route::post('admin/depositos/_aprovarDeposito', 'App\Http\Controllers\AdminController@_aprovarDeposito')->name('api.admin.depositos.aprovar');
+
 });
 
+Route::get('cron/processPayments', 'App\Http\Controllers\DepositoController@_processPayments')->name('api.cron.processPayments');
 
 //Editar perfil
 Route::post('user/atualizarPerfil', 'App\Http\Controllers\DashboardController@_atualizarPerfil')->name('api.perfil.atualizarPerfil');

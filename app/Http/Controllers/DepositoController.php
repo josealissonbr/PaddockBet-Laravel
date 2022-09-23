@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Transacoes;
 use App\Models\Depositos;
 use App\Models\User;
+use Carbon\Carbon;
 
 //require_once base_path('resources/views')."/phpqrcode/qrlib.php";
 require_once base_path('resources/views').'/funcoes_pix.php';
@@ -140,6 +141,45 @@ class DepositoController extends Controller
         return $arrResponse;
     }
 
+    public function sicoob_ListaCobranca($access_token){
+        $curl = curl_init();
+
+        $certFile = base_path('resources/pix_res')."/cert.p12";
+        $certPass = "equestrian";
+        //$inicio_datetime->format('Y-m-d\TH:i:s.uP')
+        $inicio_datetime = Carbon::now()->subHours(20)->format('Y-m-d\TH:i:s.uP');
+        $fim_datetime = Carbon::now()->format('Y-m-d\TH:i:s.uP');
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.sicoob.com.br/pix/api/v2/cob?inicio=$inicio_datetime&fim=$fim_datetime&locationPresent=true&status=CONCLUIDA&paginacao.paginaAtual=0&paginacao.itensPorPagina=1000");
+        curl_setopt($ch, CURLOPT_PORT , 443);
+        curl_setopt($ch, CURLOPT_VERBOSE, 0);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSLCERT, base_path('resources/pix_res') . "/client.pem");
+        curl_setopt($ch, CURLOPT_SSLKEY, base_path('resources/pix_res') . "/key.pem");
+        //curl_setopt($ch, CURLOPT_CAINFO, "/etc/ssl/certs/ca-certificates.crt");
+        //curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Authorization: Bearer $access_token",
+            'client_id: 93055852-9d4b-48e4-8eca-43bc992edd44',
+            'Content-Type: application/json'
+          ));
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, '{
+        //     "tipoCob": "cob"
+        //   }');
+
+        $response = curl_exec($ch);
+        $info =curl_errno($ch)>0 ? array("curl_error_".curl_errno($ch)=>curl_error($ch)) : curl_getinfo($ch);
+
+        curl_close($ch);
+
+        $arrResponse = json_decode($response);
+
+        return $arrResponse;
+    }
+
     public function historico(Request $request){
 
         $depositos = Depositos::where('idCliente', auth()->user()->id)->paginate(1);
@@ -236,5 +276,38 @@ class DepositoController extends Controller
             'idDeposito'    =>  $deposito->id,
             'pix'           =>  $cobranca->brcode
         ]);
+    }
+
+    public function _processPayments(Request $request){
+        $inicio_datetime = Carbon::now()->subHours(20);
+        $fim_datetime = Carbon::now();
+        //return $inicio_datetime->format('Y-m-d\TH:i:s.uP');
+
+        $access_token = $this->sicoob_RequisitarToken();
+
+        $response = $this->sicoob_ListaCobranca($access_token);
+
+        foreach ($response->cobs as $cob){
+
+            $rDeposito = Depositos::where('txid', $cob->txid)->where('situacao', '!=', 1)->get()->first();
+
+            if ($rDeposito){
+                $deposito = Depositos::find($rDeposito->id);
+                $deposito->situacao = 1;
+
+                $transacao = Transacoes::find($rDeposito->idTransacao);
+                $transacao->situacao = 1;
+
+                $user = User::find($deposito->idCliente);
+
+
+                $deposito->save();
+                $transacao->save();
+                $user->increment('saldo', $deposito->valor);
+            }else{
+                continue;
+            }
+
+        }
     }
 }
