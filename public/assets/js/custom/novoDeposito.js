@@ -52,6 +52,7 @@ function initFunction(){
 
                     //Inicia o contador visual, para redirecionamento para Dashboard
                     startVisualCountdownTimer();
+                    startCheckerTimer(data.idDeposito);
                 }else{
                     submitBtn.removeAttr('disabled');
                     submitBtn.html(`<i class="fa fa-plus"></i> Depositar`);
@@ -127,6 +128,39 @@ function startVisualCountdownTimer(){
     }
     }, 1000);
 
+}
+
+function startCheckerTimer(depositID){
+    setInterval(function(txid = depositID) {_CheckRequest(txid)},10000); //10 segundos
+}
+
+function _CheckRequest(depositID){
+
+    var apikey = $('input[name="apikey"]').val();
+    var base_url = window.location.origin;
+
+    $.ajax({
+        type: "POST",
+        url: `${base_url}/api/dashboard/depositos/_checkDeposit`,
+        data: {apikey: apikey, depositID: depositID},
+        success: function(data)
+        {
+            if (data.status){
+                console.log('sucesso!');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Depósito Confirmado!',
+                    text: 'Depósito confirmado com sucesso!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                      window.location.href=`${base_url}/dashboard`;
+                    }
+                });
+            }else{
+                console.log('Pagamento ainda não processado!');
+            }
+        }
+    });
 }
 
 function exibirQRCode(){

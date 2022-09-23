@@ -182,7 +182,7 @@ class DepositoController extends Controller
 
     public function historico(Request $request){
 
-        $depositos = Depositos::where('idCliente', auth()->user()->id)->paginate(1);
+        $depositos = Depositos::where('idCliente', auth()->user()->id)->orderBy('created_at','DESC')->paginate(15);
         //return $transacoes;
         return view('pages.depositos', compact('depositos'));
     }
@@ -309,5 +309,42 @@ class DepositoController extends Controller
             }
 
         }
+    }
+
+    public function _checkDeposit(Request $request){
+        $apikey = $request->input('apikey');
+        $idDeposito = $request->input('depositID');
+
+        if (!$apikey || !$idDeposito){
+            return response()->json([
+                'status '    => false,
+                'msg'        => 'Parametros Insuficientes'
+            ]);
+        }
+
+        $user = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        if (!$user){
+            return response()->json([
+                'status '    => false,
+                'msg'        => 'Invalid APIKEY for valid User'
+            ]);
+        }
+
+        $deposito = Depositos::find($idDeposito);
+
+        if (!$deposito){
+            return response()->json([
+                'status '    => false,
+                'msg'        => 'Invalid Deposit ID'
+            ]);
+        }
+
+        return response()->json([
+            'status'   => ($deposito->situacao == 1) ? true : false,
+        ]);
+
+
+
     }
 }

@@ -23,6 +23,7 @@ Route::post('dashboard/home', 'App\Http\Controllers\DashboardController@_dashboa
 
 Route::post('dashboard/saques/_solicitar', 'App\Http\Controllers\DashboardController@_solicitarSaque')->name('api.dashboard.saques.solicitar');
 Route::post('dashboard/depositos/_novoDeposito', 'App\Http\Controllers\DepositoController@_novoDeposito')->name('api.dashboard.depositos.novo');
+Route::post('dashboard/depositos/_checkDeposit', 'App\Http\Controllers\DepositoController@_checkDeposit')->name('api.dashboard.depositos.check');
 
 
 Route::middleware(['AdminApi'])->group(function () {
