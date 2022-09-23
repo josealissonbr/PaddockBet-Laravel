@@ -385,10 +385,20 @@ class DepositoController extends Controller
 
         if ($this->bCheckCobranca($deposito->txid)){
             $deposito->situacao = 1;
-            $user->increment('saldo', $deposito->valor);
+
         }
 
         $deposito->save();
+
+        $transacao = Transacoes::find($deposito->idTransacao);
+
+        $transacao->situacao = 1;
+
+        $transacao->save();
+
+        if ($deposito->situacao == 1){
+            $user->increment('saldo', $deposito->valor);
+        }
 
         return response()->json([
             'status'   => ($deposito->situacao == 1) ? true : false,

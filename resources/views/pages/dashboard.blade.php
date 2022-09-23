@@ -94,9 +94,59 @@
             </div>
             <div class="col-xl-8 col-lg-8">
                 <div class="user-panel-title">
-                    <h3>Meus ganhos em Apostas</h3>
+                    <h3>Eventos</h3>
                 </div>
-                <canvas id="chart-0" height="168"></canvas>
+                <div class="standing" style="padding: 0px 0px;">
+                    <div class="standing-list-cover">
+                        <div class="standing-team-list">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Pos</th>
+                                        <th scope="col">Evento</th>
+                                        <th scope="col">Cidade</th>
+                                        <th scope="col">Situação</th>
+                                        <th scope="col">Criado em</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (\App\Models\Eventos::get() as $key=>$evento)
+                                    <tr>
+                                        <th scope="row">{{$key+1}}</th>
+                                        <td><a href="{{route('dashboard.provas', $evento->idEvento)}}">
+                                            <span class="single-team">
+                                                <span class="logo">
+                                                    <img src="{{asset('assets/uploads/'.$evento->imagem)}}" alt="">
+                                                </span>
+                                                <span class="text">
+                                                    {{$evento->nomeEvento}}
+                                                </span>
+                                            </span>
+                                            </a>
+                                        </td>
+                                        <td>{{$evento->cidade}}</td>
+                                        <td>
+                                            @php
+                                            if ($evento->situacao == 0)
+                                                echo "Inativo";
+                                            else if ($evento->situacao == 1)
+                                                echo "Ativo";
+                                            else if ($evento->situacao == 2)
+                                                echo "Cancelado";
+                                            @endphp
+                                        </td>
+                                        <td>
+                                            {{Carbon\Carbon::parse($evento->created_at)->format('d/m/Y')}}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -149,7 +199,7 @@
                                     if ($transacao->situacao == 0)
                                         echo "Pendente";
                                     else if ($transacao->situacao == 1)
-                                        echo 'Processado';
+                                        echo 'Pago';
                                     else if ($transacao->situacao == 2)
                                         echo "Cancelado";
                                 @endphp
