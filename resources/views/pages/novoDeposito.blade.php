@@ -131,7 +131,7 @@
             <div class="col-xl-12">
                 <div class="contact-form">
                     <DIV class="ame-qrcode-wrapper">
-                        <IMG src="https://.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg/2560px-Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg.png" width="128px" class="logo" alt="Depósito Pix">
+                        <IMG src="{{asset('assets/img/pix_logo.webp')}}" width="128px" class="logo" alt="Depósito Pix">
 
                         <DIV class="container">
 

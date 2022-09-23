@@ -174,10 +174,10 @@ class DepositoController extends Controller
             ]);
         }
 
-        if ($valorDeposito < 20.00){
+        if ($valorDeposito < 1.00){
             return response()->json([
                 'status' => false,
-                'msg' => 'Valor mínimo para depósito é de R$20,00'
+                'msg' => 'Valor mínimo para depósito é de R$1,00'
             ]);
         }
 
@@ -228,6 +228,7 @@ class DepositoController extends Controller
         $cobranca = $this->sicoob_CriarCobranca($access_token, $loc->id, $user->id, $user->cpf, $valorDeposito, $deposito->id);
 
         $deposito->txid = $cobranca->txid;
+        $deposito->save();
 
         return response()->json([
             'status'        =>  true,
