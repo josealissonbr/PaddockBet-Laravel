@@ -131,7 +131,7 @@
             <div class="col-xl-12">
                 <div class="contact-form">
                     <DIV class="ame-qrcode-wrapper">
-                        <IMG src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg/2560px-Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg.png" width="128px" class="logo" alt="Depósito Pix">
+                        <IMG src="https://.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg/2560px-Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg.png" width="128px" class="logo" alt="Depósito Pix">
 
                         <DIV class="container">
 
@@ -144,7 +144,7 @@
                                 <!--<P>Certifique-se de que o remetente do Pix corresponde ao CPF da sua conta.</P>-->
                             </DIV>
 
-                            <IMG class="qrcode" id="pix-qrcode" src="https://cache.olhardigital.com.br/uploads/acervo_imagens/2019/06/20190628211430.jpg" alt="QR Code PaddockBet">
+                            <IMG class="qrcode" id="pix-qrcode" src="" alt="QR Code PaddockBet">
 
                             <DIV class="payment-info d-flex justify-content-center">
                                 <strong>Linha do Pix (copia e cola)</strong>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('idTransacao');
             $table->integer('idCliente');
             $table->double('valor');
+            $table->string('txid')->nullable();
             $table->integer('situacao'); // se refe ao status, seja 0- Pendente, 1- processado, 2- cancelado
             $table->timestamps();
         });

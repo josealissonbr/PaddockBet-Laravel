@@ -12,6 +12,134 @@ require_once base_path('resources/views').'/funcoes_pix.php';
 
 class DepositoController extends Controller
 {
+
+    public function sicoob_RequisitarToken(){
+        $curl = curl_init();
+
+        $certFile = base_path('resources/pix_res')."/cert.p12";
+        $certPass = "equestrian";
+
+        ///return base_path('resources/pix_res') . "/client.pem";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://auth.sicoob.com.br/auth/realms/cooperado/protocol/openid-connect/token");
+        curl_setopt($ch, CURLOPT_PORT , 443);
+        curl_setopt($ch, CURLOPT_VERBOSE, 0);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSLCERT, base_path('resources/pix_res') . "/client.pem");
+        curl_setopt($ch, CURLOPT_SSLKEY, base_path('resources/pix_res') . "/key.pem");
+        //curl_setopt($ch, CURLOPT_CAINFO, "/etc/ssl/certs/ca-certificates.crt");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "grant_type=client_credentials&client_id=93055852-9d4b-48e4-8eca-43bc992edd44&scope=cob.read%20cob.write%20cobv.write%20cobv.read%20lotecobv.write%20lotecobv.read%20pix.write%20pix.read%20webhook.read%20webhook.write%20payloadlocation.write%20payloadlocation.read");
+
+        $response = curl_exec($ch);
+        $info =curl_errno($ch)>0 ? array("curl_error_".curl_errno($ch)=>curl_error($ch)) : curl_getinfo($ch);
+
+        curl_close($ch);
+
+        $arrResponse = json_decode($response);
+
+        return $arrResponse->access_token;
+    }
+
+    public function sicoob_CriarLocPayload($access_token){
+        $curl = curl_init();
+
+        $certFile = base_path('resources/pix_res')."/cert.p12";
+        $certPass = "equestrian";
+
+        ///return base_path('resources/pix_res') . "/client.pem";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.sicoob.com.br/pix/api/v2/loc");
+        curl_setopt($ch, CURLOPT_PORT , 443);
+        curl_setopt($ch, CURLOPT_VERBOSE, 0);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSLCERT, base_path('resources/pix_res') . "/client.pem");
+        curl_setopt($ch, CURLOPT_SSLKEY, base_path('resources/pix_res') . "/key.pem");
+        //curl_setopt($ch, CURLOPT_CAINFO, "/etc/ssl/certs/ca-certificates.crt");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Authorization: Bearer $access_token",
+            'client_id: 93055852-9d4b-48e4-8eca-43bc992edd44',
+            'Content-Type: application/json'
+          ));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, '{
+            "tipoCob": "cob"
+          }');
+
+        $response = curl_exec($ch);
+        $info =curl_errno($ch)>0 ? array("curl_error_".curl_errno($ch)=>curl_error($ch)) : curl_getinfo($ch);
+
+        curl_close($ch);
+
+        $arrResponse = json_decode($response);
+
+        return $arrResponse;
+    }
+
+    public function sicoob_CriarCobranca($access_token, $loc_id, $user_name, $cpf, $valorDeposito, $deposito_id){
+        $curl = curl_init();
+
+        $certFile = base_path('resources/pix_res')."/cert.p12";
+        $certPass = "equestrian";
+
+        ///return base_path('resources/pix_res') . "/client.pem";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://api.sicoob.com.br/pix/api/v2/cob");
+        curl_setopt($ch, CURLOPT_PORT , 443);
+        curl_setopt($ch, CURLOPT_VERBOSE, 0);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSLCERT, base_path('resources/pix_res') . "/client.pem");
+        curl_setopt($ch, CURLOPT_SSLKEY, base_path('resources/pix_res') . "/key.pem");
+        //curl_setopt($ch, CURLOPT_CAINFO, "/etc/ssl/certs/ca-certificates.crt");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Authorization: Bearer $access_token",
+            'client_id: 93055852-9d4b-48e4-8eca-43bc992edd44',
+            'Content-Type: application/json'
+          ));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, '{
+            "calendario": {
+              "expiracao": 3600
+            },
+            "devedor": {
+              "cpf": "'.$cpf.'",
+              "nome": "'.$user_name.'"
+            },
+            "loc": {
+              "id": '.$loc_id.'
+            },
+            "valor": {
+              "original": "'.$valorDeposito.'"
+            },
+            "chave": "47595949000145",
+            "solicitacaoPagador": "2",
+            "infoAdicionais": [
+              {
+                "nome": "Deposito #'.$deposito_id.'",
+                "valor": "'.$valorDeposito.'"
+              }
+            ]
+          }');
+
+        $response = curl_exec($ch);
+        $info =curl_errno($ch)>0 ? array("curl_error_".curl_errno($ch)=>curl_error($ch)) : curl_getinfo($ch);
+
+        curl_close($ch);
+
+        $arrResponse = json_decode($response);
+
+        return $arrResponse;
+    }
+
     public function historico(Request $request){
 
         $depositos = Depositos::where('idCliente', auth()->user()->id)->paginate(1);
@@ -20,7 +148,6 @@ class DepositoController extends Controller
     }
 
     public function novoDeposito(Request $request){
-
 
         return view('pages.novoDeposito');
     }
@@ -95,31 +222,18 @@ class DepositoController extends Controller
             ]);
         }
 
-        $px[00]="01"; //Payload Format Indicator, Obrigatório, valor fixo: 01
-        // Se o QR Code for para pagamento único (só puder ser utilizado uma vez), descomente a linha a seguir.
-        //$px[01]="12"; //Se o valor 12 estiver presente, significa que o BR Code só pode ser utilizado uma vez.
-        $px[26][00]="BR.GOV.BCB.PIX"; //Indica arranjo específico; “00” (GUI) obrigatório e valor fixo: br.gov.bcb.pix
-        $px[26][01]="64c21329-043b-4417-80b6-ca4f621c700f"; //Chave do destinatário do pix, pode ser EVP, e-mail, CPF ou CNPJ.
+        $access_token = $this->sicoob_RequisitarToken();
+        $loc = $this->sicoob_CriarLocPayload($access_token);
+        //return $loc;
+        $cobranca = $this->sicoob_CriarCobranca($access_token, $loc->id, $user->id, $user->cpf, $valorDeposito, $deposito->id);
 
-        $px[52]="0000"; //Merchant Category Code “0000” ou MCC ISO18245
-        $px[53]="986"; //Moeda, “986” = BRL: real brasileiro - ISO4217
-        $px[54]=$valorDeposito; //Valor da transação, se comentado o cliente especifica o valor da transação no próprio app. Utilizar o . como separador decimal. Máximo: 13 caracteres.
-        $px[58]="BR"; //“BR” – Código de país ISO3166-1 alpha 2
-        $px[59]="ERIC MARTINS"; //Nome do beneficiário/recebedor. Máximo: 25 caracteres.
-        $px[60]="MACEIO"; //Nome cidade onde é efetuada a transação. Máximo 15 caracteres.
-        $px[62][05]="010001"; //Identificador de transação, quando gerado automaticamente usar ***. Limite 25 caracteres. Vide nota abaixo.
-
-        $pix=montaPix($px);
-
-
-        $pix.="6304"; //Adiciona o campo do CRC no fim da linha do pix.
-        $pix.=crcChecksum($pix); //Calcula o checksum CRC16 e acrescenta ao final.
+        $deposito->txid = $cobranca->txid;
 
         return response()->json([
             'status'        =>  true,
             'idTransacao'   =>  $transacao->idTransacao,
             'idDeposito'    =>  $deposito->id,
-            'pix'           =>  $pix
+            'pix'           =>  $cobranca->brcode
         ]);
     }
 }
