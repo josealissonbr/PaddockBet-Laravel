@@ -130,35 +130,39 @@
         <div class="row no-gutters" id="pix-checkout-div" style="display: none;">
             <div class="col-xl-12">
                 <div class="contact-form">
-                    <DIV class="ame-qrcode-wrapper">
+                    <div class="ame-qrcode-wrapper">
                         <IMG src="{{asset('assets/img/pix_logo.webp')}}" width="128px" class="logo" alt="Depósito Pix">
 
-                        <DIV class="container">
+                        <div class="container">
 
-                            <DIV class="payment-values">
+                            <div class="payment-values">
                                 <strong>Valor do pagamento:</strong>
                                 <strong>
                                     <SPAN id="pix-payment-value">R$ 0,00</SPAN>
                                 </strong>
 
                                 <!--<P>Certifique-se de que o remetente do Pix corresponde ao CPF da sua conta.</P>-->
-                            </DIV>
+                            </div>
 
                             <IMG class="qrcode" id="pix-qrcode" src="" alt="QR Code PaddockBet">
 
-                            <DIV class="payment-info d-flex justify-content-center">
-                                <strong>Linha do Pix (copia e cola)</strong>
-                            </DIV>
+                                <div class="payment-values">
+                                    <p>Tempo restante: <strong id="timerLbl">xxx</strong></p>
+                                </div>
+                            <div class="payment-info d-flex justify-content-center">
 
-                            <DIV class="payment-info d-flex justify-content-center">
+                                <strong>Linha do Pix (copia e cola)</strong>
+                            </div>
+
+                            <div class="payment-info d-flex justify-content-center">
                                 <input type="text" class="form-control" id="linhaPix">
                                 <button role="button" style="margin-left: 5px;" class="btn btn-primary" id="copy-btn" data-toggle="popover" data-trigger="focus" title="Copiado!">
                                     <i class="fa fa-copy"></i>
                                 </button>
-                            </DIV>
+                            </div>
 
-                        </DIV>
-                    </DIV>
+                        </div>
+                    </div>
                 </div>
 
             </div>

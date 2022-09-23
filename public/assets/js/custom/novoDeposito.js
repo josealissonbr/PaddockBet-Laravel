@@ -49,6 +49,9 @@ function initFunction(){
                     $('#pix-qrcode').attr('src', `https://chart.googleapis.com/chart?chs=420x420&cht=qr&chl=${data.pix}`);
 
                     $('#copy-btn').popover();
+
+                    //Inicia o contador visual, para redirecionamento para Dashboard
+                    startVisualCountdownTimer();
                 }else{
                     submitBtn.removeAttr('disabled');
                     submitBtn.html(`<i class="fa fa-plus"></i> Depositar`);
@@ -84,6 +87,45 @@ function initFunction(){
         $('#copy-btn').popover('show');
     });
 
+
+}
+
+function startVisualCountdownTimer(){
+
+    var d1 = new Date (),
+    d2 = new Date ( d1 );
+    d2.setMinutes ( d1.getMinutes() + 5 );
+
+    // Set the date we're counting down to
+    var countDownDate = d2.getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="timerLbl"
+    document.getElementById("timerLbl").innerHTML = /* days + "d " + hours + "h "
+    + */minutes + "m " + seconds + "s ";
+
+    // If the count down is over, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timerLbl").innerHTML = "Redirecionando...";
+        var base_url = window.location.origin;
+        window.location.href=`${base_url}/dashboard`;
+    }
+    }, 1000);
 
 }
 
