@@ -385,6 +385,7 @@ class DepositoController extends Controller
 
         if ($this->bCheckCobranca($deposito->txid)){
             $deposito->situacao = 1;
+            $user->increment('saldo', $deposito->valor);
         }
 
         $deposito->save();
