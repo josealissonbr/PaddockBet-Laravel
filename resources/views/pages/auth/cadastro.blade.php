@@ -453,5 +453,6 @@
     <script src="assets/js/step-signup.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 </body>
 </html>

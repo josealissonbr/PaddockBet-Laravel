@@ -42,7 +42,7 @@ $(document).ready(function(){
             {
                 firstName: firstName,
                 lastName: lastName,
-                dataNascimento: dataNascimento,
+                dataNascimento: moment(dataNascimento, "DD/MM/YYYY").format('MM/DD/YYYY'),
                 cpfNumber: cpfNumber,
                 mobileNumber: mobileNumber,
                 emailAdd: emailAdd,
@@ -141,7 +141,9 @@ $(document).ready(function(){
 });
 
 const isDate = (date) => {
-    return (new Date(date) !== "Invalid Date") && !isNaN(new Date(date));
+    var day = moment(date, "DD/MM/YYYY");
+
+    return (new Date(date) !== "Invalid Date") && !isNaN(new Date(day.format('MM/DD/YYYY')));
 }
 
 function is_cpf (c) {

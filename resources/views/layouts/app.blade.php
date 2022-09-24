@@ -136,7 +136,7 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-4 col-lg-5 col-md-10">
                         <div class="about-widget">
-                            <a class="logo" href="index.html">
+                            <a class="logo" href="#">
                                 <img src="{{asset('assets/img/logo.png')}}" alt="">
                             </a>
                             <p>{{env('APP_NAME')}}: Seu site de apostas em Saltos</p>
@@ -264,6 +264,8 @@
         <script src="{{asset('assets/js/utils.js')}}"></script>
         <!-- main -->
         <script src="{{asset('assets/js/main.js')}}"></script>
+
+        <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
 
