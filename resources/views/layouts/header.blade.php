@@ -33,12 +33,9 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-12 col-lg-12">
-                <div class="dashboard-menu">
-                    <ul>
+                        <br>
+                        <ul>
+
                         <li>
                             <a href="{{route('dashboard')}}" class="menu-item @if (\Request::route()->getName() == "dashboard") active @endif">
                                 Painel
@@ -66,9 +63,10 @@
                             </a>
                         </li>
                     </ul>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
-
