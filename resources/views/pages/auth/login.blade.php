@@ -33,7 +33,7 @@
         <!-- preloader begin -->
         <div class="preloader">
             <img src="assets/img/preloader.gif" alt="">
-            <span>CARREGANDO</span>
+            <span>PEREDION LOADING</span>
         </div>
         <!-- preloader end -->
 

@@ -14,7 +14,6 @@ use App\Models\User;
 use App\Models\Saques;
 use App\Models\Depositos;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -103,45 +102,16 @@ class AdminController extends Controller
         $strCidade = $request->input('nomeCidade');
         $iSituacao = $request->input('Situacao');
 
-        $validatedData = $request->validate([
-            'image' => 'required',
-        ]);
-
-        $getClientOriginalName = NULL;
-
-        if ($request->has('image')){
-            //$name = $request->file('image')->getClientOriginalName();
-            //$getClientOriginalName = Str::random(40).'.'.$request->file('image')->getClientOriginalExtension();
-            //Storage::disk('local')->put($getClientOriginalName, $request->file('image'));
-
-            $name = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->store('assets', 'public');
-        }
-
-
-       // $save = new Photo;
-
-       // $save->name = $name;
-        //$save->path = $path;
-
-        //$save->save();
-
         $status = Eventos::create([
             'nomeEvento'    => $strNomeEvento,
-            'imagem'        => $getClientOriginalName,
+            'imagem'        => 'default.png',
             'cidade'        => $strCidade,
             'situacao'      => $iSituacao,
         ]);
 
-        if ($status){
-            return redirect()->to(route('admin.eventos').'?status=success&msg=Evento criado com sucesso!');
-        }else{
-            return redirect()->to(route('admin.eventos').'?status=error&msg=Falha ao criar o evento!');
-        }
-
-        /*return response()->json([
+        return response()->json([
             'status' => (bool)$status,
-        ]);*/
+        ]);
 
     }
 
