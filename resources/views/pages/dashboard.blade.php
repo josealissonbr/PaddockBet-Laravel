@@ -53,9 +53,9 @@
                                         <th scope="row">{{$key+1}}</th>
                                         <td><a href="{{route('dashboard.provas', $evento->idEvento)}}">
                                             <span class="single-team">
-                                                <span class="logo">
+                                               {{-- <span class="logo">
                                                     <img src="{{asset('assets/uploads/'.$evento->imagem)}}" alt="">
-                                                </span>
+                                                </span>--}}
                                                 <span class="text">
                                                     {{$evento->nomeEvento}}
                                                 </span>
