@@ -93,13 +93,13 @@
 <!-- user-statics begin -->
 <div class="player-statics">
     <div class="container">
-        <div class="row">
+        {{--<div class="row">
             <div class="col-xl-6 col-lg-6">
                 <div class="user-panel-title">
                     <h3>Minha Conta</h3>
                 </div>
             </div>
-        </div>
+        </div>--}}
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-sm-6">
                 <div class="single-static">
