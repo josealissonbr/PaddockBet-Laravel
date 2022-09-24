@@ -104,7 +104,6 @@ class ApostasController extends Controller
         $now = Carbon::now();
 
         $aposta->idCliente = $user->id;
-        $aposta->idCliente = $user->id;
         $aposta->qtdeCotas = $qtdCotas;
         $aposta->idProva = $prova->idProva;
         $aposta->valorAposta = ($prova->valor * $qtdCotas);

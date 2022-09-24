@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('taxa');
             $table->integer('idConjuntoVencedor')->nullable();
             $table->integer('situacao')->default(0); //0- inativo, 1- recebendo apostas, 2- aguardando prova, 3- finalizado, 4- cancelado
-            $table->timestamp('dataProva');
+            $table->timestamp('dataProva')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

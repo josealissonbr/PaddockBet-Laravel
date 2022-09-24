@@ -11,6 +11,8 @@ class Provas extends Model
 
     protected $primaryKey  = "idProva";
 
+    //const UPDATED_AT = NULL;
+
     public function evento(){
         return $this->belongsTo(Eventos::class, 'idEvento', 'idEvento');
     }
