@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->id('idEvento'); //id de incremento da transacao (unico)
             $table->string('nomeEvento'); // +Deposito, -Aposta, -Saque
-            $table->string('imagem')->default('default.png'); // +Deposito, -Aposta, -Saque
+            $table->string('imagem')->nullable(); // +Deposito, -Aposta, -Saque
             $table->string('cidade'); // +Deposito, -Aposta, -Saque
             $table->integer('situacao'); // se refe ao status, seja Pendente, processado, cancelado
             $table->timestamps(); //adiciona os timestamps basicos (created_at/updated_at)

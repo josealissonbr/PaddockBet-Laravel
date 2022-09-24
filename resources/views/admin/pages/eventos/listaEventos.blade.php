@@ -56,6 +56,14 @@
         })
     }
 
+    @if (Request::has('status'))
+        Swal.fire({
+            icon: '{{Request::input('status')}}',
+            title: '{{ucfirst(Request::input('status'))}}',
+            text: '{{Request::input('msg')}}'
+        });
+    @endif
+
 </script>
 
 @endsection
@@ -79,6 +87,7 @@
                 <thead>
                     <tr>
                         <th>#ID</th>
+                        <th>Imagem</th>
                         <th>Nome</th>
                         <th>Cidade</th>
                         <th>Provas</th>
@@ -92,6 +101,9 @@
                     @foreach($eventos as $evento)
                     <tr class="eventoTr_{{$evento->idEvento}}">
                         <td>#{{$evento->idEvento}}</td>
+                        <td width="48">
+                            <figure><img src="{{asset('storage/assets/LfnhmU7Xh6JimTFq1AR0QedmYNMW7Z9otBSt8DHE.png')}}" width="48"></figure>
+                        </td>
                         <td><strong>{{$evento->nomeEvento}}</strong></td>
                         <td>{{$evento->cidade}}</td>
                         <td>{{$evento->provas ? $evento->provas->count() : 0}}</td>

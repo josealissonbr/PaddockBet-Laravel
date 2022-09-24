@@ -3,12 +3,13 @@
 @section('script')
 <script src="{{asset('admin-assets/vendor/dropzone.min.js')}}"></script>
 <script src="{{asset('admin-assets/js/custom/novoEvento.js')}}"></script>
+
 @endsection
 
 @section('content')
 <!-- Page Heading -->
 <h1 class="h3 mb-4 text-gray-800">Novo evento</h1>
-<form class="novoEventoFrm" action="{{route('api.admin.eventos.novo')}}" method="POST">
+<form {{--class="novoEventoFrm"--}} action="{{route('api.admin.eventos.novo')}}" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="apikey" value="{{auth()->user()->apikey}}">
     <div class="box_general padding_bottom">
         <div class="header_box version_2">
@@ -43,11 +44,14 @@
                 </div>
             </div>
 
-            {{--<div class="col-md-6">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <div action="/file-upload" class="dropzone dz-clickable"><div class="dz-default dz-message"><span>Drop files here to upload</span></div></div>
+                    <label>Imagem de Destaque</label>
+                    <div>
+                        <input id="input-b2" name="image" type="file" class="file" data-show-preview="false">
+                    </div>
                 </div>
-            </div>--}}
+            </div>
         </div>
         <!-- /row-->
 
@@ -57,4 +61,5 @@
         <button type="submit" class="btn_1 medium">Adicionar Evento</button>
     </p>
 </form>
+
 @endsection

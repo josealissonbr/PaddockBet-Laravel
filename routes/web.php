@@ -58,3 +58,7 @@ Route::get('cadastro', 'App\Http\Controllers\AuthController@cadastro')->name('lo
 Route::post('login/process', 'App\Http\Controllers\AuthController@postLogin')->name('login.post');
 Route::post('cadastro/process', 'App\Http\Controllers\AuthController@postRegistration')->name('login.cadastro.post');
 Route::get('login/logout', 'App\Http\Controllers\AuthController@logout')->name('login.logout');
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
