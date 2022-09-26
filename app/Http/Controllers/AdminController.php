@@ -328,12 +328,12 @@ class AdminController extends Controller
 
         $qtdVencedores = Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->count();
 
-        if ($qtdVencedores < 1){
+        /*if ($qtdVencedores < 1){
             return response()->json([
                 'status' => false,
                 'msg'       =>  'É necessário um mínimo de 1 aposta neste conjunto para defini-lo como vencedor',
             ]);
-        }
+        }*/
 
         $valorIndividual = $saldoAcumulado / $qtdVencedores;
 
