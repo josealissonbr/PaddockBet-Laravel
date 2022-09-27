@@ -150,7 +150,7 @@ class AdminController extends Controller
 
         $evento = Eventos::find($idEvento);
 
-        if (Provas::where('situacao', 1)->orWhere('situacao', 2)->where('idEvento', $evento->idEvento)->count() > 0){
+        if (Provas::whereIn('situacao', [1,2])->where('idEvento', $evento->idEvento)->count() > 0){
             return response()->json([
                 'status'    =>  false,
                 'msg'       =>  'Não se pode excluir um evento com Provas ativas',
