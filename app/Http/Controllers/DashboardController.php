@@ -14,7 +14,7 @@ class DashboardController extends Controller
 {
     public function index(){
         if (!Auth::Check()){
-            return redirect('login');
+            return view('pages.index');
         }
         return redirect('dashboard');
     }

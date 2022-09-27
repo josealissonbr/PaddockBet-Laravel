@@ -21,4 +21,8 @@ class Eventos extends Model
     public function provas(){
         return $this->hasMany(Provas::class, 'idEvento', 'idEvento');
     }
+
+    public function provasAtivas(){
+        return $this->hasMany(Provas::class, 'idEvento', 'idEvento');
+    }
 }
