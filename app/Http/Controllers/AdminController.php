@@ -334,27 +334,28 @@ class AdminController extends Controller
                 'msg'       =>  'É necessário um mínimo de 1 aposta neste conjunto para defini-lo como vencedor',
             ]);
         }*/
+        if ($qtdVencedores > 0){
+            $valorIndividual = $saldoAcumulado / $qtdVencedores;
 
-        $valorIndividual = $saldoAcumulado / $qtdVencedores;
+            $apostas = Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->where('resultado', 0)->get();
 
-        $apostas = Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->where('resultado', 0)->get();
+            foreach($apostas as $aposta){
+                $objAposta = Apostas::find($aposta->idAposta);
+                $objAposta->resultado = 1;
+                $objAposta->premio = $valorIndividual;
+                $objAposta->save();
 
-        foreach($apostas as $aposta){
-            $objAposta = Apostas::find($aposta->idAposta);
-            $objAposta->resultado = 1;
-            $objAposta->premio = $valorIndividual;
-            $objAposta->save();
+                $transacao = new Transacoes;
+                $transacao->valor       = $valorIndividual;
+                $transacao->tipo        = 4; //Receb. Aposta
+                $transacao->idCliente   = $aposta->idCliente;
+                $transacao->situacao    = 1;
+                $transacao->save();
 
-            $transacao = new Transacoes;
-            $transacao->valor       = $valorIndividual;
-            $transacao->tipo        = 4; //Receb. Aposta
-            $transacao->idCliente   = $aposta->idCliente;
-            $transacao->situacao    = 1;
-            $transacao->save();
+                //Incrementa o valorIndividual no saldo de cada cliente vencedor
+                $cliente = User::find($aposta->idCliente)->increment('saldo', $valorIndividual);
 
-            //Incrementa o valorIndividual no saldo de cada cliente vencedor
-            $cliente = User::find($aposta->idCliente)->increment('saldo', $valorIndividual);
-
+            }
         }
 
         $prova->situacao = 3; //0- inativo, 1- recebendo apostas, 2- aguardando prova, 3- finalizado, 4- cancelado
