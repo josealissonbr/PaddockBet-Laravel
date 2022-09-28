@@ -56,7 +56,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (\App\Models\Eventos::get() as $key=>$evento)
+                        @foreach ($eventos as $key=>$evento)
                         <tr>
                             <th scope="row">{{$key+1}}</th>
                             <td><a href="{{route('dashboard.provas', $evento->idEvento)}}">

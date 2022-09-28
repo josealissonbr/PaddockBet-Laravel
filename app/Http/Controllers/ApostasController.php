@@ -42,7 +42,7 @@ class ApostasController extends Controller
     }
 
     public function eventos(){
-        $eventos = Eventos::get();
+        $eventos = Eventos::where('situacao', 1)->get();
 
         return view('pages.eventos', compact('eventos'));
     }
