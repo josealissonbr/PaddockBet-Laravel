@@ -49,21 +49,26 @@
             </div>
             <div class="col-xl-4 col-lg-4">
                 <div class="bet-slip-sidebar">
-                    <h4 class="title">Campeonato Brasileiro - Etapa Maceió</h4>
+                    <h4 class="title">{{$prova->nomeProva}}</h4>
                     <div class="sidebar-content">
                         <ul>
                             <li>
-                                <span class="title">Início</span>
-                                <span class="number">20/06/2022</span>
+                                <span class="title">Cidade</span>
+                                <span class="number">{{ucfirst($evento->cidade)}}</span>
                             </li>
                             <li>
-                                <span class="title">Valor Por Palpite</span>
-                                <span class="number">R$ 20,00<span>
+                                <span class="title">Situação</span>
+                                <span class="number">@php
+                                    if ($evento->situacao == 1)
+                                        echo "Ativo";
+                                    elseif ($evento->situacao == 0)
+                                        echo "Inativo";
+                                @endphp<span>
                             </li>
                         </ul>
                         <div class="total-returns">
                             <span class="text">
-                                Prêmio Total
+                                Prêmio Total deste Evento
                             </span>
                             <span class="number">
                                 R$ {{number_format($acumuladoEvento, 2, ",", " ")}}
