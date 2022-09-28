@@ -122,7 +122,7 @@ class ApostasController extends Controller
 
         $aposta->save();
 
-        $prova->increment('saldoAcumulado', ($prova->valor * $qtdCotas) - (($prova->valor * $qtdCotas) * 0.3));
+        $prova->increment('saldoAcumulado', ($prova->valor * $qtdCotas) - (($prova->valor * $qtdCotas) * ($prova->taxa / 100)));
 
         $user->saldo = ($user->saldo - ($prova->valor * $qtdCotas));
 
