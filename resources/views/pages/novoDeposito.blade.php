@@ -156,7 +156,7 @@
 
                             <div class="payment-info d-flex justify-content-center">
                                 <input type="text" class="form-control" id="linhaPix">
-                                <button role="button" style="margin-left: 5px;" class="btn btn-primary" id="copy-btn" data-toggle="popover" data-trigger="focus" title="Copiado!">
+                                <button role="button" style="margin-left: 5px;" class="btn btn-primary" id="copy-btn" onclick="copyPix();" data-toggle="popover" title="Copiado!">
                                     <i class="fa fa-copy"></i>
                                 </button>
                             </div>

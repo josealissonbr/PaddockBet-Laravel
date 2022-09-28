@@ -80,16 +80,25 @@ function initFunction(){
 
     });
 
+
     $('#linhaPix').click(function(){
-        ClipboardHelper.copyText(this.value);
-        $('#copy-btn').popover('show');
+        copyPix();
     });
 
-    $('#copy-btn').click(function(){
-        ClipboardHelper.copyText(this.value);
-        $('#copy-btn').popover('show');
-    });
 
+
+
+
+
+}
+
+function copyPix(){
+    $('#copy-btn').popover('show');
+    ClipboardHelper.copyText(this.value);
+
+    setTimeout(function(){
+        $('#copy-btn').popover('hide');
+    }, 1000);
 
 }
 
