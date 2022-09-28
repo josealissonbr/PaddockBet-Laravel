@@ -9,23 +9,23 @@
         <!-- favicon -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <!-- bootstrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <!-- fontawesome icon  -->
-        <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
         <!-- flaticon css -->
-        <link rel="stylesheet" href="assets/fonts/flaticon.css">
+        <link rel="stylesheet" href="{{asset('assets/fonts/flaticon.css')}}">
         <!-- animate.css -->
-        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
         <!-- Owl Carousel -->
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
         <!-- magnific popup -->
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/odometer.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/odometer.min.css')}}">
         <!-- stylesheet -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
         <!-- responsive -->
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        <link rel="stylesheet" href="assets/css/register-page-responsive.css">
+        <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/dashboard-responsive.css')}}">
     </head>
 
     <body>
@@ -33,7 +33,7 @@
         <!-- preloader begin -->
         <div class="preloader">
             <img src="assets/img/preloader.gif" alt="">
-            <span>PEREDION LOADING</span>
+            <span>CARREGANDO...</span>
         </div>
         <!-- preloader end -->
 
@@ -179,7 +179,7 @@
                             <a class="logo" href="index.html">
                                 <img src="assets/img/logo.png" alt="">
                             </a>
-                            <p>PerediOn offers you all the best online prediction from every corner of the planet with thousands of online prediction markets.</p>
+                            <p>PaddockBet: Seu site de apostas em Saltos.</p>
                             <div class="social">
                                 <ul>
                                     <li>

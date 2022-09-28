@@ -383,17 +383,14 @@ class DepositoController extends Controller
             ]);
         }
 
+        $transacao = Transacoes::find($deposito->idTransacao);
+
         if ($this->bCheckCobranca($deposito->txid)){
             $deposito->situacao = 1;
-
+            $transacao->situacao = 1;
         }
 
         $deposito->save();
-
-        $transacao = Transacoes::find($deposito->idTransacao);
-
-        $transacao->situacao = 1;
-
         $transacao->save();
 
         if ($deposito->situacao == 1){

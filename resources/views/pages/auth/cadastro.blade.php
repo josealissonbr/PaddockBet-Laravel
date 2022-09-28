@@ -5,27 +5,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> PerediOn - eSports Prediction HTML Template</title>
+        <title>{{env('APP_NAME')}}</title>
         <!-- favicon -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <!-- bootstrap -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <!-- fontawesome icon  -->
-        <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
         <!-- flaticon css -->
-        <link rel="stylesheet" href="assets/fonts/flaticon.css">
+        <link rel="stylesheet" href="{{asset('assets/fonts/flaticon.css')}}">
         <!-- animate.css -->
-        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
         <!-- Owl Carousel -->
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
         <!-- magnific popup -->
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/odometer.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/odometer.min.css')}}">
         <!-- stylesheet -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
         <!-- responsive -->
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        <link rel="stylesheet" href="assets/css/register-page-responsive.css">
+        <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+
+        <link rel="stylesheet" href="{{asset('assets/css/register-page-responsive.css')}}">
     </head>
 
     <body>
@@ -70,7 +71,7 @@
                             <div class="right-area">
                                 <ul>
                                     <li>
-                                        <a class="link" href="#">
+                                        <a class="link" href="{{route('login')}}">
                                             <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="user-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg-inline--fa fa-user-circle fa-w-16 fa-fw fa-2x"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm128 421.6c-35.9 26.5-80.1 42.4-128 42.4s-92.1-15.9-128-42.4V416c0-35.3 28.7-64 64-64 11.1 0 27.5 11.4 64 11.4 36.6 0 52.8-11.4 64-11.4 35.3 0 64 28.7 64 64v13.6zm30.6-27.5c-6.8-46.4-46.3-82.1-94.6-82.1-20.5 0-30.4 11.4-64 11.4S204.6 320 184 320c-48.3 0-87.8 35.7-94.6 82.1C53.9 363.6 32 312.4 32 256c0-119.1 96.9-216 216-216s216 96.9 216 216c0 56.4-21.9 107.6-57.4 146.1zM248 120c-48.6 0-88 39.4-88 88s39.4 88 88 88 88-39.4 88-88-39.4-88-88-88zm0 144c-30.9 0-56-25.1-56-56s25.1-56 56-56 56 25.1 56 56-25.1 56-56 56z" class=""></path></svg>
                                            FAZER LOGIN
                                         </a>
@@ -233,7 +234,7 @@
                         <a class="logo" href="index.html">
                             <img src="assets/img/logo.png" alt="">
                         </a>
-                        <p>PerediOn offers you all the best online prediction from every corner of the planet with thousands of online prediction markets.</p>
+                        <p>PaddockBet: Seu site de apostas em Saltos.</p>
                         <div class="social">
                             <ul>
                                 <li>
