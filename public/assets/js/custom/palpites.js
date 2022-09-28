@@ -96,11 +96,29 @@ $('#efetuar-palpite-frm').submit(function (e){
             }else{
                 submitBtn.removeAttr('disabled');
                 submitBtn.html(`<i class="fa fa-save"></i> Fazer Palpite`);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Poxa',
-                    text: data.msg
-                })
+                if (data.err_type == 1){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Falha',
+                        text: data.msg,
+                        showCloseButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: '<i class="fas fa-money-check"></i> Fazer Depósito!',
+                        cancelButtonText: '<i class="fas fa-arrow-left"></i> Voltar',
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            window.location.href=`${window.location.origin}/dashboard/depositos/novo`;
+                        }
+                      })
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Falha',
+                        text: data.msg
+                    })
+                }
+
             }
         },
         error: function(data)

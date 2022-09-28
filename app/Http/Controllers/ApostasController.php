@@ -88,7 +88,8 @@ class ApostasController extends Controller
         if ($user->saldo < ($prova->valor * $qtdCotas)){
             return response()->json([
                 'status'    =>  false,
-                'msg'       =>  'Saldo insuficiente'
+                'msg'       =>  'Você não tem saldo para efetuar essa aposta, clique aqui e faça um depósito',
+                'err_type'  => 1,
             ]);
         }
 
