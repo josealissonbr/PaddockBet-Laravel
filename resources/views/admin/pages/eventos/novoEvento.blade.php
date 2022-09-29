@@ -54,7 +54,7 @@
     </div>
 
     <p>
-        <button type="submit" class="btn_1 medium">Adicionar Evento</button>
+        <button type="submit" class="btn_1 medium novo-evento-btn"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar evento</button>
     </p>
 </form>
 @endsection

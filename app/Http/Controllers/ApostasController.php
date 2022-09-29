@@ -28,7 +28,9 @@ class ApostasController extends Controller
 
     public function palpite($idProva){
         $prova = Provas::find($idProva);
-        //return $prova->conjuntos;
+
+        //$apostas = Apostas::where('idProva', $prova->idProva)->count();
+        //return $apostas;
         return view('pages.palpite', compact('prova'));
     }
 
