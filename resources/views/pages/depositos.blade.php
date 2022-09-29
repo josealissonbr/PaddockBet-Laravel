@@ -28,7 +28,7 @@
                                 <th scope="col">Situação</th>
                                 <th scope="col">Data Criação</th>
                                 <th scope="col">Última atualização</th>
-                                <th scope="col">Ações</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,15 @@
                                 </td>
                                 <td>{{Carbon\Carbon::parse($deposito->created_at)->format('d/m/Y h:i')}}</td>
                                 <td>{{Carbon\Carbon::parse($deposito->updated_at)->format('d/m/Y h:i')}}</td>
-                                <td></td>
+                                <td>
+                                    @if ($deposito->situacao == 0)
+                                    <a href="{{route('dashboard.depositos.pagar', $deposito->id)}}">
+                                        <span class="view-icon">
+                                            <i class="fas fa-qrcode"></i> Pagar
+                                        </span>
+                                    </a>
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
 

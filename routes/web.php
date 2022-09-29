@@ -24,6 +24,7 @@ Route::middleware(['authenticated'])->group(function () {
 
     Route::get('dashboard/depositos', 'App\Http\Controllers\DepositoController@historico')->name('dashboard.depositos.historico');
     Route::get('dashboard/depositos/novo', 'App\Http\Controllers\DepositoController@novoDeposito')->name('dashboard.depositos.novo');
+    Route::get('dashboard/depositos/pagar/{idDeposito}', 'App\Http\Controllers\DepositoController@pagarDeposito')->name('dashboard.depositos.pagar');
     Route::get('dashboard/saques', 'App\Http\Controllers\DashboardController@saques')->name('dashboard.saques');
     Route::get('dashboard/saques/novo', 'App\Http\Controllers\DashboardController@novoSaque')->name('dashboard.saques.novo');
 
