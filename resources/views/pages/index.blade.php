@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                 <div class="logo">
-                                    <a href="index.php">
+                                    <a href="{{route('dashboard')}}">
                                         <img src="{{asset('assets/img/logo.png')}}" alt="logo">
                                     </a>
                                 </div>
@@ -117,7 +117,7 @@
 
 
      <!-- banner begin -->
-     
+
         <div class="banner banner-2 slide-1">
 
             <div class="container">
