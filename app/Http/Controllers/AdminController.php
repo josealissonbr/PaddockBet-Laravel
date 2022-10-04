@@ -251,10 +251,9 @@ class AdminController extends Controller
         $prova->dataProva = Carbon::createFromFormat('d/m/Y H:i', $request->input('dataProva'))->format('Y/m/d H:i:s');
         $prova->valor = $request->input('valor');
         $prova->taxa = $request->input('taxa');
+        $prova->situacao = $request->input('situacao');
 
         $status = $prova->save();
-
-
 
         return response()->json([
             'status' => (bool)$status

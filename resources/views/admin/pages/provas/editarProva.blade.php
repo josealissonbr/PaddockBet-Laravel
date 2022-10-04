@@ -69,6 +69,24 @@
 
         </div>
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Situação</label>
+                    <div class="styled-select">
+                        <select name="situacao">
+                            <option value="0" @selected(($prova->situacao == 0 ? true : false))>Inativo</option>
+                            <option value="1" @selected(($prova->situacao == 1 ? true : false))>Recebendo Apostas</option>
+                            <option value="2" @selected(($prova->situacao == 2 ? true : false))>Aguardando Prova</option>
+                            <option value="3" @selected(($prova->situacao == 3 ? true : false))>Finalizado</option>
+                            <option value="4" @selected(($prova->situacao == 4 ? true : false))>Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -93,7 +111,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        @if ($prova->situacao == 1)
+                                        @if ($prova->situacao == 1 || $prova->situacao == 2)
                                         <button type="button" id="conjunto_{{$conjunto->idProvaConjunto}}" onclick="definirConjuntoVencedor({{$conjunto->idProvaConjunto}}, {{$prova->idProva}});" class="btn_1 gray small conjunto-btn" href="#" style="border-radius: 4px">
                                             <i class="fa fa-fw fa-check"></i> Definir como vencedor
                                         </button>
