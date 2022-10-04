@@ -82,7 +82,7 @@ $('#efetuar-palpite-frm').submit(function (e){
     var form = $(this);
     var actionUrl = form.attr('action');
     submitBtn.attr('disabled', 'disabled');
-    submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Fazer Palpite`);
+    submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Fazer Aposta`);
 
     $.ajax({
         type: "POST",
@@ -95,7 +95,7 @@ $('#efetuar-palpite-frm').submit(function (e){
                 submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Redirecionando...`);
             }else{
                 submitBtn.removeAttr('disabled');
-                submitBtn.html(`<i class="fa fa-save"></i> Fazer Palpite`);
+                submitBtn.html(`<i class="fa fa-save"></i> Fazer Aposta`);
                 if (data.err_type == 1){
                     Swal.fire({
                         icon: 'error',
@@ -125,7 +125,7 @@ $('#efetuar-palpite-frm').submit(function (e){
         {
             console.log('Falha ao processar request');
             submitBtn.removeAttr('disabled');
-            submitBtn.html(`<i class="fa fa-save"></i> Fazer Palpite`);
+            submitBtn.html(`<i class="fa fa-save"></i> Fazer Aposta`);
             Swal.fire({
                 icon: 'error',
                 title: ':(',
