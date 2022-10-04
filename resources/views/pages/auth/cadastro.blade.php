@@ -171,7 +171,7 @@
                                     <div>
                                         <input type="text" value="" id="dataNascimento" maxlength="10" onkeypress="mascaraData(this)" required>
                                         <label for="dataNascimento">Nascimento</label>
-                                    </div><p>Ao clicar em "Próximo" você concorda com os <a href="#">Termos de Uso e de Privacidade</a> da Paddock.Bet</p>
+                                    </div><p>Ao clicar em "Próximo" você concorda com os <a href="#">Termos de Uso e de Privacidade</a> da PaddockBet</p>
                                     <button class="next" type="submit">Próximo</button>
                                 </form>
                             </div>
@@ -186,7 +186,7 @@
                                         <input type="text" id="phoneNumber" onkeypress="mask(this, mphone);">
                                         <label for="phoneNumber">Telefone</label>
                                     </div>
-                                    <p>Ao clicar em "Próximo" você concorda com os <a href="#">Termos de Uso e de Privacidade</a> da Paddock.Bet</p>
+                                    <p>Ao clicar em "Próximo" você concorda com os <a href="#">Termos de Uso e de Privacidade</a> da PaddockBet</p>
                                     <button class="next">Próximo</button>
                                 </form>
                             </div>
@@ -204,7 +204,7 @@
                                         <input type="password" id="passwordAgain">
                                         <label for="passwordAgain">Confirme a Senha</label>
                                     </div>
-                                    <p>Ao clicar em "Próximo" você concorda com os <a href="#">Termos de Uso e de Privacidade</a> da Paddock.Bet</p>
+                                    <p>Ao clicar em "Próximo" você concorda com os <a href="#">Termos de Uso e de Privacidade</a> da PaddockBet</p>
                                     <button class="next">Próximo</button>
                                 </form>
                             </div>

@@ -122,7 +122,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6 col-md-8">
                         <div class="section-title">
-                            <h2>Paddock.Bet</h2>
+                            <h2>PaddockBet</h2>
                             <p>Insira suas credenciais.</p>
                         </div>
                     </div>
@@ -209,7 +209,7 @@
                                         </span>
                                         <span class="text">
                                             <span class="title">E-mail</span>
-                                            <span class="descr">suporte@paddock.bet</span>
+                                            <span class="descr">suporte@PaddockBet</span>
                                         </span>
                                     </li>
                                     <li>
