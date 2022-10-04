@@ -32,19 +32,17 @@
     .user-panel-header .part-right ul li a svg {
         height: 15px;
     }
+    
     .user-panel-header .dashboard-menu ul {
         display: block;
     }
     .user-panel-header .dashboard-menu ul li {
         display: block;
     }
-    .user-panel-header .dashboard-menu ul li .menu-item {
-        display: block;
-        border-radius: 0;
-        text-align: left;
-        padding: 0 30px;
-        border: none;
-    }
+    
+   
+    
+    
     .user-panel-header .dashboard-menu ul li .menu-item:after {
         display: none;
     }
@@ -55,6 +53,15 @@
         margin-bottom: 60px;
     }
 
+ 
+    .user-panel-header .dashboard-menu ul li .menu-item {
+        display: block;
+        border-radius: 0;
+        text-align: left;
+        padding: 0 30px;
+        border: none;
+    }
+    
     /* statics */
     .user-panel-title h3 {
         font-size: 20px;

@@ -139,7 +139,7 @@
                             <a class="logo" href="#">
                                 <img src="{{asset('assets/img/logo.png')}}" alt="">
                             </a>
-                            <p>{{env('APP_NAME')}}: Seu site de apostas em Saltos</p>
+                            <p>{{env('APP_NAME')}}: O seu esporte preferido, com ainda mais emoção</p>
                             <div class="social">
                                 <ul>
                                     <li>
@@ -172,15 +172,7 @@
                                             <span class="descr">{{env('MAIL_SUPPORT')}}</span>
                                         </span>
                                     </li>
-                                    <li>
-                                        <span class="icon">
-                                            <img src="{{asset('assets/img/svg/phone-call.svg')}}" alt="">
-                                        </span>
-                                        <span class="text">
-                                            <span class="title">Telefone</span>
-                                            <span class="descr">+155000000000</span>
-                                        </span>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>

@@ -121,38 +121,10 @@
         <div class="banner banner-2 slide-1">
 
             <div class="container">
-                <div class="banner-content">
-                    <div class="row justify-content-xl-center justify-content-lg-center justify-content-md-center">
-                        <div class="col-xl-10 col-lg-11 col-md-10 col-12 d-xl-flex d-lg-flex d-block align-items-center">
-                            <div class="text-content">
-                                <h1>PADDOCK.BET</h1>
-                                <h4>O Melhor site de apostas</h4>
-                                <p>Nunca foi tão fácil se divertir apostando em um dos melhores esportes da atualidade.</p>
-                                <div class="banner-button">
-                                    <ul>
-                                        <li>
-                                            <a href="{{route('dashboard')}}" class="bet-btn bet-btn-base">Acessar Conta</a>
-                                        </li>
-                                        <li>
-                                            <a href="#eventos-index" class="bet-btn bet-btn-border">Ver eventos</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    <!-- banner end -->
-
-
-    <div class="payment-history" id="eventos-index" style="padding-top:60px;">
-        <div class="container">
-            <div class="row">
+                <div class="banner-content" >
+                   <div class="payment-history" id="eventos-index" style="padding-top:60px;">
+        <div class="container" style="background: white">
+            <div class="row" style="background: white">
                 <div class="col-xl-8 col-lg-8">
                     <div class="user-panel-title">
                         <h3>Próximas provas</h3>
@@ -171,7 +143,7 @@
         @endif
 
         <!-- bet-slip begin -->
-        <div class="bet-slip" style="padding: 0px;">
+        <div class="bet-slip" style="padding: 0px;background: white" >
             <div class="container">
                 <div class="row">
                     <div class="col-xl-8 col-lg-8">
@@ -241,6 +213,16 @@
         <hr>
         <!-- bet-slip end -->
     @endforeach
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- banner end -->
+
+
+   
 
         <!-- footer begin -->
         <div class="footer" id="contact">
@@ -251,7 +233,7 @@
                             <a class="logo" href="index.html">
                                 <img src="{{asset('assets/img/logo.png')}}" alt="">
                             </a>
-                            <p>{{env('APP_NAME')}}: Seu site de apostas em Saltos</p>
+                            <p>{{env('APP_NAME')}}: O seu esporte preferido, com ainda mais emoção</p>
                             <div class="social">
                                 <ul>
                                     <li>
