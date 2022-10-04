@@ -107,7 +107,7 @@
     </div>
 
     <p>
-        <button type="submit" class="btn_1 medium">Adicionar Prova</button>
+        <button type="submit" class="btn_1 medium btn-submit">Adicionar Prova</button>
     </p>
 </form>
 @endsection

@@ -4,6 +4,10 @@ $('#datetimepicker').datetimepicker({format:'d/m/Y H:i'});
 $('.novoProvaFrm').submit(function(e) {
     e.preventDefault();
 
+    var submitBtn = $('.btn-submit');
+
+    submitBtn.html(`<i class="spinner-border" style="width: 1rem; height: 1rem;"></i> Adicionar Prova`);
+    submitBtn.attr('disabled', 'disabled');
     var form = $(this);
     var actionUrl = form.attr('action');
 
@@ -13,6 +17,8 @@ $('.novoProvaFrm').submit(function(e) {
         data: form.serialize(), // serializes the form's elements.
         success: function(data)
         {
+            submitBtn.html(`Adicionar Prova`);
+            submitBtn.removeAttr('disabled');
             if (data.status){
 
                 let timerInterval
@@ -55,6 +61,8 @@ $('.novoProvaFrm').submit(function(e) {
                 text: 'Ocorreu um erro.',
                 footer: 'Cod: PBET 4'
             })
+            submitBtn.html(`Adicionar Prova`);
+            submitBtn.removeAttr('disabled');
         }
     });
 
