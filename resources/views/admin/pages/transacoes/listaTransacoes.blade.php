@@ -38,7 +38,7 @@
                 <tbody>
                     @foreach($transacoes as $transacao)
                     <tr>
-                        <td>#{{$transacao->idTransacao}}</td>
+                        <td>{{$transacao->idTransacao}}</td>
                         <td>
                             @php
                                 if ($transacao->tipo == 1)
