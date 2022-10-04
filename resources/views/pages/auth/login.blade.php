@@ -93,11 +93,11 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-6 d-xl-none d-lg-none d-block">
+                                {{--<div class="col-6 d-xl-none d-lg-none d-block">
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <i class="fas fa-bars"></i>
                                     </button>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9">
