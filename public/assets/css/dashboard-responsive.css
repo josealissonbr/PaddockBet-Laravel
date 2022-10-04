@@ -25,9 +25,9 @@
     }
     .user-panel-header .part-right ul li a {
         height: 40px;
-        padding: 0 20px;
+        padding: 0 8px;
         font-size: 12px;
-        margin-right: 16px;
+        margin-right: 8px;
     }
     .user-panel-header .part-right ul li a svg {
         height: 15px;

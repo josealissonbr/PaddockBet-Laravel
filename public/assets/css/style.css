@@ -414,14 +414,14 @@ ul {
 .bet-btn {
   background: #ddd;
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 10px;
   height: 50px;
-  font-size: 15px;
+  font-size: 12px;
   text-transform: uppercase;
   font-weight: 500;
   line-height: 50px;
   border-radius: 3px;
-  letter-spacing: 0.5px;
+  _letter-spacing: 0.1px;
   color: #fff;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
@@ -437,10 +437,10 @@ ul {
 
 .bet-btn-dark-light {
   background: #2a2a2a;
-  color: #fff; }
+  color: gray; }
   .bet-btn-dark-light:hover {
     background: #f9ee56;
-    color: #fff; }
+    color: #gray; }
 
 .bet-btn-border {
   background: transparent;
@@ -706,7 +706,7 @@ ul {
     .banner.banner-2 .text-content p {
       display: inline-block; }
   .banner .banner-content {
-    padding: 130px 0; }
+    padding: 2px 0; }
     .banner .banner-content h1 {
       color: #fff;
       font-size: 60px;
@@ -1343,9 +1343,9 @@ ul {
       font-weight: 500;
       display: inline-block;
       position: relative;
-      background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: -o-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: linear-gradient(160deg, #f9ee56, #2ab34b);
+    background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300);
       width: 40px;
       height: 40px;
       line-height: 34px;
@@ -3564,10 +3564,10 @@ ul {
       color: #fff;
       font-weight: 500; }
   .bet-slip .bet-slip-content .different-bet {
-    padding: 30px;
+    padding: 2px;
     -webkit-box-shadow: 0px 0px 11px 7px rgba(56, 56, 56, 0.06);
     box-shadow: 0px 0px 11px 7px rgba(56, 56, 56, 0.06);
-    padding-top: 10px;
+    padding-top: 2px;
     border-top: 2px dashed rgba(196, 12, 73, 0.4); }
     .bet-slip .bet-slip-content .different-bet:first-child {
       border: none; }
@@ -3601,7 +3601,7 @@ ul {
     align-items: center;
     border: 1px solid rgba(248, 27, 100, 0.4);
     margin-bottom: 10px;
-    padding: 20px 30px;
+    padding: 2px 2px;
     border-radius: 5px; }
     .bet-slip .bet-slip-content .single-bet:hover .remove-element {
       background-color: #2ab34b;
@@ -3681,13 +3681,13 @@ ul {
     box-shadow: 0px 0px 11px 7px rgba(56, 56, 56, 0.06); }
     .bet-slip .bet-slip-sidebar h4.title {
       padding: 15px 30px;
-      background: -webkit-linear-gradient(285deg, #f9ee56, #2ab34b);
-      background: -o-linear-gradient(285deg, #f9ee56, #2ab34b);
-      background: linear-gradient(165deg, #f9ee56, #2ab34b);
+     background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300);
       margin: 0;
       font-size: 16px;
       text-transform: uppercase;
-      color: #fff;
+      color: #161a1d;
       font-weight: 500;
       text-align: center; }
     .bet-slip .bet-slip-sidebar .sidebar-content {
@@ -3726,9 +3726,9 @@ ul {
               color: #2ab34b; }
       .bet-slip .bet-slip-sidebar .sidebar-content .total-returns {
         background: #f9ee56;
-        background: -webkit-linear-gradient(285deg, #f9ee56, #2ab34b);
-        background: -o-linear-gradient(285deg, #f9ee56, #2ab34b);
-        background: linear-gradient(165deg, #f9ee56, #2ab34b);
+        background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300);
         text-align: center;
         padding: 25px 0 36px;
         border-radius: 5px;
@@ -3739,10 +3739,10 @@ ul {
             font-size: 14px;
             font-weight: 500;
             text-transform: uppercase;
-            color: #fff; }
+            color: #161a1d; }
           .bet-slip .bet-slip-sidebar .sidebar-content .total-returns span.number {
             font-size: 30px;
-            color: #fff;
+            color: #161a1d;
             font-weight: 500; }
       .bet-slip .bet-slip-sidebar .sidebar-content .btn-for-bet {
         text-align: center; }
@@ -3751,7 +3751,7 @@ ul {
           padding: 0 35px;
           height: 40px;
           line-height: 40px;
-          color: #fff;
+          color: #161a1d;
           text-transform: uppercase;
           font-size: 14px;
           font-weight: 400;
@@ -4225,9 +4225,9 @@ ul {
       top: 50%;
       width: 100px;
       height: 2px;
-      background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: -o-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: linear-gradient(160deg, #f9ee56, #2ab34b);
+    background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300);
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%); }
@@ -4242,9 +4242,9 @@ ul {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: -o-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: linear-gradient(160deg, #f9ee56, #2ab34b); }
+    background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300); }
 
 .user-panel-dashboard {
   padding: 0 0 40px; }
@@ -4332,9 +4332,9 @@ ul {
       top: 0;
       width: 2px;
       height: 100%;
-      background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: -o-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: linear-gradient(160deg, #f9ee56, #2ab34b);
+    background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300);
       opacity: .4; }
     .account-info ul li {
       margin-bottom: 32px;
@@ -4412,16 +4412,16 @@ ul {
   .payment-history .transaction-area .table {
     margin-bottom: 0; }
     .payment-history .transaction-area .table thead {
-      background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: -o-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: linear-gradient(160deg, #f9ee56, #2ab34b); }
+    background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300); }
       .payment-history .transaction-area .table thead th {
         border: none;
         height: 60px;
         vertical-align: middle;
         font-size: 16px;
         font-weight: 500;
-        color: #ffffff;
+        color: #161a1d;
         text-align: center; }
         .payment-history .transaction-area .table thead th:first-child {
           padding-left: 38px;
@@ -4440,7 +4440,9 @@ ul {
           text-transform: capitalize;
           font-weight: 500;
           vertical-align: middle;
-          height: 60px; }
+          height: 60px; 
+            
+        }
         .payment-history .transaction-area .table tbody tr td {
           padding: 0;
           border-top: none;
@@ -4538,7 +4540,7 @@ ul {
       text-transform: uppercase;
       font-size: 14px;
       margin-right: 16px;
-      border-radius: 50px; }
+      border-radius: 10px; }
       .user-panel-header .part-right ul li a svg {
         height: 20px;
         margin-top: -2px; }
@@ -4546,12 +4548,14 @@ ul {
         display: inline-block;
         position: relative;
         top: 1px; }
-    .user-panel-header .part-right ul li:first-child a {
-      background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: -o-linear-gradient(290deg, #f9ee56, #2ab34b);
-      background: linear-gradient(160deg, #f9ee56, #2ab34b);
+    .user-panel-header .part-right .active {
+    background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+        background: -o-linear-gradient(285deg, #f9ee56,#FFC300);
+        background: linear-gradient(165deg, #f9ee56, #FFC300);
       border: none;
-      line-height: 50px; }
+      line-height: 50px; 
+    color: #161a1d;    
+    }
     .user-panel-header .part-right ul li:last-child a {
       border-color: #fff;
       margin-right: 0; }
