@@ -159,7 +159,7 @@
                                     <button type="submit" class="align-middle">Login</button>
                                 </div>
                                 <div class="row">
-                                    <a href="{{route('login.cadastro')}}" style="margin-left: 10px;">Cadastrar</a>
+                                    <a href="{{route('login.cadastro')}}" style="margin-left: 10px; margin-top: 10px">Ainda não é cadastrado? clique aqui</a>
                                 </div>
 
                             </form>
