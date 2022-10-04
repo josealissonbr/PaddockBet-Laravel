@@ -98,7 +98,7 @@
                                                 </button>
                                             @else
                                             <button type="submit" id="palpite_btn" class="buy-ticket bet-btn bet-btn-dark-light">
-                                                <i class="fa fa-save"></i> Fazer Aposta
+                                                <i class="fa fa-save"></i> Apostar
                                             </button>
                                             @endif
                                         </div>
