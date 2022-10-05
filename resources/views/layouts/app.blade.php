@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-sm-6">
                             <div class="left-area">
-                                <ul>
+                                {{--<ul>
                                     <li>
                                         <span class="icon">
                                             <i class="far fa-calendar-alt"></i>
@@ -64,7 +64,7 @@
                                             <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
                                         </span>
                                     </li>
-                                </ul>
+                                </ul>--}}
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-sm-6">
