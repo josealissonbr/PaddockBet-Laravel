@@ -396,7 +396,6 @@ class DepositoController extends Controller
 
                 $user = User::find($deposito->idCliente);
 
-
                 $deposito->save();
                 $transacao->save();
                 $user->increment('saldo', $deposito->valor);

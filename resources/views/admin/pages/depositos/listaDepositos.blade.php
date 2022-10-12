@@ -141,7 +141,7 @@
                                 if ($deposito->situacao == 0)
                                     echo "Pendente";
                                 else if ($deposito->situacao == 1)
-                                    echo "Processado";
+                                    echo "Pago";
                                 else if ($deposito->situacao == 2)
                                     echo "Cancelado";
                                 else if ($deposito->situacao == 3)

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('valor');
             $table->string('txid')->nullable();
             $table->integer('situacao'); // se refe ao status, seja 0- Pendente, 1- processado, 2- cancelado
+            $table->string('log_approver')->nullable();
             $table->timestamps();
         });
     }
