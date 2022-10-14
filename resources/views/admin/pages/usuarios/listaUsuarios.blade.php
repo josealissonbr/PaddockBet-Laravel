@@ -56,6 +56,8 @@
                                     echo "Usuário";
                                 else if ($user->permission == 2)
                                     echo "Administrador";
+                                else if ($user->permission == 3)
+                                    echo "Gerente";
                                 @endphp
                         </td>
                         <td>R$ {{number_format($user->saldo, 2, ',', ' ')}}</td>

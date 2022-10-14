@@ -71,6 +71,7 @@
                             <option value="-1">Banido</option>
                             <option value="1" selected>Usuário</option>
                             <option value="2">Administrador</option>
+                            <option value="Gerente">Administrador</option>
                         </select>
                     </div>
                 </div>

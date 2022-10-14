@@ -26,7 +26,7 @@ class AdminApiChecker
 
         $user = User::where('apikey', $request->input('apikey'))->get()->first();
 
-        if ($user->permission != 2){
+        if ($user->permission != 2 && $user->permission != 3){
             return response()->json([
                 'status' =>  false,
                 'msg'   =>  'Insuficient Permissions'

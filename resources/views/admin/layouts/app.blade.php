@@ -101,6 +101,7 @@
                     </ul>
                 </li>
 
+                @if (auth()->user()->permission == 2)
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseDepositos">
                         <i class="fa fa-fw fa-bank"></i>
@@ -112,6 +113,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transacoes">
                     <a class="nav-link" href="{{route('admin.transacoes')}}">

@@ -16,7 +16,7 @@ class AdminChecker
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->permission != 2){
+        if (auth()->user()->permission != 2 && auth()->user()->permission != 3){
             return redirect('dashboard');
         }
 

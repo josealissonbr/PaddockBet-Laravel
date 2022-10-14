@@ -515,6 +515,12 @@ class AdminController extends Controller
     }
 
     public function listaDepositos(Request $request){
+
+
+        if (auth()->user()->permission !=2 ){
+            return redirect()->intended('dashboard.admin');
+        }
+
         $depositos = Depositos::where('situacao', 0)->get();
         return view('admin.pages.depositos.listaDepositos', compact('depositos'));
     }
@@ -628,6 +634,9 @@ class AdminController extends Controller
     }
 
     public function _editUsuario(Request $request){
+
+        $auth = User::where('apikey', $request->input('apikey'))->get()->first();
+
         $user = User::find($request->input('idUser'));
 
         $user->nome = $request->input('nome');
@@ -635,7 +644,9 @@ class AdminController extends Controller
         $user->email = $request->input('email');
         $user->telefone = $request->input('telefone');
         $user->nascimento = Carbon::parse($request->input('nascimento'));
-        $user->permission = $request->input('permission');
+        if ($auth->permission == 2){
+            $user->permission = $request->input('permission');
+        }
 
         $status = $user->save();
 

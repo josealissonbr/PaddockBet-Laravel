@@ -55,7 +55,7 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Senha (Você não pode editar senhas)</label>
+                    <label>Senha (Desativado)</label>
                     <input type="password" name="password" class="form-control" value="123456" required disabled>
                 </div>
             </div>
@@ -68,10 +68,11 @@
                 <div class="form-group">
                     <label>Permissão</label>
                     <div class="styled-select">
-                        <select name="permission">
+                        <select name="permission" @disabled((auth()->user()->permission == 3))>
                             <option value="-1" @selected(($user->permission == -1))>Banido</option>
                             <option value="1" @selected(($user->permission == 1))>Usuário</option>
                             <option value="2" @selected(($user->permission == 2))>Administrador</option>
+                            <option value="2" @selected(($user->permission == 3))>Gerente</option>
                         </select>
                     </div>
                 </div>
