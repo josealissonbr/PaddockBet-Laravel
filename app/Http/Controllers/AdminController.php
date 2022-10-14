@@ -621,4 +621,27 @@ class AdminController extends Controller
         ]);
     }
 
+    public function editUsuarios($idUser, Request $request){
+        $user = User::find($idUser);
+
+        return view('admin.pages.usuarios.editUsuario', compact('user'));
+    }
+
+    public function _editUsuario(Request $request){
+        $user = User::find($request->input('idUser'));
+
+        $user->nome = $request->input('nome');
+        $user->cpf = $request->input('cpf');
+        $user->email = $request->input('email');
+        $user->telefone = $request->input('telefone');
+        $user->nascimento = Carbon::parse($request->input('nascimento'));
+        $user->permission = $request->input('permission');
+
+        $status = $user->save();
+
+        return response()->json([
+            'status'    => (bool)$status,
+        ]);
+    }
+
 }

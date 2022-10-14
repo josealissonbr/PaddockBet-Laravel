@@ -36,6 +36,7 @@ Route::middleware(['AdminApi'])->group(function () {
     Route::post('admin/provas/_definirVencedorProva', 'App\Http\Controllers\AdminController@_definirVencedorProva')->name('api.admin.provas.definirvencedor');
 
     Route::post('admin/usuario/_novo', 'App\Http\Controllers\AdminController@_addUsuario')->name('api.admin.usuarios.novo');
+    Route::post('admin/usuario/_edit', 'App\Http\Controllers\AdminController@_editUsuario')->name('api.admin.usuarios.edit');
 
     Route::post('admin/saques/_cancelar', 'App\Http\Controllers\AdminController@_cancelarSaque')->name('api.admin.saques.cancelar');
     Route::post('admin/saques/_aprovar', 'App\Http\Controllers\AdminController@_aprovarSaque')->name('api.admin.saques.aprovar');
