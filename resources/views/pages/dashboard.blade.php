@@ -5,89 +5,89 @@
 
 
 
-{{--
-<!-- chart begin -->
-    <div class="chart-section">
-        <div class="container">
-            <div class="row justify-content-end">
-                <div class="col-xl-4 col-lg-4">
-                    <div class="user-panel-title">
-                        <h3>Histórico</h3>
-                    </div>
-                    <div class="account-info">
-                        <ul>
-                            <li>
-                                <span class="title">Cadastro</span>
-                                <span class="details"> {{Carbon\Carbon::parse(auth()->user()->created_at)->format('d/m/Y H:i')}}</span>
-                            </li>
-                            <li>
-                                <span class="title">Acesso Atual </span>
-                                <span class="details"> @if (\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->count() > 0) {{Carbon\Carbon::parse((\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->get()->last())->created_at)->format('d/m/Y H:i')}} @else Desconhecido @endif </span>
-                            </li>
-                            <li>
-                                <span class="title">IP Acesso Atual</span>
-                                <span class="details"> @if (\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->count() > 0) {{(\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->get()->last())->ip}} @else Desconhecido @endif </span>
-                            </li>
-                        </ul>
-                    </div>
+
+    <!-- chart begin -->
+<div class="chart-section">
+    <div class="container">
+        <div class="row justify-content-end">
+            {{--<div class="col-xl-4 col-lg-4">
+                <div class="user-panel-title">
+                    <h3>Histórico</h3>
                 </div>
-                <div class="col-xl-8 col-lg-8">
-                    <div class="user-panel-title">
-                        <h3>Eventos</h3>
-                    </div>
-                    <div class="standing" style="padding: 0px 0px;">
-                        <div class="standing-list-cover">
-                            <div class="standing-team-list">
+                <div class="account-info">
+                    <ul>
+                        <li>
+                            <span class="title">Cadastro</span>
+                            <span class="details"> {{Carbon\Carbon::parse(auth()->user()->created_at)->format('d/m/Y H:i')}}</span>
+                        </li>
+                        <li>
+                            <span class="title">Acesso Atual </span>
+                            <span class="details"> @if (\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->count() > 0) {{Carbon\Carbon::parse((\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->get()->last())->created_at)->format('d/m/Y H:i')}} @else Desconhecido @endif </span>
+                        </li>
+                        <li>
+                            <span class="title">IP Acesso Atual</span>
+                            <span class="details"> @if (\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->count() > 0) {{(\App\Models\authenticationLogs::where('idCliente', auth()->user()->id)->get()->last())->ip}} @else Desconhecido @endif </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>--}}
+            <div class="col-xl-12 col-lg-12">
+                <div class="user-panel-title">
+                    <h3>Eventos</h3>
+                </div>
+                <div class="standing" style="padding: 0px 0px;">
+                    <div class="standing-list-cover">
+                        <div class="standing-team-list">
 
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Pos</th>
-                                            <th scope="col">Evento</th>
-                                            <th scope="col">Cidade</th>
-                                            <th scope="col">Situação</th>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Pos</th>
+                                        <th scope="col">Evento</th>
+                                        <th scope="col">Cidade</th>
+                                        <th scope="col">Situação</th>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (\App\Models\Eventos::where('situacao', 1)->get() as $key=>$evento)
-                                        <tr>
-                                            <th scope="row">{{$key+1}}</th>
-                                            <td><a href="{{route('dashboard.provas', $evento->idEvento)}}">
-                                                <span class="single-team">
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (\App\Models\Eventos::where('situacao', 1)->get() as $key=>$evento)
+                                    <tr>
+                                        <th scope="row">{{$key+1}}</th>
+                                        <td><a href="{{route('dashboard.provas', $evento->idEvento)}}">
+                                            <span class="single-team">
 
-                                                    <span class="text">
-                                                        {{$evento->nomeEvento}}
-                                                    </span>
+                                                <span class="text">
+                                                    {{$evento->nomeEvento}}
                                                 </span>
-                                                </a>
-                                            </td>
-                                            <td>{{$evento->cidade}}</td>
-                                            <td>
-                                                @php
-                                                if ($evento->situacao == 0)
-                                                    echo "Inativo";
-                                                else if ($evento->situacao == 1)
-                                                    echo "Ativo";
-                                                else if ($evento->situacao == 2)
-                                                    echo "Cancelado";
-                                                @endphp
-                                            </td>
+                                            </span>
+                                            </a>
+                                        </td>
+                                        <td>{{$evento->cidade}}</td>
+                                        <td>
+                                            @php
+                                            if ($evento->situacao == 0)
+                                                echo "Inativo";
+                                            else if ($evento->situacao == 1)
+                                                echo "Ativo";
+                                            else if ($evento->situacao == 2)
+                                                echo "Cancelado";
+                                            @endphp
+                                        </td>
 
-                                        </tr>
-                                        @endforeach
+                                    </tr>
+                                    @endforeach
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <!-- chart end -->
---}}
+
 
 
 <!-- user-statics begin -->
