@@ -287,7 +287,7 @@ html {
   width: 100%;
   height: 100%;
   top: 0;
-  background: #242b2e;
+  background: #fff;
   z-index: 999;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -554,13 +554,13 @@ ul {
 }
 
 .bet-btn-dark-light {
-  background: #f3e429;
-  color: #010101;
+  background: #2a2a2a;
+  color: gray;
 }
 
 .bet-btn-dark-light:hover {
-  background: #010101;
-  color: #f3e429;
+  background: #f9ee56;
+  color: #gray;
 }
 
 .bet-btn-border {
@@ -5021,7 +5021,7 @@ ul {
   padding: 50px;
   position: relative;
   z-index: 3;
-  background: #242b2e;
+  background: #fff;
 }
 
 .contact .contact-form form label {
@@ -5915,7 +5915,6 @@ ul {
 
 .payment-history .transaction-area .table tbody tr {
   border-bottom: 1px solid rgba(249, 238, 100, .8);
-  background-color: #242b2e;
 }
 
 .payment-history .transaction-area .table tbody tr th {
@@ -5936,7 +5935,7 @@ ul {
   height: 60px;
   vertical-align: middle;
   text-align: center;
-  color: #fff;
+  color: #383838;
 }
 
 .user-panel-header {
@@ -6042,16 +6041,13 @@ ul {
   padding: 0 30px;
   height: 50px;
   color: #fff;
-  /*border: 2px solid #f9ee56;*/
+  border: 2px solid #f9ee56;
   line-height: 46px;
   text-transform: uppercase;
   font-size: 14px;
   margin-right: 16px;
   border-radius: 10px;
-  background-color: #242b2e;
 }
-
-.user-panel-header .part-right ul li a:hover  {background-color: #f3e429;}
 
 .user-panel-header .part-right ul li a svg {
   height: 20px;
@@ -6065,13 +6061,12 @@ ul {
 }
 
 .user-panel-header .part-right .active {
-  /*background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+  background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
   background: -o-linear-gradient(285deg, #f9ee56, #FFC300);
-  background: linear-gradient(165deg, #f9ee56, #FFC300);*/
-  background-color: #242b2e;
+  background: linear-gradient(165deg, #f9ee56, #FFC300);
   border: none;
   line-height: 50px;
-  color: #fff;
+  color: #161a1d;
 }
 
 .user-panel-header .part-right ul li:last-child a {
