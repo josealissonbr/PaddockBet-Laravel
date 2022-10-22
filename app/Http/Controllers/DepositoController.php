@@ -382,8 +382,6 @@ class DepositoController extends Controller
 
         $response = $this->sicoob_ListaCobranca($access_token);
 
-        return $response;
-
         foreach ($response->cobs as $cob){
 
             $rDeposito = Depositos::where('txid', $cob->txid)->where('situacao', '!=', 1)->get()->first();
