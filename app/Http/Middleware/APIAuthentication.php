@@ -22,6 +22,7 @@ class APIAuthentication
         }
 
         if (User::where('apikey', $request->input('apikey'))->count() != 1){
+            Log::debug('NAO AUTENTICADO: '.$request->ip());
             return response()->json([
                 'status' =>  false,
                 'msg'   =>  'Falha ao autenticar'
