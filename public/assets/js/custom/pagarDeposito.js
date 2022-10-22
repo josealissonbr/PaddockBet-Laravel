@@ -38,7 +38,7 @@ function initFunction(){
 
 function copyPix(){
     $('#copy-btn').popover('show');
-    ClipboardHelper.copyText(this.value);
+    ClipboardHelper.copyText($('#linhaPix').val());
 
     setTimeout(function(){
         $('#copy-btn').popover('hide');
