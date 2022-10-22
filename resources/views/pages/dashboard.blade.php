@@ -42,9 +42,9 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Pos</th>
+                                        {{--<th scope="col">Pos</th>--}}
                                         <th scope="col">Evento</th>
-                                        <th scope="col">Cidade</th>
+                                        {{--<th scope="col">Cidade</th>--}}
                                         <th scope="col">Situação</th>
 
                                     </tr>
@@ -52,7 +52,7 @@
                                 <tbody>
                                     @foreach (\App\Models\Eventos::where('situacao', 1)->get() as $key=>$evento)
                                     <tr>
-                                        <th scope="row">{{$key+1}}</th>
+                                        {{--<th scope="row">{{$key+1}}</th>--}}
                                         <td><a href="{{route('dashboard.provas', $evento->idEvento)}}">
                                             <span class="single-team">
 
@@ -62,7 +62,7 @@
                                             </span>
                                             </a>
                                         </td>
-                                        <td>{{$evento->cidade}}</td>
+                                        {{--<td>{{$evento->cidade}}</td>--}}
                                         <td>
                                             @php
                                             if ($evento->situacao == 0)
