@@ -377,11 +377,12 @@ class DepositoController extends Controller
     public function _processPayments(Request $request){
         $inicio_datetime = Carbon::now()->subHours(20);
         $fim_datetime = Carbon::now();
-        //return $inicio_datetime->format('Y-m-d\TH:i:s.uP');
 
         $access_token = $this->sicoob_RequisitarToken();
 
         $response = $this->sicoob_ListaCobranca($access_token);
+
+        return $response;
 
         foreach ($response->cobs as $cob){
 
@@ -390,6 +391,7 @@ class DepositoController extends Controller
             if ($rDeposito){
                 $deposito = Depositos::find($rDeposito->id);
                 $deposito->situacao = 1;
+                $deposito->log_approver = "Sicoob";
 
                 $transacao = Transacoes::find($rDeposito->idTransacao);
                 $transacao->situacao = 1;
@@ -439,6 +441,7 @@ class DepositoController extends Controller
 
         if ($this->bCheckCobranca($deposito->txid)){
             $deposito->situacao = 1;
+            $deposito->log_approver = "Sicoob";
             $transacao->situacao = 1;
         }
 
