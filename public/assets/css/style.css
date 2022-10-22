@@ -17,6 +17,7 @@
 
 .container {
   max-width: 1200px;
+  background-color: #151b1d;
 }
 
 html {
@@ -4370,6 +4371,7 @@ ul {
   color: #fff;
   height: 60px;
   vertical-align: middle;
+  background-color: #010101;
 }
 
 .standing .standing-team-list .table thead tr th:first-child {
@@ -4379,7 +4381,7 @@ ul {
 .standing .standing-team-list .table tbody tr {
   -webkit-box-shadow: 0px 2px 7px 0px rgba(42, 42, 42, 0.08);
   box-shadow: 0px 2px 7px 0px rgba(42, 42, 42, 0.08);
-  background: #fff;
+  background: #383838;
 }
 
 .standing .standing-team-list .table tbody tr th,
@@ -4398,7 +4400,7 @@ ul {
 }
 
 .standing .standing-team-list .table tbody tr td {
-  color: rgba(56, 56, 56, 0.8);
+  color: #fff;
   font-weight: 500;
 }
 
@@ -4424,7 +4426,7 @@ ul {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 500;
-  color: #383838;
+  color: #fff;
 }
 
 .standing .standing-team-list .table tbody tr td .diff {
@@ -4726,6 +4728,7 @@ ul {
 
 .bet-slip {
   padding: 120px 0;
+  background-color: #151b1d!important;
 }
 
 .bet-slip .bet-slip-content .box-heading {
@@ -4903,9 +4906,10 @@ ul {
 
 .bet-slip .bet-slip-sidebar h4.title {
   padding: 15px 30px;
-  background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+  /*background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
   background: -o-linear-gradient(285deg, #f9ee56, #FFC300);
-  background: linear-gradient(165deg, #f9ee56, #FFC300);
+  background: linear-gradient(165deg, #f9ee56, #FFC300);*/
+  background-color: #f3e429;
   margin: 0;
   font-size: 16px;
   text-transform: uppercase;
@@ -4963,10 +4967,11 @@ ul {
 }
 
 .bet-slip .bet-slip-sidebar .sidebar-content .total-returns {
-  background: #f9ee56;
+  /*background: #f9ee56;
   background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
   background: -o-linear-gradient(285deg, #f9ee56, #FFC300);
-  background: linear-gradient(165deg, #f9ee56, #FFC300);
+  background: linear-gradient(165deg, #f9ee56, #FFC300);*/
+  background-color: #f3e429;
   text-align: center;
   padding: 25px 0 36px;
   border-radius: 5px;
@@ -5884,9 +5889,10 @@ ul {
 }
 
 .payment-history .transaction-area .table thead {
-  background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
+  /*background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
   background: -o-linear-gradient(285deg, #f9ee56, #FFC300);
-  background: linear-gradient(165deg, #f9ee56, #FFC300);
+  background: linear-gradient(165deg, #f9ee56, #FFC300);*/
+  background-color: #f3e429;
 }
 
 .payment-history .transaction-area .table thead th {
@@ -6148,3 +6154,11 @@ ul {
 .user-panel-header .dashboard-menu ul li:last-child a {
   margin-right: 0;
 }
+
+/* ---------- */
+
+.table-painel-eventos thead tr th {border-spacing: 1px; height: 0; padding: 10px!important;}
+.standing .standing-team-list .table {border-spacing: 1px;}
+.standing .standing-team-list .table tbody tr td,
+.standing .standing-team-list .table thead tr th {height: 0;}
+
