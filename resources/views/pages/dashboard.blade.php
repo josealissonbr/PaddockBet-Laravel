@@ -39,7 +39,7 @@
                     <div class="standing-list-cover">
                         <div class="standing-team-list">
 
-                            <table class="table">
+                            <table class="table table-painel-eventos">
                                 <thead>
                                     <tr>
                                         {{--<th scope="col">Pos</th>--}}
