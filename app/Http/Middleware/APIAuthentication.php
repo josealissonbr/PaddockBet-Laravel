@@ -20,17 +20,19 @@ class APIAuthentication
     {
         Log::debug('CON: '.$request->ip());
         if ($request->input('apikey') == env('CRON_APIKEY')){
+            Log::debug('PASS!!!: '.$request->ip());
             return $next($request);
         }
 
         if (User::where('apikey', $request->input('apikey'))->count() != 1){
+            Log::debug('REJEITADO!: '.$request->ip());
             return response()->json([
                 'status' =>  false,
                 'msg'   =>  'Falha ao autenticar'
             ]);
         }
 
-
+        Log::debug('PASS2!!!: '.$request->ip());
 
         return $next($request);
     }
