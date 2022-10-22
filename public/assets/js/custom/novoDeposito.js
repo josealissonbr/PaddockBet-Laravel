@@ -93,9 +93,9 @@ function initFunction(){
 }
 
 function copyPix(){
-    $('#copy-btn').popover('show');
     ClipboardHelper.copyText($('#linhaPix').val());
 
+    $('#copy-btn').popover('show');
     setTimeout(function(){
         $('#copy-btn').popover('hide');
     }, 1000);
