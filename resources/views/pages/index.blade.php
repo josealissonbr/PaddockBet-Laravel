@@ -123,8 +123,8 @@
             <div class="container">
                 <div class="banner-content" >
                    <div class="payment-history" id="eventos-index" style="padding-top:60px;">
-                    <div class="container" style="background: white">
-                        <div class="row" style="background: white">
+                    <div class="container">
+                        <div class="row">
                             <div class="col-xl-8 col-lg-8">
                                 <div class="user-panel-title">
                                     <h3>Próximas provas</h3>
