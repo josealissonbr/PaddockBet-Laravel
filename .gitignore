@@ -27,3 +27,6 @@ storage/*
 storage
 hot
 hot/*
+.cache/*
+.local/*
+restorepoints/*
