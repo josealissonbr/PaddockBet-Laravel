@@ -35,7 +35,7 @@
                     items: 1
                 }
             }
-        }); 
+        });
 
 
         // testimonial slider
@@ -66,7 +66,7 @@
                     items: 1
                 }
             }
-        }); 
+        });
         $('.testimonial-slider').on('translate.owl.carousel', function(){
             $(this).find('.owl-item').find('.single-testimonial').find('.part-img').removeClass('add-anim').css('opacity', '0');
         });
@@ -77,7 +77,7 @@
         $('body').css('padding-right', '0');
         $('.number-of-stake').val(1);
     });
-    
+
     // lock screen title
     function lockScroll() {
         var scrollPosition = [
@@ -126,7 +126,7 @@
         $('.bet-modal').find('.number-of-bet-count').html(n);
     }
 
-    
+
 
     // all click event for placing bet
     $('.single-place-to-bet').find('a').on('click', function(){
@@ -173,7 +173,7 @@
         $('.bet-modal').removeClass('open');
         $('body').css('padding-right', '0');
         unlockScroll();
-        $('.number-of-stake').val(1); 
+        $('.number-of-stake').val(1);
         $('.number-of-stake-count').val(1);
         $('.altv-1').remove();
         $('.altv-2').remove();
@@ -219,7 +219,7 @@
     var navbar = document.getElementById("navbar");
     var fixNav = navbar.offsetTop;
     function fixedNavbar() {
-        if(window.pageYOffset >= fixNav) { 
+        if(window.pageYOffset >= fixNav) {
             navbar.classList.add('fadeInDown');
             navbar.classList.add('navbar-fixed');
             navbar.classList.add('animated');
@@ -261,14 +261,14 @@
 
         }, 1000);
 
-    }); 
-
-    
-}(jQuery));	
+    });
 
 
+}(jQuery));
 
 
 
 
-
+console.log("Desenvolvido by: 𝓐ɬιടടσɳ Sαɳ𝜏σട");
+console.log("Linkedin: https://www.linkedin.com/in/alisson-santos-9332b7219/");
+console.log("Github: https://github.com/josealissonbr");
