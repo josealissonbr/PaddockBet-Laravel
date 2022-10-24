@@ -48,17 +48,17 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Pos</th>
+
                             <th scope="col">Evento</th>
-                            <th scope="col">Cidade</th>
+                            <th scope="col">Início</th>
                             <th scope="col">Situação</th>
-                            <th scope="col">Criado em</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($eventos as $key=>$evento)
                         <tr>
-                            <th scope="row">{{$key+1}}</th>
+
                             <td><a href="{{route('dashboard.provas', $evento->idEvento)}}">
                                 <span class="single-team">
                                     {{--<span class="logo">
@@ -66,6 +66,8 @@
                                     </span>--}}
                                     <span class="text">
                                         {{$evento->nomeEvento}}
+                                        <span class="table-sub-label">{{$evento->cidade}}</span>
+                                        <span class="table-sub-date">{{Carbon\Carbon::parse((\App\Models\Provas::where('idEvento', $evento->idEvento)->orderBy('dataProva', 'asc')->get()->first())->dataProva)->format('d/m/Y H:i')}}</span>
                                     </span>
                                 </span>
                                 </a>
@@ -80,9 +82,6 @@
                                 else if ($evento->situacao == 2)
                                     echo "Cancelado";
                                 @endphp
-                            </td>
-                            <td>
-                                {{Carbon\Carbon::parse($evento->created_at)->format('d/m/Y')}}
                             </td>
                         </tr>
                         @endforeach
