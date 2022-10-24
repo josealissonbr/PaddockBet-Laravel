@@ -44,7 +44,7 @@
                 <tbody>
                     @foreach($depositos as $deposito)
                     <tr class="saqueTr_{{$deposito->id}}">
-                        <td>#{{$deposito->id}}</td>
+                        <td>{{$deposito->id}}</td>
                         <td>
                             @php
                                 if ($deposito->situacao == 0)
