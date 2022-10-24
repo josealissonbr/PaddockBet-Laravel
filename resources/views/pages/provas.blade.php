@@ -30,7 +30,7 @@
                             <div class="single-bet">
                                 <div class="left-side">
                                     <span class="bet-place">
-                                        <span class="table-sub-label">{{$prova->nomeProva}}</span>
+                                        {{$prova->nomeProva}}
                                         <span class="table-sub-date">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i')}}</span>
                                     </span>
                                     <span class="bet-price">{{$prova->altura}}</span>
