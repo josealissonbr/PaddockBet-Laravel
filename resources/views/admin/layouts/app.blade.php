@@ -101,22 +101,24 @@
                     </ul>
                 </li>
 
-                @if (auth()->user()->permission == 2)
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Provas">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseDepositos">
                         <i class="fa fa-fw fa-bank"></i>
                         <span class="nav-link-text">Depósitos</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseDepositos">
+                        @if (auth()->user()->permission == 2)
                         <li>
                             <a href="{{route('admin.depositos')}}">Pendentes <span class="badge badge-pill badge-primary">{{\App\Models\Depositos::where('situacao',0)->count()}}</span></a>
                         </li>
+                        @endif
                         <li>
                             <a href="{{route('admin.depositos.completos')}}">Efetuados <span class="badge badge-pill badge-primary">{{\App\Models\Depositos::where('situacao',1)->count()}}</span></a>
                         </li>
                     </ul>
                 </li>
-                @endif
+
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Transacoes">
                     <a class="nav-link" href="{{route('admin.transacoes')}}">

@@ -386,7 +386,16 @@ class AdminController extends Controller
         }elseif (User::where('email', $request->input('email'))->count() != 0){
             return response()->json([
                 'status' => false,
-                'msg'    =>  'Cpf já está em uso'
+                'msg'    =>  'Email já está em uso'
+            ]);
+        }
+
+        $req_user = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        if ((($request->input('permission') == 2 || $request->input('permission') == '2') || ($request->input('permission') == 3 || $request->input('permission') == '3')) && $req_user->permission != 2){
+            return response()->json([
+                'status' => false,
+                'msg'    =>  'Access Denied'
             ]);
         }
 
@@ -518,7 +527,7 @@ class AdminController extends Controller
 
 
         if (auth()->user()->permission !=2 ){
-            return redirect()->intended('dashboard.admin');
+            return redirect()->route('admin.home');
         }
 
         $depositos = Depositos::where('situacao', 0)->get();
@@ -528,9 +537,9 @@ class AdminController extends Controller
     public function listaDepositosCompletos(Request $request){
 
 
-        if (auth()->user()->permission !=2 ){
-            return redirect()->intended('dashboard.admin');
-        }
+        /*if (auth()->user()->permission !=2 ){
+            return redirect()->route('dashboard');
+        }*/
 
         $depositos = Depositos::where('situacao', 1)->get();
 
@@ -539,6 +548,15 @@ class AdminController extends Controller
 
     public function _cancelarDeposito(Request $request){
         $idDeposito = $request->input('idDeposito');
+
+        $req_user = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        if ($req_user->permission != 2){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Access Denied!',
+            ]);
+        }
 
         if (!$idDeposito){
             return response()->json([
@@ -599,6 +617,13 @@ class AdminController extends Controller
         }
 
         $req_user = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        if ($req_user->permission != 2){
+            return response()->json([
+                'status'    =>  false,
+                'msg'       =>  'Access Denied!',
+            ]);
+        }
 
         $deposito = Depositos::find($idDeposito);
 

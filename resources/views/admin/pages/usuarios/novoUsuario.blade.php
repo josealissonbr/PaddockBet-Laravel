@@ -17,13 +17,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" placeholder="" value="teste@gmail.com" required>
+                    <input type="text" name="nome" class="form-control" placeholder="" value="" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>CPF (Somente números)</label>
-                    <input type="text" name="cpf" class="form-control" value="15788943442"  required>
+                    <input type="text" name="cpf" class="form-control" value=""  required>
                 </div>
             </div>
         </div>
@@ -32,13 +32,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="email" class="form-control" placeholder="" value="gamepleyjk@gmail.com" required>
+                    <input type="text" name="email" class="form-control" placeholder="" value="" required>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="tel" name="telefone" class="form-control" value="82982047888" required>
+                    <input type="tel" name="telefone" class="form-control" value="" required>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Nascimento</label>
+                    <label>Dt. Nascimento</label>
                     <input type="tel" name="nascimento" class="form-control" id="datetimepicker" required>
                 </div>
             </div>
@@ -55,7 +55,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Senha</label>
-                    <input type="password" name="password" class="form-control" value="123456" required>
+                    <input type="password" name="password" class="form-control" value="" required>
                 </div>
             </div>
         </div>
@@ -70,8 +70,10 @@
                         <select name="permission">
                             <option value="-1">Banido</option>
                             <option value="1" selected>Usuário</option>
-                            <option value="2">Administrador</option>
-                            <option value="Gerente">Administrador</option>
+
+                            <option value="2" @disabled((auth()->user()->permission == 2) ? false : true)>Administrador</option>
+                            <option value="3" @disabled((auth()->user()->permission == 2) ? false : true)>Gerente</option>
+
                         </select>
                     </div>
                 </div>
