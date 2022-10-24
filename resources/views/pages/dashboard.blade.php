@@ -59,7 +59,7 @@
                                                 <span class="text">
                                                     {{$evento->nomeEvento}}
                                                     <span class="table-sub-label">{{$evento->cidade}}</span>
-                                                    <span class="table-sub-date">{{$evento->created_at}}</span>
+                                                    <span class="table-sub-date">{{Carbon\Carbon::parse((\App\Models\Provas::where('idEvento', $evento->idEvento)->orderBy('dataProva', 'asc')->get()->first())->dataProva)->format('d/m/Y H:i')}}</span>
                                                 </span>
                                             </span>
                                             </a>
