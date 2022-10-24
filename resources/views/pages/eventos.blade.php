@@ -50,7 +50,6 @@
                         <tr>
 
                             <th scope="col">Evento</th>
-                            <th scope="col">Início</th>
                             <th scope="col">Situação</th>
 
                         </tr>
@@ -72,7 +71,6 @@
                                 </span>
                                 </a>
                             </td>
-                            <td>{{$evento->cidade}}</td>
                             <td>
                                 @php
                                 if ($evento->situacao == 0)
