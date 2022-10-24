@@ -52,6 +52,7 @@ Route::middleware(['Admin'])->group(function () {
     Route::get('admin/saques/pendentes', 'App\Http\Controllers\AdminController@listaSaquesPendentes')->name('admin.saques.pendentes');
 
     Route::get('admin/depositos', 'App\Http\Controllers\AdminController@listaDepositos')->name('admin.depositos');
+    Route::get('admin/depositos/completos', 'App\Http\Controllers\AdminController@listaDepositosCompletos')->name('admin.depositos.completos');
 
 });
 

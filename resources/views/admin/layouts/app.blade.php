@@ -109,7 +109,10 @@
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseDepositos">
                         <li>
-                            <a href="{{route('admin.depositos')}}">Depósitos Pendentes <span class="badge badge-pill badge-primary">{{\App\Models\Depositos::where('situacao',0)->count()}}</span></a>
+                            <a href="{{route('admin.depositos')}}">Pendentes <span class="badge badge-pill badge-primary">{{\App\Models\Depositos::where('situacao',0)->count()}}</span></a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.depositos.completos')}}">Efetuados <span class="badge badge-pill badge-primary">{{\App\Models\Depositos::where('situacao',1)->count()}}</span></a>
                         </li>
                     </ul>
                 </li>

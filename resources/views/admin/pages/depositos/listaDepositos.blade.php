@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('script')
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('admin-assets/vendor/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('admin-assets/vendor/datatables/dataTables.bootstrap4.js')}}"></script>
 
 <script>
 
@@ -122,7 +122,7 @@
                 <thead>
                     <tr>
                         <th>#ID</th>
-                        <th>Tipo de Transação</th>
+                        <th>Status</th>
                         <th>Cliente</th>
                         <th>CPF</th>
                         <th>Data</th>

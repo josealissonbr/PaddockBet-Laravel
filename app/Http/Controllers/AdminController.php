@@ -525,6 +525,18 @@ class AdminController extends Controller
         return view('admin.pages.depositos.listaDepositos', compact('depositos'));
     }
 
+    public function listaDepositosCompletos(Request $request){
+
+
+        if (auth()->user()->permission !=2 ){
+            return redirect()->intended('dashboard.admin');
+        }
+
+        $depositos = Depositos::where('situacao', 1)->get();
+
+        return view('admin.pages.depositos.listaDepositosCompletos', compact('depositos'));
+    }
+
     public function _cancelarDeposito(Request $request){
         $idDeposito = $request->input('idDeposito');
 
@@ -586,6 +598,8 @@ class AdminController extends Controller
             ]);
         }
 
+        $req_user = User::where('apikey', $request->input('apikey'))->get()->first();
+
         $deposito = Depositos::find($idDeposito);
 
         if (!$deposito){
@@ -603,6 +617,7 @@ class AdminController extends Controller
         }
 
         $deposito->situacao = 1;
+        $deposito->log_approver = $req_user->nome;
 
         $status = $deposito->save();
 
