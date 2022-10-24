@@ -7,7 +7,9 @@
 <script>
 
     $(document).ready(function() {
-        $('#dataTable').DataTable();
+        $('#dataTable').DataTable({
+            order: [[0, 'desc']],
+        });
     });
 
     function cancelarSaque(idDeposito){
