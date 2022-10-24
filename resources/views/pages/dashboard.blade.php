@@ -58,6 +58,8 @@
 
                                                 <span class="text">
                                                     {{$evento->nomeEvento}}
+                                                    <span class="table-sub-label">{{$evento->cidade}}</span>
+                                                    <span class="table-sub-date">{{$evento->created_at}}</span>
                                                 </span>
                                             </span>
                                             </a>
