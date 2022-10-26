@@ -139,7 +139,7 @@
                             <a class="logo" href="#">
                                 <img src="{{asset('assets/img/logo.png')}}" alt="">
                             </a>
-                            <p>{{env('APP_NAME')}}: O seu esporte preferido, com ainda mais emoção</p>
+                            <p>{{env('APP_NAME')}}: O seu esporte preferido, com ainda mais emoção.</p>
                             <div class="social">
                                 <ul>
                                     <li>
