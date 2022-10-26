@@ -40,3 +40,10 @@ php artisan key:generate
 clear
 php artisan migrate
 git pull
+git add .
+git commit -m "update style"
+git config --global user.email "josealissonbr2003@outlook.com"
+git config --global user.name "JoseAlissonBR"
+git commit -m "update style"
+git push
+git pull

@@ -17,7 +17,6 @@
 
 .container {
   max-width: 1200px;
-  background-color: #151b1d;
 }
 
 html {
@@ -52,7 +51,7 @@ html {
 .section-title p {
   font-size: 16px;
   line-height: 28px;
-  color: #111705;
+  color: #fff;
 }
 
 .c-white {
@@ -415,9 +414,9 @@ body {
   font-family: "Rubik", sans-serif;
   font-size: 16px;
   margin: 0;
-  color: #111705;
+  color: #fff;
   overflow-x: hidden;
-  background-color: #151b1d;
+  background-color: #010101;
 }
 
 h1,
@@ -4323,7 +4322,7 @@ ul {
 .standing .standing-team-list {
   -webkit-box-shadow: 0px 2px 7px 0px rgba(42, 42, 42, 0.15);
   box-shadow: 0px 2px 7px 0px rgba(42, 42, 42, 0.15);
-  padding: 30px 30px 10px;
+  padding: 10px;
   border-radius: 10px;
   margin-bottom: 50px;
   background-color: #242b2e;
@@ -4335,7 +4334,7 @@ ul {
   margin-bottom: 0;
   position: relative;
   padding-left: 30px;
-  color: #383838;
+  color: #f3e429;
   text-transform: uppercase;
 }
 
@@ -4349,7 +4348,7 @@ ul {
   transform: translateY(-50%);
   width: 10px;
   height: 10px;
-  background: #2ab34b;
+  background: #f3e429;
   border-radius: 50%;
 }
 
@@ -4375,7 +4374,7 @@ ul {
 }
 
 .standing .standing-team-list .table thead tr th:first-child {
-  padding-left: 30px;
+  padding-left: 5px;
 }
 
 .standing .standing-team-list .table tbody tr {
@@ -4396,7 +4395,7 @@ ul {
   font-weight: 400;
   color: #ddd;
   font-style: italic;
-  padding-left: 30px;
+  padding-left: 5px;
 }
 
 .standing .standing-team-list .table tbody tr td {
@@ -4409,7 +4408,8 @@ ul {
 }
 
 .standing .standing-team-list .table tbody tr td .single-team span {
-  display: inline-block;
+  display: block;
+  font-size: 12px;
 }
 
 .standing .standing-team-list .table tbody tr td .single-team span.logo {
@@ -4802,7 +4802,7 @@ ul {
   align-items: center;
   border: 1px solid rgba(248, 27, 100, 0.4);
   margin-bottom: 10px;
-  padding: 2px 2px;
+  padding: 5px;
   border-radius: 5px;
 }
 
@@ -4828,8 +4828,8 @@ ul {
 }
 
 .bet-slip .bet-slip-content .single-bet .left-side span {
-  display: inline-block;
-  padding: 0 10px;
+  display: block;
+  padding: 0;
 }
 
 .bet-slip .bet-slip-content .single-bet .left-side .bet-place {
@@ -4837,6 +4837,7 @@ ul {
   font-weight: 500;
   color: #fff;
   position: relative;
+  font-size: 14px;
 }
 
 .bet-slip .bet-slip-content .single-bet .left-side .bet-place:after {
@@ -4848,14 +4849,15 @@ ul {
   margin-left: 0px;
   width: 4px;
   height: 4px;
-  background: #79a125;
+  background: #f3e429;
   border-radius: 50%;
+  display: none;
 }
 
 .bet-slip .bet-slip-content .single-bet .left-side .bet-price {
   text-transform: uppercase;
   font-weight: 500;
-  color: #383838;
+  color: #fff;
   opacity: .8;
 }
 
@@ -4963,7 +4965,7 @@ ul {
 
 .bet-slip .bet-slip-sidebar .sidebar-content ul li span.number {
   font-size: 20px;
-  color: #2ab34b;
+  color: #fff;
 }
 
 .bet-slip .bet-slip-sidebar .sidebar-content .total-returns {
@@ -5030,7 +5032,7 @@ ul {
 }
 
 .contact .contact-form form label {
-  margin: 0;
+  margin-top: 20px;
   line-height: 100%;
   font-size: 12px;
   font-weight: 500;
@@ -5042,14 +5044,16 @@ ul {
   width: 100%;
   font-size: 14px;
   border: none;
-  border-bottom: 1px solid rgba(56, 56, 56, 0.2);
-  padding: 19px 0 14px;
-  margin-bottom: 30px;
-  color: #383838;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  /*margin-bottom: 30px;*/
+  color: #fff;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
+  border-radius: 0.25rem;
+  background-color: #010101;
 }
 
 .contact .contact-form form input::-webkit-input-placeholder {
@@ -5089,12 +5093,15 @@ ul {
   display: -ms-grid;
   display: grid;
   height: 100px;
-  color: #383838;
+  color: #fff;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
   resize: none;
+  border-radius: 0.25rem;
+  background-color: #010101;
+  border: 1px solid #ced4da;
 }
 
 .contact .contact-form form textarea::-webkit-input-placeholder {
@@ -5126,19 +5133,19 @@ ul {
 }
 
 .contact .contact-form form .submit-btn {
-  background: #c7bb14;
-  color: #fff;
+  background: #f3e429;
+  color: #010101;
   text-transform: uppercase;
   border: none;
   border-radius: 5px;
   height: 50px;
   width: 150px;
-  margin-top: 40px;
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
+  margin-top: 20px;
 }
 
 .contact .contact-form form .submit-btn:hover {
@@ -5245,6 +5252,7 @@ ul {
   border-radius: 10px;
   padding: 30px;
   margin-bottom: 30px;
+  background-color: #242b2e;
 }
 
 .register .sign-up-step ul {
@@ -5258,9 +5266,10 @@ ul {
   display: -ms-inline-flexbox;
   display: inline-flex;
   padding: 0 30px;
-  border-right: 1px solid rgba(56, 56, 56, 0.3);
+  /*border-right: 1px solid rgba(56, 56, 56, 0.3);
   border-top: 1px solid rgba(56, 56, 56, 0.2);
-  border-bottom: 1px solid rgba(56, 56, 56, 0.2);
+  border-bottom: 1px solid rgba(56, 56, 56, 0.2);*/
+  border: 1px solid #fff;
   height: 50px;
   line-height: 48px;
   border-radius: 0 50px 50px 0;
@@ -5276,6 +5285,7 @@ ul {
   position: relative;
   z-index: 2;
   overflow: hidden;
+  background-color: #010101;
 }
 
 .register .sign-up-step ul li:after {
@@ -5285,9 +5295,10 @@ ul {
   top: 0;
   width: 0;
   height: 100%;
-  background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
+  /*background: -webkit-linear-gradient(290deg, #f9ee56, #2ab34b);
   background: -o-linear-gradient(290deg, #f9ee56, #2ab34b);
-  background: linear-gradient(160deg, #f9ee56, #2ab34b);
+  background: linear-gradient(160deg, #f9ee56, #2ab34b);*/
+  background-color:#f3e429;
   z-index: -1;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
@@ -5306,7 +5317,7 @@ ul {
 
 .register .sign-up-step ul li.active span.text,
 .register .sign-up-step ul li.active span.icon {
-  color: #fff;
+  color: #010101;
 }
 
 .register .sign-up-step ul li:first-child {
@@ -5335,7 +5346,7 @@ ul {
 
 .register .sign-up-step ul li span.icon {
   margin-right: 10px;
-  color: rgba(56, 56, 56, 0.6);
+  color: #fff;
 }
 
 .register .sign-up-step ul li span.icon svg {
@@ -5348,7 +5359,7 @@ ul {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 400;
-  color: rgba(56, 56, 56, 0.8);
+  color: #fff;
 }
 
 .register .all-form {
@@ -5357,6 +5368,7 @@ ul {
   border-radius: 10px;
   padding: 30px;
   position: relative;
+  background-color: #242b2e;
 }
 
 .register .single-form {
@@ -5377,7 +5389,7 @@ ul {
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 400;
-  color: #383838;
+  color: #fff;
   padding-top: 6px;
   margin-bottom: 0;
   position: absolute;
@@ -5410,6 +5422,8 @@ ul {
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
+  color: #fff;
+  background-color: #010101;
 }
 
 .register .single-form form input:focus {
@@ -5430,7 +5444,7 @@ ul {
   background: #f9ee56;
   height: 50px;
   width: 150px;
-  color: #fff;
+  color: #010101;
   text-transform: uppercase;
   border-radius: 5px;
   font-weight: 500;
@@ -5652,6 +5666,7 @@ ul {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  display: none;
 }
 
 .user-panel-title h3:before {
@@ -5886,27 +5901,28 @@ ul {
 
 .payment-history .transaction-area .table {
   margin-bottom: 0;
+  border: 1px solid #010101;
 }
 
 .payment-history .transaction-area .table thead {
   /*background: -webkit-linear-gradient(285deg, #f9ee56, #FFC300);
   background: -o-linear-gradient(285deg, #f9ee56, #FFC300);
   background: linear-gradient(165deg, #f9ee56, #FFC300);*/
-  background-color: #f3e429;
+  background-color: #242b2e;
 }
 
 .payment-history .transaction-area .table thead th {
   border: none;
-  height: 60px;
+  /*height: 60px;*/
   vertical-align: middle;
   font-size: 16px;
   font-weight: 500;
-  color: #161a1d;
+  color: #fff;
   text-align: center;
 }
 
 .payment-history .transaction-area .table thead th:first-child {
-  padding-left: 38px;
+  padding-left: 5px;
   text-align: left;
 }
 
@@ -5915,12 +5931,13 @@ ul {
 }
 
 .payment-history .transaction-area .table tbody {
-  border-left: 1px solid rgba(249, 238, 100, .8);
-  border-right: 1px solid rgba(249, 238, 100, .8);
+  /*border-left: 1px solid rgba(249, 238, 100, .8);
+  border-right: 1px solid rgba(249, 238, 100, .8);*/
+  border: 1px solid #010101;
 }
 
 .payment-history .transaction-area .table tbody tr {
-  border-bottom: 1px solid rgba(249, 238, 100, .8);
+  border-bottom: 1px solid #010101;
   background-color: #242b2e;
 }
 
@@ -5931,7 +5948,7 @@ ul {
   text-transform: capitalize;
   font-weight: 500;
   vertical-align: middle;
-  height: 60px;
+  /*height: 60px;*/
 
 }
 
@@ -5939,7 +5956,7 @@ ul {
   padding: 0;
   border-top: none;
   font-size: 14px;
-  height: 60px;
+  /*height: 60px;*/
   vertical-align: middle;
   text-align: center;
   color: #fff;
@@ -6162,3 +6179,14 @@ ul {
 .standing .standing-team-list .table tbody tr td,
 .standing .standing-team-list .table thead tr th {height: 0;}
 
+.table-painel-eventos .single-team .table-sub-label,
+.table-painel-eventos .single-team .table-sub-date {font-size: 12px; display: block!important;}
+
+.form-control {
+  color: #e9f8ff;
+  background-color: #242b2e;
+}
+
+.table td, .table th {
+  padding: 5px!important;
+}
