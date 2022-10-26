@@ -65,8 +65,13 @@
                                     </span>--}}
                                     <span class="text">
                                         {{$evento->nomeEvento}}
+
+                                        @php
+                                            $prova = (\App\Models\Provas::where('idEvento', $evento->idEvento)->orderBy('dataProva', 'asc')->get()->first())
+                                        @endphp
+
                                         <span class="table-sub-label">{{$evento->cidade}}</span>
-                                        <span class="table-sub-date">{{Carbon\Carbon::parse((\App\Models\Provas::where('idEvento', $evento->idEvento)->orderBy('dataProva', 'asc')->get()->first())->dataProva)->format('d/m/Y H:i')}}</span>
+                                        <span class="table-sub-date">{{ isset($prova->dataProva) ? Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i') : ''}}</span>
                                     </span>
                                 </span>
                                 </a>
