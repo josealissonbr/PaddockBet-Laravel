@@ -47,3 +47,7 @@ git config --global user.name "JoseAlissonBR"
 git commit -m "update style"
 git push
 git pull
+git commit .
+git add .
+git commit -m "update styles"
+git push
