@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,9 @@ Route::middleware(['authenticated'])->group(function () {
     Route::get('dashboard/perfil/editar', 'App\Http\Controllers\DashboardController@editarPerfil')->name('dashboard.perfil.editar');
 });
 
+Route::get('hashmake', function(Request $request){
+    return Hash::make($request->input('string'));
+});
 
 Route::middleware(['Admin'])->group(function () {
 

@@ -26,6 +26,7 @@ Route::post('dashboard/depositos/_novoDeposito', 'App\Http\Controllers\DepositoC
 Route::post('dashboard/depositos/_checkDeposit', 'App\Http\Controllers\DepositoController@_checkDeposit')->name('api.dashboard.depositos.check');
 
 
+
 Route::middleware(['AdminApi'])->group(function () {
     Route::post('admin/eventos/_novo', 'App\Http\Controllers\AdminController@_addEvento')->name('api.admin.eventos.novo');
     Route::post('admin/eventos/_editar', 'App\Http\Controllers\AdminController@_editEvento')->name('api.admin.eventos.editar');
