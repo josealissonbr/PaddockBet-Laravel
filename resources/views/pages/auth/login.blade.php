@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/odometer.min.css')}}">
         <!-- stylesheet -->
-        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}?v={{today()}}">
         <!-- responsive -->
         <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/dashboard-responsive.css')}}">
