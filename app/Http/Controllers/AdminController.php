@@ -352,7 +352,7 @@ class AdminController extends Controller
                 $transacao->save();
 
                 //Incrementa o valorIndividual no saldo de cada cliente vencedor
-                $cliente = User::find($aposta->idCliente)->increment('saldo', $valorIndividual);
+                $cliente = User::find($aposta->idCliente)->increment('saldo', $valorIndividual * $aposta->qtdeCotas);
 
             }
         }

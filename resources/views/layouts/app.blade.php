@@ -26,6 +26,8 @@
         <!-- responsive -->
         <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/dashboard-responsive.css')}}">
+        <link href="{{asset('assets/css/sweetalert/dark.css')}}" rel="stylesheet">
+
         @yield('css')
     </head>
 
@@ -259,7 +261,7 @@
 
         <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
         @yield('script')
     </body>

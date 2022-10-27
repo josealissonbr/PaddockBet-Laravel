@@ -1,3 +1,9 @@
+var ID_EVENTO = 1;
+
+function setData(id){
+    ID_EVENTO = id;
+}
+
 $('.btn-number').click(function(e){
     e.preventDefault();
 
@@ -91,12 +97,29 @@ $('#efetuar-palpite-frm').submit(function (e){
         success: function(data)
         {
             if (data.status){
-                window.location.href=data.redirector;
-                submitBtn.html(`<i class="spinner-border spinner-border-sm"></i> Redirecionando...`);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sucesso!',
+                    text: 'Sua aposta foi confirmada com sucesso!',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Ir para o Evento',
+                    cancelButtonText: 'Apostar mais',
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        window.location.href=`${window.location.origin}/dashboard/depositos/novo`;
+                    }
+                })
+
+                submitBtn.removeAttr('disabled');
+                submitBtn.html(`<i class="fa fa-save"></i> Apostar`);
             }else{
                 submitBtn.removeAttr('disabled');
                 submitBtn.html(`<i class="fa fa-save"></i> Apostar`);
                 if (data.err_type == 1){
+
                     Swal.fire({
                         icon: 'error',
                         title: 'Falha',
@@ -108,9 +131,10 @@ $('#efetuar-palpite-frm').submit(function (e){
                     }).then((result) => {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
-                            window.location.href=`${window.location.origin}/dashboard/depositos/novo`;
+                            window.location.href=`${window.location.origin}/dashboard/provas/${ID_EVENTO}`;
                         }
-                      })
+                    })
+
                 }else{
                     Swal.fire({
                         icon: 'error',

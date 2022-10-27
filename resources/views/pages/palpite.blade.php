@@ -2,6 +2,10 @@
 
 @section('script')
     <script defer src="{{asset('assets/js/custom/palpites.js')}}"></script>
+
+    <script>
+        setData({{$}})
+    </script>
 @endsection
 
 @section('content')
