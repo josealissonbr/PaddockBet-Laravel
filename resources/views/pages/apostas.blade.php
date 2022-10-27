@@ -38,33 +38,37 @@
                                 <td>{{Carbon\Carbon::parse($aposta->created_at)->format('d/m/Y h:i')}}</td>
                                  <td><a href="detalheBilhete.php">#{{$aposta->idAposta}}</a></td>
                                 <th scope="row" class="d-flex">
-                                    <a href="{{route('dashboard.apostas.detalhes', $aposta->idAposta)}}">{{isset($aposta->prova->evento->nomeEvento) ? $aposta->prova->evento->nomeEvento : ''}} - {{$aposta->prova->nomeProva}}</a></th>
-                               <td>{{Carbon\Carbon::parse($aposta->prova->dataProva)->format('d/m/Y h:i')}}</td>
+                                    <a href="{{route('dashboard.apostas.detalhes', $aposta->idAposta)}}">{{isset($aposta->prova->evento->nomeEvento) ? $aposta->prova->evento->nomeEvento : ''}} - {{isset($aposta->prova->nomeProva) ? $aposta->prova->nomeProva : ''}}</a></th>
+                               <td>{{isset($aposta->prova->dataProva) ? Carbon\Carbon::parse($aposta->prova->dataProva)->format('d/m/Y h:i') : ''}}</td>
 
                                 <td>
                                     @php
-                                        if ($aposta->prova->situacao == 0)
-                                            echo "Inativo";
-                                        else if ($aposta->prova->situacao == 1)
-                                            echo "Recebendo Apostas";
-                                        else if ($aposta->prova->situacao == 2)
-                                            echo "Aguardando Prova";
-                                        else if ($aposta->prova->situacao == 3)
-                                            echo "Finalizado";
-                                        else if ($aposta->prova->situacao == 4)
-                                            echo "Cancelado";
+                                        if(isset($aposta->prova->dataProva)){
+                                            if ($aposta->prova->situacao == 0)
+                                                echo "Inativo";
+                                            else if ($aposta->prova->situacao == 1)
+                                                echo "Recebendo Apostas";
+                                            else if ($aposta->prova->situacao == 2)
+                                                echo "Aguardando Prova";
+                                            else if ($aposta->prova->situacao == 3)
+                                                echo "Finalizado";
+                                            else if ($aposta->prova->situacao == 4)
+                                                echo "Cancelado";
+                                        }
                                     @endphp
                                 </td>
                                 <td>{{$aposta->qtdeCotas}}</td>
                                 <td>@php
-                                    if ($aposta->prova->situacao == 3){
-                                        if ($aposta->resultado == 1){
-                                            echo "<a style='color: green'>Ganhou</a>";
+                                    if (isset($aposta->prova->situacao )){
+                                        if ($aposta->prova->situacao == 3){
+                                            if ($aposta->resultado == 1){
+                                                echo "<a style='color: green'>Ganhou</a>";
+                                            }else{
+                                                echo "<a style='color: red'>Perdeu</a>";
+                                            }
                                         }else{
-                                            echo "<a style='color: red'>Perdeu</a>";
+                                            echo "N/A";
                                         }
-                                    }else{
-                                        echo "N/A";
                                     }
                                 @endphp</td>
                                 <td>R$ {{number_format($aposta->premio, 2, ',', ' ')}}</td>
