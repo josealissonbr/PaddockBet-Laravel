@@ -84,6 +84,8 @@
                         <th>Saldo Acumulado</th>
                         <th>Valor</th>
                         <th>Taxa</th>
+                        <th>Apostas</th>
+                        <th>Rendimento</th>
                         <th>Situação</th>
                         <th>Criado em</th>
                         <th>Data Prova</th>
@@ -100,7 +102,9 @@
                         <td>{{$prova->altura}}</td>
                         <td>R$ {{number_format($prova->saldoAcumulado, 2, ',', ' ')}}</td>
                         <td>R$ {{number_format($prova->valor, 2, ",", " ")}}</td>
-                        <td>R$ {{number_format($prova->taxa, 2, ',', ' ')}}</td>
+                        <td>{{$prova->taxa}}%</td>
+                        <td>{{\App\Models\Apostas::where('idProva', $prova->idProva)->sum('qtdeCotas')}} Cotas</td>
+                        <td style="color: green">R$ {{number_format((($prova->valor * \App\Models\Apostas::where('idProva', $prova->idProva)->sum('qtdeCotas')) * ($prova->taxa / 100)), 2, ',', '.')}}</td>
                         <td>
                             @php
                                 if ($prova->situacao == 0)
@@ -115,6 +119,7 @@
                                     echo "Cancelado";
                             @endphp
                         </td>
+
                         <td>{{Carbon\Carbon::parse($prova->created_at)->format('d/m/Y H:i:s')}}</td>
 
                         <td>{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i:s')}}</td>

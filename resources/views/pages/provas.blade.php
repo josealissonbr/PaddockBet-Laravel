@@ -69,14 +69,15 @@
                                 @endphp<span>
                             </li>
                         </ul>
-                        <div class="total-returns">
+                        <hr>
+                        {{--<div class="total-returns">
                             <span class="text">
                                 Prêmio Total deste Evento
                             </span>
                             <span class="number">
                                 R$ {{number_format($acumuladoEvento, 2, ",", " ")}}
                             </span>
-                        </div>
+                        </div>--}}
 
                     </div>
                 </div>

@@ -78,17 +78,19 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>#ID</th>
+                        <th width="18">#ID</th>
                         <th>Prova</th>
                         <th>Evento</th>
-                        <th>Altura</th>
-                        <th>Saldo Acumulado</th>
-                        <th>Valor</th>
-                        <th>Taxa</th>
+                        <th width="18">Altura</th>
+                        <th width="18">Saldo Acumulado</th>
+                        <th width="18">Valor</th>
+                        <th width="18">Taxa</th>
+                        <th width="18">Apostas</th>
+                        <th width="18">Rendimento</th>
                         <th>Situação</th>
-                        <th>Criado em</th>
-                        <th>Data Prova</th>
-                        <th>Ações</th>
+                        <th width="18">Criação</th>
+                        <th width="18">Data Prova</th>
+                        <th width="70">Ações</th>
                     </tr>
                 </thead>
 
@@ -101,7 +103,11 @@
                         <td>{{$prova->altura}}</td>
                         <td>R$ {{number_format($prova->saldoAcumulado, 2, ',', ' ')}}</td>
                         <td>R$ {{number_format($prova->valor, 2, ",", " ")}}</td>
-                        <td>R$ {{number_format($prova->taxa, 2, ',', ' ')}}</td>
+                        <td>{{$prova->taxa}}%</td>
+
+                        <td>{{\App\Models\Apostas::where('idProva', $prova->idProva)->sum('qtdeCotas')}} Cotas</td>
+                        <td style="color: green">R$ {{number_format((($prova->valor * \App\Models\Apostas::where('idProva', $prova->idProva)->sum('qtdeCotas')) * ($prova->taxa / 100)), 2, ',', '.')}}</td>
+
                         <td>
                             @php
                                 if ($prova->situacao == 0)
@@ -116,7 +122,7 @@
                                     echo '<span class="cancel">Cancelado</span>';
                             @endphp
                         </td>
-                        <td>{{Carbon\Carbon::parse($prova->created_at)->format('d/m/Y H:i:s')}}</td>
+                        <td>{{Carbon\Carbon::parse($prova->created_at)->diffForHumans()}}</td>
 
                         <td>{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i:s')}}</td>
 
