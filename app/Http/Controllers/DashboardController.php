@@ -32,7 +32,7 @@ class DashboardController extends Controller
             if ($aposta->resultado == 1)
                 continue;
 
-            if ($aposta->prova->situacao == 1 || $aposta->prova->situacao == 2){
+            if (!isset( $aposta->prova->situacao) || $aposta->prova->situacao == 1 || $aposta->prova->situacao == 2){
                 $emApostas += $aposta->valorAposta;
             }
 
