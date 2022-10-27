@@ -123,14 +123,14 @@
                     <div class="col-xl-6 col-lg-6 col-md-8">
                         <div class="section-title">
                             <h2>PaddockBet</h2>
-                            <p>Informe seus dados para acessar</p>
+                            <p>Insira sua nova senha</p>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-5 col-md-6">
                         <div class="login-form">
-                            <form action="{{route('login.post')}}" method="POST">
+                            <form action="{{route('login.redefinir-senha.changepw.post')}}" method="POST">
                                 @csrf
 
                                 @if ($errors->any())
@@ -141,30 +141,34 @@
                                 @endforeach
                             @endif
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('password'))
                                 <div>
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                                 @endif
-                                <input type="email" name="email" placeholder="Insira seu email">
 
-                                @if ($errors->has('email'))
+
+                                @if(session()->has('success'))
                                 <div>
-                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                    <span class="text-success">{{ session()->get('success') }}</span>
                                 </div>
-                                @endif
-                                <input type="password" name="password" placeholder="Insira sua senha">
+
+                                @php
+                                    Request::session()->flush('success');
+                                @endphp
+                            @endif
+
+                            <input type="password" name="password" placeholder="Insira sua senha">
+                            <input type="hidden" name="passToken" value={{$token}}>
 
                                 <div class="row justify-content-center">
-                                    <button type="submit" class="align-middle">Login</button>
+                                    <button type="submit" class="align-middle">Redefinir</button>
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-sm-6">
-                                        <a href="{{route('login.cadastro')}}" style="">Ainda não é cadastrado?</a>
+                                <div class="row">
+                                    <div class="col-sm-8 ml-1 mt-3">
+                                        <a href="{{route('login.cadastro')}}">Lembrou? Acessar conta</a>
                                     </div>
-                                    <div class="col-sm-6 text-right">
-                                        <a href="{{route('login.reset-password')}}" style="">Esqueceu a senha?</a>
-                                    </div>
+                                    <div class="col-sm-4">
                                 </div>
 
                             </form>
@@ -335,22 +339,22 @@
 
         <!-- jquery -->
         <!-- <script src="assets/js/jquery.js"></script> -->
-        <script src="assets/js/jquery-3.4.1.min.js"></script>
+        <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
         <!-- bootstrap -->
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <!-- owl carousel -->
-        <script src="assets/js/owl.carousel.js"></script>
+        <script src="{{asset('assets/js/owl.carousel.js')}}"></script>
         <!-- magnific popup -->
-        <script src="assets/js/jquery.magnific-popup.js"></script>
+        <script src="{{asset('assets/js/jquery.magnific-popup.js')}}"></script>
         <!-- filterizr js -->
-        <script src="assets/js/jquery.filterizr.min.js"></script>
+        <script src="{{asset('assets/js/jquery.filterizr.min.js')}}"></script>
         <!-- wow js-->
-        <script src="assets/js/wow.min.js"></script>
+        <script src="{{asset('assets/js/wow.min.js')}}"></script>
         <!-- clock js -->
-        <script src="assets/js/clock.min.js"></script>
-        <script src="assets/js/jquery.appear.min.js"></script>
-        <script src="assets/js/odometer.min.js"></script>
+        <script src="{{asset('assets/js/clock.min.js')}}"></script>
+        <script src="{{asset('assets/js/jquery.appear.min.js')}}"></script>
+        <script src="{{asset('assets/js/odometer.min.js')}}"></script>
         <!-- main -->
-        <script src="assets/js/main.js"></script>
+        <script src="{{asset('assets/js/main.js')}}"></script>
     </body>
 </html>

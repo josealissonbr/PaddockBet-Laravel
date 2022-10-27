@@ -123,14 +123,14 @@
                     <div class="col-xl-6 col-lg-6 col-md-8">
                         <div class="section-title">
                             <h2>PaddockBet</h2>
-                            <p>Informe seus dados para acessar</p>
+                            <p>Informe seu email para redefinir a senha</p>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-5 col-md-6">
                         <div class="login-form">
-                            <form action="{{route('login.post')}}" method="POST">
+                            <form action="{{route('login.redefinir-senha.post')}}" method="POST">
                                 @csrf
 
                                 @if ($errors->any())
@@ -146,25 +146,28 @@
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                                 @endif
+
+
+                                @if(session()->has('success'))
+                                <div>
+                                    <span class="text-success">{{ session()->get('success') }}</span>
+                                </div>
+
+                                @php
+                                    Request::session()->flush('success');
+                                @endphp
+                            @endif
+
                                 <input type="email" name="email" placeholder="Insira seu email">
 
-                                @if ($errors->has('email'))
-                                <div>
-                                    <span class="text-danger">{{ $errors->first('password') }}</span>
-                                </div>
-                                @endif
-                                <input type="password" name="password" placeholder="Insira sua senha">
-
                                 <div class="row justify-content-center">
-                                    <button type="submit" class="align-middle">Login</button>
+                                    <button type="submit" class="align-middle">Redefinir</button>
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-sm-6">
-                                        <a href="{{route('login.cadastro')}}" style="">Ainda não é cadastrado?</a>
+                                <div class="row">
+                                    <div class="col-sm-8 ml-1 mt-3">
+                                        <a href="{{route('login.cadastro')}}">Lembrou? Acessar conta</a>
                                     </div>
-                                    <div class="col-sm-6 text-right">
-                                        <a href="{{route('login.reset-password')}}" style="">Esqueceu a senha?</a>
-                                    </div>
+                                    <div class="col-sm-4">
                                 </div>
 
                             </form>

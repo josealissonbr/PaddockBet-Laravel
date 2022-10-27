@@ -63,7 +63,18 @@ Route::middleware(['Admin'])->group(function () {
 
 Route::get('login', 'App\Http\Controllers\AuthController@index')->name('login');
 Route::get('cadastro', 'App\Http\Controllers\AuthController@cadastro')->name('login.cadastro');
+Route::get('redefinir-senha', 'App\Http\Controllers\AuthController@redefinirSenha')->name('login.reset-password');
 
 Route::post('login/process', 'App\Http\Controllers\AuthController@postLogin')->name('login.post');
+Route::post('redefinir-senha/process', 'App\Http\Controllers\AuthController@postRedefinirSenha')->name('login.redefinir-senha.post');
+
+Route::get('redefinir-senha/update/{token}', 'App\Http\Controllers\AuthController@RedefinirSenhaToken')->name('login.redefinir-senha.changepw.get');
+
+Route::post('redefinir-senha/updateByToken', 'App\Http\Controllers\AuthController@postRedefinirSenhaToken')->name('login.redefinir-senha.changepw.post');
+
 Route::post('cadastro/process', 'App\Http\Controllers\AuthController@postRegistration')->name('login.cadastro.post');
 Route::get('login/logout', 'App\Http\Controllers\AuthController@logout')->name('login.logout');
+
+Route::get('sendtxtmail','App\Http\Controllers\MailController@txt_mail');
+Route::get('sendhtmlmail','App\Http\Controllers\MailController@html_mail');
+Route::get('sendattachedemail','App\Http\Controllers\MailController@attached_email');

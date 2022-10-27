@@ -10,6 +10,9 @@ use App\Models\User;
 use App\Models\authenticationLogs;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use App\Http\Requests;
+use App\Mail\RedefinirSenha;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -109,5 +112,67 @@ class AuthController extends Controller
         Auth::logout();
 
         return Redirect('login');
+    }
+
+    public function redefinirSenha(){
+
+        return view('pages.auth.resetpassword');
+    }
+
+    public function postRedefinirSenha(Request $request){
+
+        $request->validate([
+            'email' => 'required',
+        ]);
+
+        $email = $request->input('email');
+
+        if (User::where('email', $email)->count() < 1){
+            return redirect()->back()->withErrors(['msg' => 'Nenhum usuário encontrado com este email']);
+
+        }
+
+        $token = Str::random(32);
+
+        \App\Models\PasswordResets::insert([
+            'email' => $email,
+            'token' => $token
+        ]);
+
+        Mail::to($email)->send(new RedefinirSenha($token));
+
+
+        session()->put('success', 'Um email foi enviado para você contendo um link para redefinir sua senha!');
+
+        return redirect()->back();
+
+    }
+
+    public function RedefinirSenhaToken($token, Request $request){
+
+        return view('pages.auth.resetpassword_token', compact('token'));
+    }
+
+    public function postRedefinirSenhaToken(Request $request){
+
+        $request->validate([
+            'password' => 'required',
+            'passToken' => 'required',
+        ]);
+
+        $password = $request->input('password');
+        $passToken = $request->input('passToken');
+
+        $pr = \App\Models\PasswordResets::where('token', $passToken)->get()->first();
+
+        // $pr->email;
+
+        $user = \App\Models\User::where('email', $pr->email)->update([
+            'password' => Hash::make($password),
+        ]);
+
+        session()->put('success', 'Sua senha foi alterada!');
+
+        return redirect()->back();
     }
 }
