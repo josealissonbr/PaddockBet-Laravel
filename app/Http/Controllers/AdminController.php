@@ -325,7 +325,7 @@ class AdminController extends Controller
 
         $saldoAcumulado = $prova->saldoAcumulado;
 
-        $qtdVencedores = Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->count();
+        $qtdVencedores = Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->sum('qtdeCotas');
 
         /*if ($qtdVencedores < 1){
             return response()->json([

@@ -4,7 +4,7 @@
     <script defer src="{{asset('assets/js/custom/palpites.js')}}"></script>
 
     <script>
-        setData({{$}})
+        setData({{$prova->evento->idEvento}})
     </script>
 @endsection
 
@@ -96,7 +96,7 @@
 
                                         <br>
                                         <div class="buttons">
-                                            @if (Carbon\Carbon::parse($prova->dataProva)->isPast())
+                                            @if (Carbon\Carbon::parse($prova->dataProva)->isPast() || $prova->situacao != 1)
                                                 <button type="submit" id="palpite_btn" class="buy-ticket bet-btn btn-danger" disabled>
                                                     <i class="fa fa-ban"></i> Apostas Encerradas
                                                 </button>
