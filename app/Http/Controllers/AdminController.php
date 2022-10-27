@@ -341,11 +341,11 @@ class AdminController extends Controller
             foreach($apostas as $aposta){
                 $objAposta = Apostas::find($aposta->idAposta);
                 $objAposta->resultado = 1;
-                $objAposta->premio = $valorIndividual;
+                $objAposta->premio = $valorIndividual * $aposta->qtdeCotas;
                 $objAposta->save();
 
                 $transacao = new Transacoes;
-                $transacao->valor       = $valorIndividual;
+                $transacao->valor       = $valorIndividual * $aposta->qtdeCotas;
                 $transacao->tipo        = 4; //Receb. Aposta
                 $transacao->idCliente   = $aposta->idCliente;
                 $transacao->situacao    = 1;
