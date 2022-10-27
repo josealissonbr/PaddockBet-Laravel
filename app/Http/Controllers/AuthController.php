@@ -165,11 +165,16 @@ class AuthController extends Controller
 
         $pr = \App\Models\PasswordResets::where('token', $passToken)->get()->first();
 
+        if (!$pr){
+            return redirect()->back()->withErrors(['msg' => 'Este link já foi usado ou expirou.']);
+        }
         // $pr->email;
 
         $user = \App\Models\User::where('email', $pr->email)->update([
             'password' => Hash::make($password),
         ]);
+
+        \App\Models\PasswordResets::where('token', $passToken)->delete();
 
         session()->put('success', 'Sua senha foi alterada!');
 
