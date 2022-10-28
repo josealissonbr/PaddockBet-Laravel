@@ -122,7 +122,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8 col-md-8">
                         <div class="section-title">
-                            <h2>Cadastr-se e comece a ganhar</h2>
+                            <h2>Cadastre-se e comece a ganhar</h2>
                             <p>Você está a poucos clicks de criar sua conta e poder começar a apostar.</p>
                         </div>
                     </div>

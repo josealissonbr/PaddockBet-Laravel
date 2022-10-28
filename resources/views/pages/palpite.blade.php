@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-xl-8 col-lg-8">
                 <div class="user-panel-title">
-                    <h3>20/08/2022 Campeonato Brasileiro - Etapa Maceió</h3>
+                    <h3>{{$prova->evento->nomeEvento}} - {{$prova->nomeProva}}</h3>
                     <h3>Faça sua aposta: </h3>
                 </div>
             </div>
