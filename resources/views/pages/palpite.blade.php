@@ -4,7 +4,9 @@
     <script defer src="{{asset('assets/js/custom/palpites.js')}}?v={{today()}}"></script>
 
     <script>
-        setData({{$prova->evento->idEvento}})
+        window.onload = function() {
+            setData({{$prova->evento->idEvento}});
+        }
     </script>
 @endsection
 
