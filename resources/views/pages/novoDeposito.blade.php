@@ -163,7 +163,7 @@
 
                             <div class="payment-info justify-content-center">
                                 <strong>Linha do Pix Digitável</strong>
-                                <input type="text" class="form-control" id="linhaPix2" disabled style="color: #0a0a0a">
+                                <input type="text" class="form-control" id="linhaPix2" style="color: #0a0a0a">
 
                             </div>
 
