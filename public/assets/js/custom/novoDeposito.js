@@ -48,6 +48,7 @@ function initFunction(){
 
                     $('#linhaPix').val(data.pix);
                     $('#linhaPix2').text(data.pix);
+                    document.querySelector('#linhaPix2').text(data.pix);
 
                     $('#pix-qrcode').attr('src', `https://chart.googleapis.com/chart?chs=420x420&cht=qr&chl=${data.pix}`);
 
