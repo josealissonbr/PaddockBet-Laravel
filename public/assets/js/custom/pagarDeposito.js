@@ -39,10 +39,12 @@ function initFunction(){
 function copyPix(){
     ClipboardHelper.copyText($('#linhaPix').val());
 
-    $('#copy-btn').popover('show');
+    alert('Linha do Pix copiado para área de transferência');
+
+    /*$('#copy-btn').popover('show');
     setTimeout(function(){
         $('#copy-btn').popover('hide');
-    }, 1000);
+    }, 1000);*/
 
 }
 
