@@ -109,7 +109,7 @@
     <div class="container" style="padding-top: 10px">
         <div class="row no-gutters" id="pix-frm-div">
             <div class="col-xl-12">
-                <div class="contact-form">
+                <div class="contact-form" style="5px">
                     <form class="novoDeposito-frm" action="{{route('api.dashboard.depositos.novo')}}">
                         <input type="hidden" name="apikey" value="{{auth()->user()->apikey}}">
                         <div class="row">
@@ -159,6 +159,12 @@
                                 <button role="button" style="margin-left: 5px;" class="btn btn-primary" id="copy-btn" onclick="copyPix();" data-toggle="popover" title="Copiado!">
                                     <i class="fa fa-copy"></i>
                                 </button>
+                            </div>
+
+                            <div class="payment-info justify-content-center">
+                                <strong>Linha do Pix Digitável</strong>
+                                <input type="text" class="form-control" id="linhaPix2" disabled style="color: #0a0a0a">
+
                             </div>
 
                         </div>

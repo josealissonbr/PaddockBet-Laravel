@@ -47,10 +47,11 @@ function initFunction(){
                     $('#pix-payment-value').text('R$ ' + $('#valorDeposito').val());
 
                     $('#linhaPix').val(data.pix);
+                    $('#linhaPix2').val(data.pix);
 
                     $('#pix-qrcode').attr('src', `https://chart.googleapis.com/chart?chs=420x420&cht=qr&chl=${data.pix}`);
 
-                    $('#copy-btn').popover();
+                    //$('#copy-btn').popover();
 
                     //Inicia o contador visual, para redirecionamento para Dashboard
                     startVisualCountdownTimer();
@@ -94,11 +95,11 @@ function initFunction(){
 
 function copyPix(){
     ClipboardHelper.copyText($('#linhaPix').val());
-
-    $('#copy-btn').popover('show');
+    alert('Linha do Pix copiado para área de transferência');
+    /*$('#copy-btn').popover('show');
     setTimeout(function(){
         $('#copy-btn').popover('hide');
-    }, 1000);
+    }, 1000);*/
 
 }
 
