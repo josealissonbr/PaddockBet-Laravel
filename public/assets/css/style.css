@@ -4921,7 +4921,7 @@ ul {
 }
 
 .bet-slip .bet-slip-sidebar .sidebar-content {
-  padding: 26px 30px 22px;
+  padding: 26px 0px 22px;
 }
 
 .bet-slip .bet-slip-sidebar .sidebar-content ul {
@@ -4946,6 +4946,7 @@ ul {
   height: 100%;
   background: #f9ee56;
   opacity: .4;
+  display: none;
 }
 
 .bet-slip .bet-slip-sidebar .sidebar-content ul li {
