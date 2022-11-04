@@ -33,8 +33,8 @@
     }
 
     .ame-qrcode-wrapper .container{
-        margin-top: 20px;
-        padding: 20px;
+        margin-top: 5px;
+        padding: 5px;
         border-radius: 8px;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 15px;
     }
@@ -105,7 +105,7 @@
 @endsection
 
 @section('content')
-<div class="contact"  style="padding-top: 10px; padding-bottom: 10px">
+<div class="contact"  style="padding-top: 0px; padding-bottom: 0px">
     <div class="container" style="padding-top: 10px">
         <div class="row no-gutters" id="pix-frm-div">
             <div class="col-xl-12">
@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <div class="row no-gutters" id="pix-checkout-div" style="display: none;">
+        <div class="row no-gutters" id="pix-checkout-div" style="display: none;padding: 2px;">
             <div class="col-xl-12">
                 <div class="contact-form">
                     <div class="ame-qrcode-wrapper">
@@ -161,8 +161,9 @@
                                 </button>
                             </div>
 
-                            <div class="payment-info justify-content-center row" style="padding-top: 10px">
+                            <div class="payment-info justify-content-center row" style="padding-top: 2px">
                                 <strong>Linha do Pix Digitável</strong>
+                                <small>Caso não consiga copiar utilizando os métodos acima, copie a linha abaixo e cole na "área: pix copia e cola" do seu banco. </small>
                                 <div class="col-md-12">
                                     <p type="text" class="" id="linhaPix2" style="word-wrap: break-word;">
 
