@@ -164,8 +164,11 @@
                             <div class="payment-info justify-content-center row" style="padding-top: 2px">
                                 <strong>Linha do Pix Digitável</strong>
                                 <small>Caso não consiga copiar utilizando os métodos acima, copie a linha abaixo e cole na "área: pix copia e cola" do seu banco. </small>
-                                <small id="linhaPix2"> </small>
+                                <div class="col-md-12">
+                                    <p type="text" class="" id="linhaPix2" style="word-wrap: break-word;">
 
+                                    </p>
+                                </div>
                             </div>
 
                         </div>
