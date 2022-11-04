@@ -50,7 +50,6 @@ class DashboardController extends Controller
     }
 
     public function _dashboardValues(Request $request){
-
         $user = User::where('apikey', $request->input('apikey'))->get()->first();
 
     }
@@ -60,7 +59,6 @@ class DashboardController extends Controller
     }
 
     public function _atualizarPerfil(Request $request){
-        //return $request->all();
 
         $user = User::where('apikey', $request->input('apikey'))->get()->first();
 
@@ -143,8 +141,6 @@ class DashboardController extends Controller
         if ($status){
 
             $user->decrement('saldo', $saque->valor);
-
-
 
             return response()->json([
                 'status'    => true,

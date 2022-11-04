@@ -144,9 +144,13 @@
                                 </button>
                             </div>
 
-                            <div class="payment-info justify-content-center">
+                            <div class="payment-info justify-content-center row" style="padding-top: 10px">
                                 <strong>Linha do Pix Digitável</strong>
-                                <input type="text" class="form-control" id="linhaPix2" value="{{$sicoob->brcode}}">
+                                <div class="col-md-12">
+                                    <p type="text" class="" id="linhaPix2" style="word-wrap: break-word;">
+                                        {{$sicoob->brcode}}
+                                    </p>
+                                </div>
                             </div>
 
 
