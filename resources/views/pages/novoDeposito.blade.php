@@ -2,7 +2,7 @@
 
 @section('script')
 <script src="{{asset('assets/js/jquery.maskMoney.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('assets/js/custom/novoDeposito.js')}}?v={{today()}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/custom/novoDeposito.js')}}" type="text/javascript"></script>
 @endsection
 
 @section('css')
