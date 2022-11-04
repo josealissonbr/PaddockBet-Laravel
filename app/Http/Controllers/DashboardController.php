@@ -14,6 +14,10 @@ class DashboardController extends Controller
 {
     public function index(){
         if (!Auth::Check()){
+            if ( \App\Models\Eventos::where('situacao', 1)->limit(5)->count() < 1){
+                return redirect(route('login'));
+            }
+
             return view('pages.index');
         }
         return redirect('dashboard');

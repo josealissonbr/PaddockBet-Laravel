@@ -231,10 +231,10 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-4 col-lg-5 col-md-10">
                         <div class="about-widget">
-                            <a class="logo" href="index.html">
+                            <a class="logo" href="{{URL::to('/')}}">
                                 <img src="{{asset('assets/img/logo.png')}}" alt="">
                             </a>
-                            <p>{{env('APP_NAME')}}: O seu esporte preferido, com ainda mais emoção.</p>
+                            <p>PaddockBet: O seu esporte preferido, com ainda mais emoção.</p>
                             <div class="social">
                                 <ul>
                                     <li>
