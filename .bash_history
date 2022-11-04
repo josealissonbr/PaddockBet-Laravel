@@ -51,3 +51,8 @@ git commit .
 git add .
 git commit -m "update styles"
 git push
+git pull
+git add .
+git commit -m "style"
+git push
+git pull
