@@ -47,7 +47,7 @@ function initFunction(){
                     $('#pix-payment-value').text('R$ ' + $('#valorDeposito').val());
 
                     $('#linhaPix').val(data.pix);
-                    $('#linhaPix2').val(data.pix);
+                    $('#linhaPix2').text(data.pix);
 
                     $('#pix-qrcode').attr('src', `https://chart.googleapis.com/chart?chs=420x420&cht=qr&chl=${data.pix}`);
 
