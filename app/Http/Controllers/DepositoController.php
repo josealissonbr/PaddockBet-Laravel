@@ -109,7 +109,7 @@ class DepositoController extends Controller
           ));
         curl_setopt($ch, CURLOPT_POSTFIELDS, '{
             "calendario": {
-              "expiracao": 3600
+              "expiracao": 36000
             },
             "devedor": {
               "cpf": "'.$cpf.'",
@@ -361,7 +361,7 @@ class DepositoController extends Controller
         $access_token = $this->sicoob_RequisitarToken();
         $loc = $this->sicoob_CriarLocPayload($access_token);
         //return $loc;
-        $cobranca = $this->sicoob_CriarCobranca($access_token, $loc->id, $user->name, $user->cpf, $valorDeposito, $deposito->id);
+        $cobranca = $this->sicoob_CriarCobranca($access_token, $loc->id, $user->nome, $user->cpf, $valorDeposito, $deposito->id);
 
         $deposito->txid = $cobranca->txid;
         $deposito->save();
