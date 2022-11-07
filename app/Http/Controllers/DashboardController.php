@@ -26,25 +26,29 @@ class DashboardController extends Controller
 
     public function recalcSaldo(){
 
-        $user = User::find(auth()->user()->id);
+        $users = User::all();
 
-        $saldoUsuario = 0.00;
+        foreach($users as $user){
+            $saldoUsuario = 0.00;
 
-        $depositos = Depositos::where('situacao', 1)->where('idCliente', $user->id)->sum('valor');
+            $depositos = Depositos::where('situacao', 1)->where('idCliente', $user->id)->sum('valor');
 
-        $apostas = Transacoes::where('idCliente', $user->id)->where('tipo', 2)->sum('valor');
+            $apostas = Transacoes::where('idCliente', $user->id)->where('tipo', 2)->sum('valor');
 
-        $saques = Saques::where('idCliente', $user->id)->whereIn('situacao', [0,1])->sum('valor');
+            $saques = Saques::where('idCliente', $user->id)->whereIn('situacao', [0,1])->sum('valor');
 
-        $recebApostas = Transacoes::where('idCliente', $user->id)->where('tipo', 4)->sum('valor');
+            $recebApostas = Transacoes::where('idCliente', $user->id)->where('tipo', 4)->sum('valor');
 
-        $saldoUsuario = $depositos - $apostas - $saques + $recebApostas;
+            $saldoUsuario = $depositos - $apostas - $saques + $recebApostas;
 
-        $user->saldo2 = $saldoUsuario;
+            $user->saldo2 = $saldoUsuario;
 
-        $user->save();
+            $user->save();
+        }
 
-        return $user->saldo;
+
+
+        //sreturn $user->saldo;
     }
 
     public function dashboard(){

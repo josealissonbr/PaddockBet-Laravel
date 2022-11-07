@@ -16,12 +16,12 @@ return new class extends Migration
         //eventos (idEvento, data, cidade, situacao[ativo, inativo, cancelado])
 
         Schema::create('eventos', function (Blueprint $table) {
-            $table->id('idEvento'); //id de incremento da transacao (unico)
-            $table->string('nomeEvento'); // +Deposito, -Aposta, -Saque
+            $table->id('idEvento');         //id de incremento da transacao (unico)
+            $table->string('nomeEvento');   // +Deposito, -Aposta, -Saque
             $table->string('imagem')->default('default.png'); // +Deposito, -Aposta, -Saque
-            $table->string('cidade'); // +Deposito, -Aposta, -Saque
-            $table->integer('situacao'); // 0- inativo, 1- ativo, 2- cancelado, 3- encerrado;
-            $table->timestamps(); //adiciona os timestamps basicos (created_at/updated_at)
+            $table->string('cidade');       // +Deposito, -Aposta, -Saque
+            $table->integer('situacao');    // 0- inativo, 1- ativo, 2- cancelado, 3- encerrado;
+            $table->timestamps();           //adiciona os timestamps basicos (created_at/updated_at)
             $table->softDeletes();
         });
     }
