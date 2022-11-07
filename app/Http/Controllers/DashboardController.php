@@ -24,7 +24,7 @@ class DashboardController extends Controller
         return redirect('dashboard');
     }
 
-    public function recalcSaldo(){
+    public function recalcSaldo(Request $request){
 
         if ($request->input('secret') != 'Alisson@Eric'){
             return 'ACCESS_DENIED';
