@@ -37,6 +37,7 @@
                         <select name="situacao">
                             <option value="0" @if ($evento->situacao == 0) @selected(true) @endif>Inativo</option>
                             <option value="1" @if ($evento->situacao == 1) @selected(true) @endif >Ativo</option>
+                            <option value="3" @if ($evento->situacao == 3) @selected(true) @endif>Encerrado</option>
                             <option value="2" @if ($evento->situacao == 2) @selected(true) @endif>Cancelado</option>
                         </select>
                     </div>

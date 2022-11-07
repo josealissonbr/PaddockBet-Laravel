@@ -37,6 +37,7 @@
                         <select name="Situacao">
                             <option value="0">Inativo</option>
                             <option value="1" selected>Ativo</option>
+                            <option value="3">Encerrado</option>
                             <option value="2">Cancelado</option>
                         </select>
                     </div>

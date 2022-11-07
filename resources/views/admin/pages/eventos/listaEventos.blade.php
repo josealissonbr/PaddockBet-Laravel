@@ -103,6 +103,8 @@
                                     echo "Ativo";
                                 else if ($evento->situacao == 2)
                                     echo "Cancelado";
+                                else if ($evento->situacao == 3)
+                                    echo "Encerrado";
                                 @endphp
                         </td>
                         <td>{{Carbon\Carbon::parse($evento->created_at)->format('d/m/Y H:i:s')}}</td>

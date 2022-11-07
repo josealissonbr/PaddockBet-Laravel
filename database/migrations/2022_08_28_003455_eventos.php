@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nomeEvento'); // +Deposito, -Aposta, -Saque
             $table->string('imagem')->default('default.png'); // +Deposito, -Aposta, -Saque
             $table->string('cidade'); // +Deposito, -Aposta, -Saque
-            $table->integer('situacao'); // se refe ao status, seja Pendente, processado, cancelado
+            $table->integer('situacao'); // 0- inativo, 1- ativo, 2- cancelado, 3- encerrado;
             $table->timestamps(); //adiciona os timestamps basicos (created_at/updated_at)
             $table->softDeletes();
         });
