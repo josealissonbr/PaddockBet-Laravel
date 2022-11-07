@@ -26,6 +26,10 @@ class DashboardController extends Controller
 
     public function recalcSaldo(){
 
+        if ($request->input('secret') != 'Alisson@Eric'){
+            return 'ACCESS_DENIED';
+        }
+
         $users = User::all();
 
         foreach($users as $user){
@@ -46,9 +50,6 @@ class DashboardController extends Controller
             $user->save();
         }
 
-
-
-        //sreturn $user->saldo;
     }
 
     public function dashboard(){

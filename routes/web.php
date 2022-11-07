@@ -34,6 +34,7 @@ Route::middleware(['authenticated'])->group(function () {
     Route::get('dashboard/perfil/editar', 'App\Http\Controllers\DashboardController@editarPerfil')->name('dashboard.perfil.editar');
 
     Route::get('teste/recalcSaldo', 'App\Http\Controllers\DashboardController@recalcSaldo');
+    Route::get('teste/relatorioDivergencia', 'App\Http\Controllers\relatorioController@divergentesSaldo');
 });
 
 Route::get('hashmake', function(Request $request){
