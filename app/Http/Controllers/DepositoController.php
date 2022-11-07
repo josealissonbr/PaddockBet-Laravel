@@ -366,6 +366,9 @@ class DepositoController extends Controller
         $deposito->txid = $cobranca->txid;
         $deposito->save();
 
+        //Recalcular Saldo
+        \App\Helpers\mainHelper::recalcSaldo($user->id);
+
         return response()->json([
             'status'        =>  true,
             'idTransacao'   =>  $transacao->idTransacao,
@@ -449,6 +452,9 @@ class DepositoController extends Controller
         if ($deposito->situacao == 1){
             $user->increment('saldo', $deposito->valor);
         }
+
+        //Recalcular Saldo
+        \App\Helpers\mainHelper::recalcSaldo($user->id);
 
         return response()->json([
             'status'   => ($deposito->situacao == 1) ? true : false,

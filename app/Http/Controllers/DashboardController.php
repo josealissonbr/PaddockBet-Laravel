@@ -9,6 +9,7 @@ use App\Models\Apostas;
 use App\Models\Transacoes;
 use App\Models\User;
 use App\Models\Saques;
+use App\Models\Depositos;
 
 class DashboardController extends Controller
 {
@@ -21,6 +22,29 @@ class DashboardController extends Controller
             return view('pages.index');
         }
         return redirect('dashboard');
+    }
+
+    public function recalcSaldo(){
+
+        $user = User::find(auth()->user()->id);
+
+        $saldoUsuario = 0.00;
+
+        $depositos = Depositos::where('situacao', 1)->where('idCliente', $user->id)->sum('valor');
+
+        $apostas = Transacoes::where('idCliente', $user->id)->where('tipo', 2)->sum('valor');
+
+        $saques = Saques::where('idCliente', $user->id)->whereIn('situacao', [0,1])->sum('valor');
+
+        $recebApostas = Transacoes::where('idCliente', $user->id)->where('tipo', 4)->sum('valor');
+
+        $saldoUsuario = $depositos - $apostas - $saques + $recebApostas;
+
+        $user->saldo2 = $saldoUsuario;
+
+        $user->save();
+
+        return $user->saldo;
     }
 
     public function dashboard(){
@@ -137,6 +161,9 @@ class DashboardController extends Controller
         $saque->idTransacao = $transacao->idTransacao;
 
         $status = $saque->save();
+
+        //Recalcular Saldo
+        \App\Helpers\mainHelper::recalcSaldo($user->id);
 
         if ($status){
 

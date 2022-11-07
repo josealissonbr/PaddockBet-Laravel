@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->datetime('nascimento');
             $table->double('saldo')->default(0.00);
+            $table->double('saldo2')->default(0.00);
             $table->string('apikey');
             $table->integer('permission')->default(1); // 0- Banido, 1- Usuário, 2- Administrador
             $table->rememberToken();

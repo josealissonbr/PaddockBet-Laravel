@@ -142,6 +142,9 @@ class ApostasController extends Controller
         $user->save();
         //$prova->save();
 
+        //Recalcular Saldo
+        \App\Helpers\mainHelper::recalcSaldo($user->id);
+
         return response()->json([
             'status'        =>  true,
             'msg'           =>  'Aposta criada com sucesso!',
