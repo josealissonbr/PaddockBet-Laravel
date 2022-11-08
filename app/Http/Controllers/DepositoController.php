@@ -391,6 +391,11 @@ class DepositoController extends Controller
 
             if ($rDeposito){
                 $deposito = Depositos::find($rDeposito->id);
+
+                if ($deposito->situacao == 1){
+                    continue;
+                }
+
                 $deposito->situacao = 1;
                 $deposito->log_approver = "Sicoob";
 
