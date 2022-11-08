@@ -50,8 +50,7 @@ class ApostasController extends Controller
     }
 
     public function _EfetuarPalpite(Request $request){
-        //return $request->all();
-
+        
         $idProva = $request->input('idProva');
         $conjuntoSelecionado = $request->input('conjuntoSelecionado');
         $qtdCotas = $request->input('qtdCotas');
@@ -73,7 +72,7 @@ class ApostasController extends Controller
             ]);
         }
 
-        if (provasConjuntos::where('idProvaConjunto', $conjuntoSelecionado)->count() != 1){
+        if (provasConjuntos::where('idProva', $prova->idProva)->where('idProvaConjunto', $conjuntoSelecionado)->count() != 1){
             return response()->json([
                 'status'    =>  false,
                 'msg'       =>  'Falha ao validar o conjunto escolhido'
@@ -140,7 +139,6 @@ class ApostasController extends Controller
 
         $transacao->save();
         $user->save();
-        //$prova->save();
 
         //Recalcular Saldo
         \App\Helpers\mainHelper::recalcSaldo($user->id);

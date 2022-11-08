@@ -438,6 +438,12 @@ class DepositoController extends Controller
             ]);
         }
 
+        if ($deposito->situacao == 1){
+            return response()->json([
+                'status'   => ($deposito->situacao == 1) ? true : false,
+            ]);
+        }
+
         $transacao = Transacoes::find($deposito->idTransacao);
 
         if ($this->bCheckCobranca($deposito->txid)){
