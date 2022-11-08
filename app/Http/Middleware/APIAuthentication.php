@@ -18,6 +18,7 @@ class APIAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
+        return $next($request);
         Log::debug('CON: '.$request->ip());
         if ($request->input('apikey') == env('CRON_APIKEY')){
             Log::debug('PASS!!!: '.$request->ip());

@@ -443,35 +443,9 @@ class DepositoController extends Controller
             ]);
         }
 
-        if ($deposito->situacao == 1){
-            return response()->json([
-                'status'   => ($deposito->situacao == 1) ? true : false,
-            ]);
-        }
-
-        $transacao = Transacoes::find($deposito->idTransacao);
-
-        if ($this->bCheckCobranca($deposito->txid)){
-            $deposito->situacao = 1;
-            $deposito->log_approver = "Sicoob";
-            $transacao->situacao = 1;
-        }
-
-        $deposito->save();
-        $transacao->save();
-
-        if ($deposito->situacao == 1){
-            $user->increment('saldo', $deposito->valor);
-        }
-
-        //Recalcular Saldo
-        \App\Helpers\mainHelper::recalcSaldo($user->id);
-
         return response()->json([
             'status'   => ($deposito->situacao == 1) ? true : false,
         ]);
-
-
 
     }
 }
