@@ -8,8 +8,7 @@
             setData({{$prova->evento->idEvento}}, {{$prova->idProva}});
         }
 
-        defineKeys('{{auth()->user()->api_token}}','{{URL::to('/')}}');
-
+        defineKeys('{{auth()->user()->apikey}}','{{URL::to('/')}}');
     </script>
 @endsection
 
