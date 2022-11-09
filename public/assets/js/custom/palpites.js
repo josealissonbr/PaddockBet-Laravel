@@ -1,7 +1,27 @@
 var ID_EVENTO = 1;
+var ID_PROVA = 1;
 
-function setData(id){
+
+var APP_URL = '';
+
+var API_KEY = '';
+
+function defineKeys(KEY, URL){
+    APP_URL = URL;
+    API_KEY = KEY;
+}
+
+$(document).ready(function() {
+    initPage();
+});
+
+function initPage(){
+
+}
+
+function setData(id, idProva){
     ID_EVENTO = id;
+    ID_PROVA = idProva;
 }
 
 $('.btn-number').click(function(e){
@@ -159,4 +179,19 @@ $('#efetuar-palpite-frm').submit(function (e){
         }
     });
 
+});
+
+
+$('input[name="qtdCotas"]').change(function(e){
+    var conjuntoSelecionado = $( "select[name='conjuntoSelecionado'] option:selected" ).val();
+    $.ajax({
+        type: 'POST',
+        url: `${window.location.origin}/api/provas/palpites/calcOdds`,
+        data: {apikey: API_KEY, idProva: ID_PROVA, qtdCotas: $(this).val()},
+        success: function(response) {
+            $('select[name="conjuntoSelecionado"]').html(response);
+
+            $('select[name="conjuntoSelecionado"]').val(conjuntoSelecionado);
+        }
+    });
 });

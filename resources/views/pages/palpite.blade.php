@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('script')
-    <script defer src="{{asset('assets/js/custom/palpites.js')}}?v={{today()}}"></script>
+    <script src="{{asset('assets/js/custom/palpites.js')}}?v={{today()}}"></script>
 
     <script>
         window.onload = function() {
-            setData({{$prova->evento->idEvento}});
+            setData({{$prova->evento->idEvento}}, {{$prova->idProva}});
         }
+
+        defineKeys('{{auth()->user()->api_token}}','{{URL::to('/')}}');
+
     </script>
 @endsection
 
@@ -25,7 +28,8 @@
 
     </div>
 </div>
-    <!-- payment history end -->
+<!-- payment history end -->
+
  <!-- bet-slip begin -->
 <div class="bet-slip" style="padding: 0px;">
     <div class="container">
@@ -60,7 +64,7 @@
                                         <select name="conjuntoSelecionado" class="form-control formulario" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif required>
                                             <option value="">Selecione</option>
                                             @foreach ($prova->conjuntos as $conjunto)
-                                            <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}} ({{($prova->saldoAcumulado + $prova->valor) / $prova->valor}}x)</option>
+                                            <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}} ({{($prova->saldoAcumulado + ($prova->valor * 1)) / $prova->valor}}x)</option>
                                             @endforeach
                                         </select>
                                             {{--12 pontos--}}

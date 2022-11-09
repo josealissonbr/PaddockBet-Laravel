@@ -50,7 +50,7 @@ class ApostasController extends Controller
     }
 
     public function _EfetuarPalpite(Request $request){
-        
+
         $idProva = $request->input('idProva');
         $conjuntoSelecionado = $request->input('conjuntoSelecionado');
         $qtdCotas = $request->input('qtdCotas');
@@ -149,6 +149,16 @@ class ApostasController extends Controller
             'redirector'    =>  route('dashboard.apostas.detalhes', $aposta->idAposta),
         ]);
 
+    }
+
+    public function _CalcOdds(Request $request){
+        $qtdCotas = $request->input('qtdCotas');
+        $idProva = $request->input('idProva');
+
+        $prova = Provas::find($idProva);
+
+
+        return view('fragments.conjunto_select_option', compact(['qtdCotas', 'prova']));
     }
 
 }

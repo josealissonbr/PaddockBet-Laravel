@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('provas/palpites/efetuar', 'App\Http\Controllers\ApostasController@_EfetuarPalpite')->name('api.provas.fazerPalpite');
+Route::post('provas/palpites/calcOdds', 'App\Http\Controllers\ApostasController@_CalcOdds')->name('api.provas.calcOdds');
 Route::post('dashboard/home', 'App\Http\Controllers\DashboardController@_dashboardValues')->name('api.dashboard.home');
 
 Route::post('dashboard/saques/_solicitar', 'App\Http\Controllers\DashboardController@_solicitarSaque')->name('api.dashboard.saques.solicitar');
