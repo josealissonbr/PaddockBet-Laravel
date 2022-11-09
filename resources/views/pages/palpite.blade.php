@@ -61,7 +61,7 @@
                                         <span class="bet-price">
                                         <label> Selecione o conjunto vencedor</label>
                                         <select name="conjuntoSelecionado" class="form-control formulario" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif required>
-                                            <option value="">Selecione</option>
+                                            <option value="" disabled>-- Selecione --</option>
                                             @foreach ($prova->conjuntos as $conjunto)
                                             <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}} ({{($prova->saldoAcumulado + ($prova->valor * 1)) / $prova->valor}}x)</option>
                                             @endforeach
