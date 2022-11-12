@@ -63,7 +63,7 @@
                                         <select name="conjuntoSelecionado" class="form-control formulario" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif required>
                                             <option value="" selected disabled>-- Selecione --</option>
                                             @foreach ($prova->conjuntos as $conjunto)
-                                            <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}}</option>
+                                            <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}} ({{round(\App\Models\Apostas::where('idProva', $prova->idProva)->count() ? (\App\Models\Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->count()) / (\App\Models\Apostas::where('idProva', $prova->idProva)->count()) * 100 : 0)}}%)</option>
                                             @endforeach
                                         </select>
                                             {{--12 pontos--}}
