@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('script')
-    <script src="{{asset('assets/js/custom/palpites.js')}}?v={{today()}}"></script>
+    <script src="{{asset('assets/js/custom/palpites.js')}}?v={{time()}}"></script>
 
     <script>
         window.onload = function() {
