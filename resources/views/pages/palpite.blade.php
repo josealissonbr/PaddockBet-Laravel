@@ -45,7 +45,7 @@
                             <div class="single-bet">
 
                                 <div class="left-side">
-                                    <span class="bet-place">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y h:i')}} - {{$prova->nomeProva}}</span>
+                                    <span class="bet-place">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i')}} - {{$prova->nomeProva}}</span>
                                     <span class="bet-price">{{$prova->altura}}</span>
                                 </div>
 
