@@ -63,7 +63,7 @@
                                         <select name="conjuntoSelecionado" class="form-control formulario" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif required>
                                             <option value="" selected disabled>-- Selecione --</option>
                                             @foreach ($prova->conjuntos as $conjunto)
-                                            <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}} ({{($prova->saldoAcumulado + ($prova->valor * 1)) / $prova->valor}}x)</option>
+                                            <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}}</option>
                                             @endforeach
                                         </select>
                                             {{--12 pontos--}}
