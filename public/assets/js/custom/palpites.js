@@ -182,7 +182,7 @@ $('#efetuar-palpite-frm').submit(function (e){
 });
 
 
-$('input[name="qtdCotas"]').change(function(e){
+/*$('input[name="qtdCotas"]').change(function(e){
     var conjuntoSelecionado = $( "select[name='conjuntoSelecionado'] option:selected" ).val();
     $.ajax({
         type: 'POST',
@@ -194,4 +194,4 @@ $('input[name="qtdCotas"]').change(function(e){
             $('select[name="conjuntoSelecionado"]').val(conjuntoSelecionado);
         }
     });
-});
+});*/
