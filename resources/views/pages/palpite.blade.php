@@ -117,8 +117,9 @@
                             </form>
                         </div>
 
-
-
+                        <small>
+                            O percentual refere-se a quantidade de apostas feitas em cada conjunto até o momento.
+                        </small>
 
                     </div>
 
