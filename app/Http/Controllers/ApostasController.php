@@ -157,7 +157,6 @@ class ApostasController extends Controller
 
         $prova = Provas::find($idProva);
 
-
         return view('fragments.conjunto_select_option', compact(['qtdCotas', 'prova']));
     }
 

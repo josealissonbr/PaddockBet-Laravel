@@ -163,7 +163,8 @@
                                                     </div>
                                                     <div class="right-side">
                                                         <div class="buttons">
-                                                            <a href="{{route('dashboard.provas.palpite', $prova->idProva)}}" class="buy-ticket bet-btn bet-btn-dark-light"><i class="fa fa-plus"></i> Apostar</a>
+                                                            {{--<a href="{{route('dashboard.provas.palpite', $prova->idProva)}}" class="buy-ticket bet-btn bet-btn-dark-light"><i class="fa fa-plus"></i> Apostar</a>--}}
+                                                            <button onclick="window.location.href='{{route('dashboard.provas.palpite', $prova->idProva)}}'" type="button" class="btn btn-warning bet-btn-dark-light"><i class="fa fa-plus"></i> Apostar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -191,18 +192,18 @@
                                                         <span class="number">{{Carbon\Carbon::parse($proxProva->dataProva)->format('d/m/Y')}}</span>
                                                     </li>
                                                     <li>
-                                                        <span class="title">Valor Por Palpite</span>
+                                                        <span class="title">Valor mínimo por aposta</span>
                                                         <span class="number">R$ {{number_format($proxProva->valor, 2, ',')}}<span>
                                                     </li>
                                                 </ul>
-                                                <div class="total-returns">
+                                                {{--<div class="total-returns">
                                                     <span class="text">
                                                         Prêmio Total
                                                     </span>
                                                     <span class="number">
                                                         R$ {{number_format($proxProva->saldoAcumulado, 2, ",", " ")}}
                                                     </span>
-                                                </div>
+                                                </div>--}}
 
                                             </div>
                                         </div>
