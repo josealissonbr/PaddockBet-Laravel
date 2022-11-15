@@ -36,7 +36,7 @@
             <div class="col-xl-8 col-lg-8">
                 <div class="bet-slip-content">
                     <div class="box-heading">
-                        <h4>Provas</h4>
+                        <h4>Apostar</h4>
                         <h4></h4>
                     </div>
                     <div>
