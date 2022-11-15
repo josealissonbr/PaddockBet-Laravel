@@ -52,7 +52,7 @@
             </div>
             <div class="col-xl-4 col-lg-4">
                 <div class="bet-slip-sidebar">
-                    <h4 class="title">{{isset($provas[0]->nomeProva) ? $provas[0]->nomeProva : ''}}</h4>
+                    <h4 class="title">{{isset($evento->nomeEvento) ? $evento->nomeEvento : ''}}</h4>
                     <div class="sidebar-content">
                         <ul>
                             <li>
