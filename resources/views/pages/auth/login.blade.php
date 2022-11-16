@@ -323,11 +323,11 @@
                             <a href="#">Paddock</a> © 2020. PRIVACY POLICY
                         </p>
                     </div>
-                    <div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
+                    {{--<div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
                         <p class="copyright-text">
                             Desenvolvido com <i class="fa fa-heart" style="color: #ff0000"></i> por <a href="https://www.linkedin.com/in/alisson-santos-9332b7219/" target="_blank" style="text-decoration: underline;">Alisson Santos</a>
                         </p>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>

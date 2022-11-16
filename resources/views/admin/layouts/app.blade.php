@@ -247,7 +247,7 @@
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">
-                <small>Copyright © {{env('APP_NAME')}} 2021 | Desenvolvido com <i class="fa fa-heart"></i> por <a href="https://www.linkedin.com/in/alisson-santos-9332b7219/" target="_blank">Alisson Santos</a> </small>
+                <small>Copyright © {{env('APP_NAME')}} 2021 {{--s | Desenvolvido com <i class="fa fa-heart"></i> por <a href="https://www.linkedin.com/in/alisson-santos-9332b7219/" target="_blank">Alisson Santos</a>--}} </small>
             </div>
         </div>
     </footer>
