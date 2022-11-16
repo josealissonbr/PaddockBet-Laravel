@@ -50,5 +50,7 @@ Route::middleware(['AdminApi'])->group(function () {
 
 Route::get('cron/processPayments', 'App\Http\Controllers\DepositoController@_processPayments')->name('api.cron.processPayments');
 
+Route::get('termos/aceitarTermos', 'App\Http\Controllers\DashboardController@_aceitarTermos')->name('api.termos.aceitarTermos');
+
 //Editar perfil
 Route::post('user/atualizarPerfil', 'App\Http\Controllers\DashboardController@_atualizarPerfil')->name('api.perfil.atualizarPerfil');

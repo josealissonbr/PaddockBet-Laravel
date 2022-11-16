@@ -265,5 +265,36 @@
 
         @yield('script')
 
+        <script>
+            @if (is_null(auth()->user()->acceptTerms))
+            Swal.fire({
+                title: '<strong>Termos de Uso</strong>',
+                icon: 'info',
+                html:
+                    'Você precisa aceitar os termos de uso disponíveis ' +
+                    '<a href="{{route("termos.uso")}}" target="_blank">neste link</a> ' +
+                    ', antes de continuar.',
+                showCloseButton: true,
+                showCancelButton: false,
+                allowOutsideClick: false,
+                focusConfirm: false,
+                confirmButtonText:
+                    '<i class="fa fa-thumbs-up"></i> Aceito!',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText:
+                    '<i class="fa fa-thumbs-down"></i> Não aceito',
+                cancelButtonAriaLabel: 'Thumbs down'
+            }).then(function(result) {
+                if (result.isConfirmed){
+                    $.ajax({
+                        method: 'GET',
+                        url: '{{ route("api.termos.aceitarTermos")}}',
+                        data: {apikey: '{{auth()->user()->apikey}}'}
+                    })
+                }
+            });
+            @endif
+        </script>
+
     </body>
 </html>

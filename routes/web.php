@@ -75,6 +75,8 @@ Route::get('redefinir-senha/update/{token}', 'App\Http\Controllers\AuthControlle
 
 Route::post('redefinir-senha/updateByToken', 'App\Http\Controllers\AuthController@postRedefinirSenhaToken')->name('login.redefinir-senha.changepw.post');
 
+Route::get('termos-de-uso', 'App\Http\Controllers\DashboardController@termosDeUso')->name('termos.uso');
+
 Route::post('cadastro/process', 'App\Http\Controllers\AuthController@postRegistration')->name('login.cadastro.post');
 Route::get('login/logout', 'App\Http\Controllers\AuthController@logout')->name('login.logout');
 

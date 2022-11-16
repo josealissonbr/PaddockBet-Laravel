@@ -10,6 +10,7 @@ use App\Models\Transacoes;
 use App\Models\User;
 use App\Models\Saques;
 use App\Models\Depositos;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -120,6 +121,19 @@ class DashboardController extends Controller
 
     public function novoSaque(){
         return view('pages.novoSaque');
+    }
+
+    public function termosDeUso(Request $request){
+        return view('pages.TermosDeUso');
+    }
+
+    public function _aceitarTermos(Request $request){
+        $apikey = $request->input('apikey');
+        $user = User::where('apikey', $apikey)->get()->first();
+
+        $user->acceptTerms = Carbon::now();
+
+        $user->save();
     }
 
     public function _solicitarSaque(Request $request){
