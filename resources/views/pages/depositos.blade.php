@@ -34,7 +34,7 @@
                         <tbody>
                             @foreach ($depositos as $deposito)
                             <tr>
-                                <td>#{{$deposito->id}}</td>
+                                <td>{{$deposito->id}}</td>
                                  <td>Pix</td>
                                 <th scope="row" class="d-flex">
                                     R$ {{number_format($deposito->valor, 2, ',', ' ')}}

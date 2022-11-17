@@ -34,7 +34,7 @@
                         <tbody>
                             @foreach ($saques as $saque)
                             <tr>
-                                <td>#{{$saque->id}}</td>
+                                <td>{{$saque->id}}</td>
                                  <td>Pix</td>
                                 <th scope="row" class="d-flex">
                                     R$ {{number_format($saque->valor, 2, ',', ' ')}}

@@ -91,7 +91,7 @@
                 <tbody>
                     @foreach($eventos as $evento)
                     <tr class="eventoTr_{{$evento->idEvento}}">
-                        <td>#{{$evento->idEvento}}</td>
+                        <td>{{$evento->idEvento}}</td>
                         <td><strong>{{$evento->nomeEvento}}</strong></td>
                         <td>{{$evento->cidade}}</td>
                         <td>{{$evento->provas ? $evento->provas->count() : 0}}</td>

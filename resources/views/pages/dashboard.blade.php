@@ -203,7 +203,7 @@
                                     else if ($transacao->tipo == 5)
                                         echo "Bônus";
                                 @endphp</th>
-                                <td>#{{$transacao->idTransacao}}</td>
+                                <td>{{$transacao->idTransacao}}</td>
                                 <td>{{Carbon\Carbon::parse($transacao->created_at)->format('d/m/Y H:i')}}</td>
                                 <td>
                                     @php

@@ -135,7 +135,7 @@
                 <tbody>
                     @foreach($saques as $saque)
                     <tr class="saqueTr_{{$saque->id}}">
-                        <td>#{{$saque->id}}</td>
+                        <td>{{$saque->id}}</td>
                         <td>
                             @php
                                 if ($saque->situacao == 0)

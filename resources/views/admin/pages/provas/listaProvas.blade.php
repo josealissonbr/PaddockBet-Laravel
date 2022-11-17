@@ -96,7 +96,7 @@
                 <tbody>
                     @foreach($provas as $prova)
                     <tr class="provaTr_{{$prova->idProva}}">
-                        <td>#{{$prova->idProva}}</td>
+                        <td>{{$prova->idProva}}</td>
                         <td><strong>{{$prova->nomeProva}}</strong></td>
                         <td><strong>{{$prova->evento->nomeEvento}}</strong></td>
                         <td>{{$prova->altura}}</td>

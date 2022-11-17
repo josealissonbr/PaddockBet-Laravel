@@ -36,7 +36,7 @@
                             @foreach ($apostas as $aposta)
                             <tr>
                                 <td>{{Carbon\Carbon::parse($aposta->created_at)->format('d/m/Y H:i')}}</td>
-                                 <td><a href="detalheBilhete.php">#{{$aposta->idAposta}}</a></td>
+                                 <td><a href="detalheBilhete.php">{{$aposta->idAposta}}</a></td>
                                 <th scope="row" class="d-flex">
                                     <a href="{{route('dashboard.apostas.detalhes', $aposta->idAposta)}}">{{isset($aposta->prova->evento->nomeEvento) ? $aposta->prova->evento->nomeEvento : ''}} - {{isset($aposta->prova->nomeProva) ? $aposta->prova->nomeProva : ''}}</a></th>
                                <td>{{isset($aposta->prova->dataProva) ? Carbon\Carbon::parse($aposta->prova->dataProva)->format('d/m/Y H:i') : ''}}</td>
