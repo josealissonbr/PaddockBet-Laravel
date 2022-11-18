@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="right-side">
                                     <div class="buttons">
-                                        <a href="{{route('dashboard.provas.palpite', $prova->idProva)}}" class="buy-ticket bet-btn bet-btn-dark-light"><i class="fa fa-plus"></i> Apostar</a>
+                                        <button onclick="window.location.href='{{route('dashboard.provas.palpite', $prova->idProva)}}'" class="btn btn-warning bet-btn-dark-light"><i class="fa fa-plus"></i> Apostar</button>
                                     </div>
                                 </div>
                             </div>

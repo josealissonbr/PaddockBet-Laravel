@@ -157,7 +157,7 @@
                                                 <div class="single-bet">
                                                     <div class="left-side">
                                                         <span class="bet-place">{{$prova->nomeProva}}
-                                                            <span class="table-sub-date">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y h:i')}}</span>
+                                                            <span class="table-sub-date">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i')}}</span>
                                                         </span>
                                                         <span class="bet-price">{{$prova->altura}}</span>
                                                     </div>
@@ -179,12 +179,12 @@
                                 </div>
 
                                 @php
-                                    $proxProva = \App\Models\Provas::where('idEvento', $evento->idEvento)->orderBy('dataProva', 'asc')->get()->first();
+                                    $proxProva = \App\Models\Provas::where('idEvento', $evento->idEvento)->where('situacao', 1)->orderBy('dataProva', 'asc')->get()->first();
                                 @endphp
 
                                     <div class="col-xl-4 col-lg-4">
                                         <div class="bet-slip-sidebar">
-                                            <h4 class="title">Próx Prova: {{$proxProva->nomeProva}}</h4>
+                                            <h4 class="title">Próx Prova: {{isset($proxProva->nomeProva) ? $proxProva->nomeProva : 'Em Breve'}}</h4>
                                             <div class="sidebar-content">
                                                 <ul>
                                                     <li>

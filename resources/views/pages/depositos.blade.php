@@ -53,8 +53,8 @@
                                             echo "Desconhecido ";
                                     @endphp
                                 </td>
-                                <td>{{Carbon\Carbon::parse($deposito->created_at)->format('d/m/Y h:i')}}</td>
-                                <td>{{Carbon\Carbon::parse($deposito->updated_at)->format('d/m/Y h:i')}}</td>
+                                <td>{{Carbon\Carbon::parse($deposito->created_at)->format('d/m/Y H:i')}}</td>
+                                <td>{{Carbon\Carbon::parse($deposito->updated_at)->format('d/m/Y H:i')}}</td>
                                 <td>
                                     @if ($deposito->situacao == 0)
                                     <a href="{{route('dashboard.depositos.pagar', $deposito->id)}}">

@@ -102,12 +102,12 @@
                                         <br>
                                         <div class="buttons">
                                             @if (Carbon\Carbon::parse($prova->dataProva)->isPast() || $prova->situacao != 1)
-                                                <button type="submit" id="palpite_btn" class="buy-ticket bet-btn btn-danger" disabled>
+                                                <button id="palpite_btn" class="btn btn-danger bet-btn-dark-light" disabled>
                                                     <i class="fa fa-ban"></i> Apostas Encerradas
                                                 </button>
                                             @else
-                                            <button type="submit" id="palpite_btn" class="buy-ticket bet-btn bet-btn-dark-light">
-                                                <i class="fa fa-save"></i> Apostar
+                                            <button type="submit" id="palpite_btn" type="button" class="btn btn-warning bet-btn-dark-light">
+                                                <i class="fa fa-plus"></i> Apostar
                                             </button>
                                             @endif
                                         </div>

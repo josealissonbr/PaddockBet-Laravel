@@ -93,7 +93,7 @@
                                 <ul>
                                     <li>
                                         <span class="title">Início</span>
-                                        <span class="number">{{Carbon\Carbon::parse($aposta->created_at)->format('d/m h:i')}}</span>
+                                        <span class="number">{{Carbon\Carbon::parse($aposta->created_at)->format('d/m H:i')}}</span>
                                     </li>
                                     <li>
                                         <span class="title">Valor da Aposta</span>
