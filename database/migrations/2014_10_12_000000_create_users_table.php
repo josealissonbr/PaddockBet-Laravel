@@ -27,6 +27,7 @@ return new class extends Migration
             $table->double('saldo2')->default(0.00);
             $table->string('apikey');
             $table->integer('permission')->default(1); // 0- Banido, 1- Usuário, 2- Administrador
+            $table->timestamp('acceptTerms')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

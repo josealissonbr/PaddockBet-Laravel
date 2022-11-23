@@ -155,7 +155,12 @@ class ApostasController extends Controller
         $qtdCotas = $request->input('qtdCotas');
         $idProva = $request->input('idProva');
 
+
         $prova = Provas::find($idProva);
+
+        //$cotas = Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->sum('qtdeCotas');
+
+        //return $cotas / $qtdCotas;
 
         return view('fragments.conjunto_select_option', compact(['qtdCotas', 'prova']));
     }
