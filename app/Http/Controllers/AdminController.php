@@ -63,7 +63,6 @@ class AdminController extends Controller
             $DataChart = [];
             foreach ($days as $key => $value) {
                 $DataChart[] = Depositos::where('situacao', 1)->whereDay('created_at', $value)->sum('valor');
-
             }
 
 
@@ -194,12 +193,16 @@ class AdminController extends Controller
         $status = $prova->save();
 
         for($i=0; $i < count($arrNomeConjunto); $i++){
-           $conjunto = new provasConjuntos;
-           $conjunto->idProva = $prova->idProva;
-           $conjunto->nomeConjunto = $arrNomeConjunto[$i];
-           $conjunto->situacao = 1;
+            if (empty($arrNomeConjunto[$i])){
+                continue;
+            }
 
-           $conjunto->save();
+            $conjunto = new provasConjuntos;
+            $conjunto->idProva = $prova->idProva;
+            $conjunto->nomeConjunto = $arrNomeConjunto[$i];
+            $conjunto->situacao = 1;
+
+            $conjunto->save();
         }
 
 
@@ -693,6 +696,68 @@ class AdminController extends Controller
         return response()->json([
             'status'    => (bool)$status,
         ]);
+    }
+
+    public function _updateConjunto(Request $request){
+
+        $auth = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        $idConjunto     = $request->input('idConjunto');
+
+        $nomeConjunto   = $request->input('nomeConjunto');
+        $ordemConjunto  = $request->input('ordemConjunto');
+
+        $conjunto = \App\Models\provasConjuntos::find($idConjunto);
+
+        $conjunto->nomeConjunto = $nomeConjunto;
+        $conjunto->ordem        = $ordemConjunto;
+
+        $status = $conjunto->save();
+
+        return response()->json([
+            'status' => (bool)$status,
+
+        ]);
+    }
+
+    public function _createConjunto(Request $request){
+
+        //return $request->all();
+
+        $idProva            = $request->input('idProva');
+        $apikey             =  $request->input('apikey');
+        $conjuntoNome       =  (array)$request->input('conjuntoNome');
+        $conjuntoOrdem      =  (array)$request->input('conjuntoOrdem');
+        $auth = User::where('apikey', $request->input('apikey'))->get()->first();
+
+        if (!$conjuntoNome || !$conjuntoOrdem){
+            return response()->json([
+                'status'    => false,
+                'msg'       => 'Campos infusicientes',
+            ]);
+        }
+
+
+        for ($i=0; $i<count($conjuntoNome); $i++) {
+
+            if (empty($conjuntoNome[$i])){
+                continue;
+            }
+
+            $conjunto               = new provasConjuntos;
+            $conjunto->idProva      = $idProva;
+            $conjunto->ordem        = empty($conjuntoOrdem[$i]) ? (\App\Models\provasConjuntos::where('idProva', $idProva)->count() +1) : $conjuntoOrdem[$i];
+            $conjunto->nomeConjunto = $conjuntoNome[$i];
+            $conjunto->situacao     = 1;
+
+            $status = $conjunto->save();
+        }
+
+        return response()->json([
+            'status'    => true,
+            'msg'       => 'Criado com sucesso!',
+        ]);
+
     }
 
 }

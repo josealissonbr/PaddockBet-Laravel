@@ -26,6 +26,7 @@ class UserSeeder extends Seeder
             'telefone'          => "8292047888",
             'nascimento'        => Carbon::createFromFormat('d/m/Y', '03/12/2003')->format('Y-m-d'),
             'saldo'             => 900.00,
+            'permission'        => 2,
             'apikey'            => Str::random(16),
             'password'          => Hash::make("123")
         ]);

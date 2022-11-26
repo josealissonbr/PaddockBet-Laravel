@@ -37,6 +37,9 @@ Route::middleware(['AdminApi'])->group(function () {
     Route::post('admin/provas/_excluir', 'App\Http\Controllers\AdminController@_deleteProva')->name('api.admin.provas.excluir');
     Route::post('admin/provas/_definirVencedorProva', 'App\Http\Controllers\AdminController@_definirVencedorProva')->name('api.admin.provas.definirvencedor');
 
+    Route::post('admin/provas/edit/conjunto/_update', 'App\Http\Controllers\AdminController@_updateConjunto')->name('api.admin.provas.conjunto.update');
+    Route::post('admin/provas/edit/conjunto/_create', 'App\Http\Controllers\AdminController@_createConjunto')->name('api.admin.provas.conjunto.create');
+
     Route::post('admin/usuario/_novo', 'App\Http\Controllers\AdminController@_addUsuario')->name('api.admin.usuarios.novo');
     Route::post('admin/usuario/_edit', 'App\Http\Controllers\AdminController@_editUsuario')->name('api.admin.usuarios.edit');
 
