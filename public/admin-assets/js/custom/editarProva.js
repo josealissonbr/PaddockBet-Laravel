@@ -216,7 +216,12 @@ function newMenuItem() {
     newElem.find('input[conjuntoOrdem=""]').attr('name', 'conjuntoOrdem[]');
     newElem.find('input[conjuntoNome=""]').attr('id', 'conjuntoNome_'+uniqueID);
     newElem.find('input[conjuntoNome=""]').attr('name', 'conjuntoNome[]');
-    newElem.find('button').remove();
+    newElem.find('.row').append(`<div class="col-md-2">
+    <div class="form-group">
+        <a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a>
+    </div>
+</div>`);
+    newElem.find('.just-btn').remove();
     newElem.appendTo('table#conjuntos-edit-list-container');
 }
 
