@@ -150,6 +150,24 @@
                             </td>
                         </tr>
                         @endforeach
+                        @if ($prova->conjuntos->count() == 0)
+                        <tr class="conjuntos-edit-list-item">
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-2 mt-2 mr-1">
+                                        <div class="form-group">
+                                            <input type="text" id="conjuntoOrdem_KXDSCNHVUHSDB" conjuntoordem="" value="" name="conjuntoOrdem[]" class="form-control conjuntoOrdem" placeholder="Nº">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-2 mr-2">
+                                        <div class="form-group">
+                                            <input type="text" id="conjuntoNome_KXDSCNHVUHSDB" conjuntonome="" value="" name="conjuntoNome[]" class="form-control conjuntoNome" placeholder="Nome">
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
                     </table>
 
                     <a href="#0" class="btn_1 gray add-conjuntos-list-item"><i class="fa fa-fw fa-plus-circle"></i>Adicionar Item</a>
