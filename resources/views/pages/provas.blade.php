@@ -21,11 +21,13 @@
             <div class="col-xl-8 col-lg-8">
                 <div class="bet-slip-content">
                     <div class="box-heading">
-                        <h4>Provas</h4>
+                        <h4>Provas Ativas</h4>
                         <h4></h4>
                     </div>
                     <div>
-                        @foreach ($provas as $prova)
+                        @foreach ($provas->filter(function ($item) {
+                            return $item->situacao==1;
+                        })->values() as $prova)
                         <div class="different-bet">
                             <div class="single-bet">
                                 <div class="left-side">
@@ -70,18 +72,50 @@
                             </li>
                         </ul>
                         <hr>
-                        {{--<div class="total-returns">
-                            <span class="text">
-                                Prêmio Total deste Evento
-                            </span>
-                            <span class="number">
-                                R$ {{number_format($acumuladoEvento, 2, ",", " ")}}
-                            </span>
-                        </div>--}}
 
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 result pt-2">
+                <div class="result-sheet-cover">
+                    <div class="result-sheet">
+                        <h4 class="result-title">Resultados</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">Data &amp; Hora</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Vencedor</th>
+                                    <th scope="col">Odds</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($provas->SortByDesc('dataProva')->filter(function ($item) {
+                                    return $item->situacao==3;
+                                })->values() as $prova)
+
+                                <tr style="background: #111618; border: 1px solid rgba(248, 27, 100, 0.4);">
+
+                                    <td class="text-light">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i')}} </td>
+                                    <td class="text-light">{{$prova->nomeProva}}</td>
+                                    <td class="text-light"> {{!is_null($prova->conjuntoVencedor->nomeConjunto) ? $prova->conjuntoVencedor->nomeConjunto : 'N/A'}}</td>
+                                    <td class="text-light">{{number_format(($prova->saldoAcumulado + ($prova->valor * 1)) / ((\App\Models\Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $prova->idConjuntoVencedor)->sum('qtdeCotas') + 1) * $prova->valor), 2, '.')}}x</td>
+
+                                </tr>
+
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

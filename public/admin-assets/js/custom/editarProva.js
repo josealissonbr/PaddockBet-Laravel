@@ -102,7 +102,7 @@ function definirConjuntoVencedor(idConjunto, idProva){
     })
 }
 
-$('.conjunto-btn').click(function(e){
+$('.conjunto-update-btn').click(function(e){
     var idConjunto      = $(this).attr('id').replace('conjunto_','');
     var nomeConjunto    = $('#conjuntoNome_'+idConjunto).val();
     var ordemConjunto   = $('#conjuntoOrdem_'+idConjunto).val();

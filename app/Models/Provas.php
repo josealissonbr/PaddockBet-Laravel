@@ -20,4 +20,8 @@ class Provas extends Model
     public function conjuntos(){
         return $this->hasMany(provasConjuntos::class, 'idProva', 'idProva');
     }
+
+    public function conjuntoVencedor(){
+        return $this->belongsTo(provasConjuntos::class, 'idConjuntoVencedor', 'idProvaConjunto');
+    }
 }

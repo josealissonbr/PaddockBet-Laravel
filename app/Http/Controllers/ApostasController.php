@@ -36,10 +36,9 @@ class ApostasController extends Controller
 
     public function provas($idEvento){
         $evento = Eventos::find($idEvento);
-        $provas = Provas::where('idEvento', $idEvento)->where('situacao', 1)->orderBy('dataProva', 'ASC')->get();
+        $provas = Provas::with('conjuntoVencedor')->where('idEvento', $idEvento)->orderBy('dataProva', 'ASC')->get();
         $acumuladoEvento = Provas::where('idEvento', $idEvento)->where('situacao', 1)->sum('saldoAcumulado');
 
-        //return $provas;
         return view('pages.provas', compact('evento', 'provas', 'acumuladoEvento'));
     }
 

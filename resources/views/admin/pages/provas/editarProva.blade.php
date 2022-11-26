@@ -124,12 +124,12 @@
                                     </div>
 
                                     <div class="col-md-1 mt-2 mr-2 just-btn">
-                                        <button type="button" id="conjunto_{{$conjunto->idProvaConjunto}}" class="btn_1 gray small conjunto-btn" href="#" style="border-radius: 4px">
+                                        <button type="button" id="conjunto_{{$conjunto->idProvaConjunto}}" class="btn_1 gray small conjunto-update-btn" href="#" style="border-radius: 4px">
                                             <i class="fa fa-fw fa-save"></i> Salvar
                                         </button>
                                     </div>
 
-                                    <div class="col-md-2 mt-2 mr-2 just-btn">
+                                    <div class="col-md-4 mt-2 mr-2 just-btn">
                                         <div class="form-group">
                                             @if ($prova->situacao == 1 || $prova->situacao == 2)
                                             <button type="button" id="conjunto_{{$conjunto->idProvaConjunto}}" onclick="definirConjuntoVencedor({{$conjunto->idProvaConjunto}}, {{$prova->idProva}});" class="btn_1 gray small conjunto-btn" href="#" style="border-radius: 4px">
