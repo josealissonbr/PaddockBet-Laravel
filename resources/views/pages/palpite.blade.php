@@ -62,7 +62,8 @@
                                         <label> Selecione o conjunto vencedor</label>
                                         <select name="conjuntoSelecionado" class="form-control formulario" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif required>
                                             <option value="" selected disabled>-- Selecione --</option>
-                                            @foreach ($prova->conjuntos as $conjunto)
+
+                                            @foreach ($prova->conjuntos->sortBy('ordem') as $conjunto)
                                             <option value="{{$conjunto->idProvaConjunto}}">{{$conjunto->nomeConjunto}} ({{number_format(($prova->saldoAcumulado + ($prova->valor * 1)) / ((\App\Models\Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $conjunto->idProvaConjunto)->sum('qtdeCotas') + 1) * $prova->valor), 2, '.')}}x)</option>
                                             @endforeach
                                         </select>
