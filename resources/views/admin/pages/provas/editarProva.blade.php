@@ -89,8 +89,9 @@
 
             </div>
 
+            <button type="submit" class="btn_1 medium">Atualizar Prova</button>
         </form>
-        <button type="submit" class="btn_1 medium">Atualizar Prova</button>
+
     </div>
 
     <form class="novoConjuntoForm" action="{{route('api.admin.provas.conjunto.create')}}" method="POST">
