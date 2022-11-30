@@ -45,26 +45,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-sm-6">
                             <div class="left-area">
-                                <ul>
-                                    <li>
-                                        <span class="icon">
-                                            <i class="far fa-calendar-alt"></i>
-                                        </span>
-                                        <span class="text">
-                                            <span id="date"></span>
-                                            <span id="month"></span>
-                                            <span id="year"></span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="icon">
-                                            <i class="far fa-clock"></i>
-                                        </span>
-                                        <span class="text clocks">
-                                            <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
-                                        </span>
-                                    </li>
-                                </ul>
+
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-sm-6">
