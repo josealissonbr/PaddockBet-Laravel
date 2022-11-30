@@ -113,9 +113,8 @@
                                             if ($qtdCotas < 1)
                                                 $qtdCotas = 1;
 
-                                            echo number_format(($prova->saldoAcumulado) / ($qtdCotas * $prova->valor), 2, '.');
+                                            echo number_format(($prova->saldoAcumulado) / ($qtdCotas * $prova->valor), 2, '.') . 'x';
                                         @endphp
-                                        x
                                     </td>
 
                                 </tr>
