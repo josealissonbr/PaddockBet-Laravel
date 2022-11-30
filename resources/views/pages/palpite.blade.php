@@ -77,37 +77,42 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="input-group">
-                                            <span class="input-group-prepend">
+                                            {{--<span class="input-group-prepend">
                                                 <button type="button" class="btn btn-outline-secondary btn-number" data-type="minus" data-field="qtdCotas">
                                                     <span class="fa fa-minus"></span>
                                                 </button>
-                                            </span>
+                                            </span>--}}
                                             <input type="text" name="qtdCotas" class="form-control input-number" value="1" min="1" max="99" style="text-align: center;" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif required>
-                                            <span class="input-group-append">
+                                            {{--<span class="input-group-append">
                                                 <button type="button" class="btn btn-outline-secondary btn-number" data-type="plus" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif data-field="qtdCotas">
                                                     <span class="fa fa-plus"></span>
                                                 </button>
-                                            </span>
+                                            </span>--}}
                                         </div>
-                                        <div class="input-group mt-2">
-                                            <span class="input-group-prepend">
+                                        @if (!Carbon\Carbon::parse($prova->dataProva)->isPast() || $prova->situacao == 1)
+                                        <div class="input-group pt-2">
+                                            <span class="input-group-prepend pt-2 pr-1">
+                                                <button type="button" class="btn btn-outline-secondary cota-x1">
+                                                    R${{$prova->valor * 1}}
+                                                </button>
+                                            </span>
+                                            <span class="input-group-prepend pt-2 pr-1">
                                                 <button type="button" class="btn btn-outline-secondary cota-x2">
-                                                    x2
+                                                    R${{$prova->valor * 2}}
                                                 </button>
                                             </span>
-                                            <span class="input-group-append">
+                                            <span class="input-group-append pt-2 pr-1">
                                                 <button type="button" class="btn btn-outline-secondary cota-x5">
-                                                    x5
+                                                    R${{$prova->valor * 5}}
                                                 </button>
                                             </span>
-                                            <span class="input-group-append">
+                                            <span class="input-group-append pt-2 pr-1">
                                                 <button type="button" class="btn btn-outline-secondary cota-x10">
-                                                    x10
+                                                    R${{$prova->valor * 10}}
                                                 </button>
                                             </span>
-
-
                                         </div>
+                                        @endif
                                     </div>
                                     <div class="col-sm-3" style="padding-top: 7px">
                                         <a id="totalPalpiteValor">R$ {{number_format($prova->valor, 2, ".", " ")}}</a>

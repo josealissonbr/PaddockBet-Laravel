@@ -16,34 +16,41 @@ $(document).ready(function() {
 });
 
 function initPage(){
-    $('.cota-x2').click(function(e){
-        var qtdCotas = $('input[name="qtdCotas"]');
+    $('.cota-x1').click(function(e){
+        var valorCota = $('#valorProva').val();
 
-        if ((qtdCotas.val() * 2)  > 99){
-            qtdCotas.val(99);
-        }else{
-            qtdCotas.val(qtdCotas.val() * 2);
-        }
+        var inputCotas = $('input[name="qtdCotas"]');
+
+        inputCotas.val(1);
+        inputCotas.trigger('change');
+    });
+
+    $('.cota-x2').click(function(e){
+        var valorCota = $('#valorProva').val();
+
+        var inputCotas = $('input[name="qtdCotas"]');
+
+        inputCotas.val((valorCota / valorCota) * 2);
+        inputCotas.trigger('change');
     });
 
     $('.cota-x5').click(function(e){
-        var qtdCotas = $('input[name="qtdCotas"]');
+        var valorCota = $('#valorProva').val();
 
-        if ((qtdCotas.val() * 5)  > 99){
-            qtdCotas.val(99);
-        }else{
-            qtdCotas.val(qtdCotas.val() * 5);
-        }
+        var inputCotas = $('input[name="qtdCotas"]');
+
+        inputCotas.val(((valorCota) / valorCota) * 5);
+        inputCotas.trigger('change');
     });
 
     $('.cota-x10').click(function(e){
-        var qtdCotas = $('input[name="qtdCotas"]');
+        var valorCota = $('#valorProva').val();
 
-        if ((qtdCotas.val() * 10)  > 99){
-            qtdCotas.val(99);
-        }else{
-            qtdCotas.val(qtdCotas.val() * 10);
-        }
+        var inputCotas = $('input[name="qtdCotas"]');
+
+        inputCotas.val(((valorCota) / valorCota) * 10);
+
+        inputCotas.trigger('change');
     });
 }
 
