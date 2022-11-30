@@ -70,7 +70,7 @@
                                 <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="{{url('/')}}">
-                                            <img src="{{asset('assets/img/logo.png')}}" alt="logo">
+                                            <img src="{{asset('assets/img/paddockbet.svg')}}" alt="logo">
                                         </a>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                             <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                 <div class="logo">
                                     <a href="{{url('/')}}">
-                                        <img src="{{asset('assets/img/logo.png')}}" alt="logo">
+                                        <img src="{{asset('/assets/img/paddockbet.svg')}}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@
                     <div class="col-xl-4 col-lg-5 col-md-10">
                         <div class="about-widget">
                             <a class="logo" href="index.html">
-                                <img src="assets/img/logo.png" alt="">
+                                <img src="assets/img/paddockbet.svg" alt="">
                             </a>
                             <p>PaddockBet: Seu site de apostas em Saltos.</p>
                             <div class="social">

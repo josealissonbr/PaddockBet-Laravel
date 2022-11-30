@@ -97,7 +97,7 @@
                                 <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="{{route('dashboard')}}">
-                                            <img src="{{asset('assets/img/logo.png')}}" alt="logo">
+                                            <img src="{{asset('assets/img/paddockbet.svg')}}" alt="logo">
                                         </a>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
                     <div class="col-xl-4 col-lg-5 col-md-10">
                         <div class="about-widget">
                             <a class="logo" href="{{URL::to('/')}}">
-                                <img src="{{asset('assets/img/logo.png')}}" alt="">
+                                <img src="{{asset('assets/img/paddockbet.svg')}}" alt="">
                             </a>
                             <p>{{env('APP_NAME')}}: O seu esporte preferido, com ainda mais emoção.</p>
                             <div class="social">
