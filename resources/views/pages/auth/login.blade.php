@@ -44,26 +44,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-sm-6">
                             <div class="left-area">
-                                <ul>
-                                    <li>
-                                        <span class="icon">
-                                            <i class="far fa-calendar-alt"></i>
-                                        </span>
-                                        <span class="text">
-                                            <span id="date"></span>
-                                            <span id="month"></span>
-                                            <span id="year"></span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="icon">
-                                            <i class="far fa-clock"></i>
-                                        </span>
-                                        <span class="text clocks">
-                                            <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
-                                        </span>
-                                    </li>
-                                </ul>
+
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-sm-6">
@@ -122,7 +103,13 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6 col-md-8">
                         <div class="section-title">
-                            <h2>PaddockBet</h2>
+                            <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
+                                <div class="logo">
+                                    <a href="{{url('/')}}">
+                                        <img src="{{asset('assets/img/logo.png')}}" alt="logo">
+                                    </a>
+                                </div>
+                            </div>
                             <p>Informe seus dados para acessar</p>
                         </div>
                     </div>
@@ -320,7 +307,7 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-5 col-md-6 col-lg-6 d-lg-flex d-lg-flex d-block align-items-center">
                         <p class="copyright-text">
-                            <a href="#">Paddock</a> © 2020. PRIVACY POLICY
+                            <a href="#">Paddock</a> © 2022.
                         </p>
                     </div>
                     {{--<div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
