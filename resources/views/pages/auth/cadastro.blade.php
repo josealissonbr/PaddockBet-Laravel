@@ -71,7 +71,7 @@
                                 <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="{{route('dashboard')}}">
-                                            <img src="{{asset('assets/img/paddockbet.svg')}}" alt="logo">
+                                            <img src="{{asset('assets/img/paddockbet.svg')}}" width="147" alt="logo">
                                         </a>
                                     </div>
                                 </div>
@@ -152,7 +152,7 @@
                                     <div>
                                         <input type="text" value="" id="dataNascimento" maxlength="10" onkeypress="mascaraData(this)" required>
                                         <label for="dataNascimento">Nascimento</label>
-                                    </div><p>Ao clicar em "Próximo" você concorda com os <a href="#">Termos de Uso e de Privacidade</a> da PaddockBet</p>
+                                    </div><p class="text-white">Ao clicar em "Próximo" você concorda com os <a href="{{route('termos.uso')}}">Termos de Uso e de Privacidade</a> da PaddockBet</p>
                                     <button class="next" type="submit">Próximo</button>
                                 </form>
                             </div>
@@ -213,7 +213,7 @@
                 <div class="col-xl-4 col-lg-5 col-md-10">
                     <div class="about-widget">
                         <a class="logo" href="#">
-                            <img src="{{asset('/assets/img/paddockbet.svg')}}" alt="">
+                            <img src="{{asset('/assets/img/paddockbet.svg')}}" width="147" alt="">
                         </a>
                         <p>PaddockBet: Seu site de apostas em Saltos.</p>
                         <div class="social">

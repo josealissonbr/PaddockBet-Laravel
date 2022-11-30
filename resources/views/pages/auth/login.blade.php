@@ -70,7 +70,7 @@
                                 <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="{{url('/')}}">
-                                            <img src="{{asset('assets/img/paddockbet.svg')}}" alt="logo">
+                                            <img src="{{asset('assets/img/paddockbet.svg')}}" width="147" alt="logo">
                                         </a>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                             <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                 <div class="logo">
                                     <a href="{{url('/')}}">
-                                        <img src="{{asset('/assets/img/paddockbet.svg')}}" alt="">
+                                        <img src="{{asset('/assets/img/paddockbet.svg')}}" width="294" alt="">
                                     </a>
                                 </div>
                             </div>
