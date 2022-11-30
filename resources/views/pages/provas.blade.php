@@ -105,7 +105,18 @@
                                     <td class="text-light">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i')}} </td>
                                     <td class="text-light">{{$prova->nomeProva}}</td>
                                     <td class="text-light"> {{!is_null($prova->conjuntoVencedor->nomeConjunto) ? $prova->conjuntoVencedor->nomeConjunto : 'N/A'}}</td>
-                                    <td class="text-light">{{number_format(($prova->saldoAcumulado + ($prova->valor * 1)) / ((\App\Models\Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $prova->idConjuntoVencedor)->sum('qtdeCotas') + 1) * $prova->valor), 2, '.')}}x</td>
+
+                                    <td class="text-light">
+                                        @php
+                                            $qtdCotas = \App\Models\Apostas::where('idProva', $prova->idProva)->where('ConjuntoEscolhido', $prova->idConjuntoVencedor)->sum('qtdeCotas');
+
+                                            if ($qtdCotas < 1)
+                                                $qtdCotas = 1;
+
+                                            echo number_format(($prova->saldoAcumulado) / ($qtdCotas * $prova->valor), 2, '.');
+                                        @endphp
+                                        x
+                                    </td>
 
                                 </tr>
 
