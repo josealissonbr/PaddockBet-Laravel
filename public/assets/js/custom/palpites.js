@@ -16,7 +16,35 @@ $(document).ready(function() {
 });
 
 function initPage(){
+    $('.cota-x2').click(function(e){
+        var qtdCotas = $('input[name="qtdCotas"]');
 
+        if ((qtdCotas.val() * 2)  > 100){
+            qtdCotas.val(100);
+        }else{
+            qtdCotas.val(qtdCotas.val() * 2);
+        }
+    });
+
+    $('.cota-x5').click(function(e){
+        var qtdCotas = $('input[name="qtdCotas"]');
+
+        if ((qtdCotas.val() * 5)  > 100){
+            qtdCotas.val(100);
+        }else{
+            qtdCotas.val(qtdCotas.val() * 5);
+        }
+    });
+
+    $('.cota-x10').click(function(e){
+        var qtdCotas = $('input[name="qtdCotas"]');
+
+        if ((qtdCotas.val() * 10)  > 100){
+            qtdCotas.val(100);
+        }else{
+            qtdCotas.val(qtdCotas.val() * 10);
+        }
+    });
 }
 
 function setData(id, idProva){
@@ -180,7 +208,6 @@ $('#efetuar-palpite-frm').submit(function (e){
     });
 
 });
-
 
 $('input[name="qtdCotas"]').change(function(e){
     var conjuntoSelecionado = $( "select[name='conjuntoSelecionado'] option:selected" ).val();

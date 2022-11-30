@@ -78,7 +78,7 @@
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-prepend">
-                                                <button type="button" class="btn btn-outline-secondary btn-number" disabled="disabled" data-type="minus" data-field="qtdCotas">
+                                                <button type="button" class="btn btn-outline-secondary btn-number" data-type="minus" data-field="qtdCotas">
                                                     <span class="fa fa-minus"></span>
                                                 </button>
                                             </span>
@@ -87,8 +87,25 @@
                                                 <button type="button" class="btn btn-outline-secondary btn-number" data-type="plus" @if (Carbon\Carbon::parse($prova->dataProva)->isPast()) disabled @endif data-field="qtdCotas">
                                                     <span class="fa fa-plus"></span>
                                                 </button>
-
                                             </span>
+                                        </div>
+                                        <div class="input-group mt-2">
+                                            <span class="input-group-prepend">
+                                                <button type="button" class="btn btn-outline-secondary cota-x2">
+                                                    x2
+                                                </button>
+                                            </span>
+                                            <span class="input-group-append">
+                                                <button type="button" class="btn btn-outline-secondary cota-x5">
+                                                    x5
+                                                </button>
+                                            </span>
+                                            <span class="input-group-append">
+                                                <button type="button" class="btn btn-outline-secondary cota-x10">
+                                                    x10
+                                                </button>
+                                            </span>
+
 
                                         </div>
                                     </div>
