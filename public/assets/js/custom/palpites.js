@@ -19,8 +19,8 @@ function initPage(){
     $('.cota-x2').click(function(e){
         var qtdCotas = $('input[name="qtdCotas"]');
 
-        if ((qtdCotas.val() * 2)  > 100){
-            qtdCotas.val(100);
+        if ((qtdCotas.val() * 2)  > 99){
+            qtdCotas.val(99);
         }else{
             qtdCotas.val(qtdCotas.val() * 2);
         }
@@ -29,8 +29,8 @@ function initPage(){
     $('.cota-x5').click(function(e){
         var qtdCotas = $('input[name="qtdCotas"]');
 
-        if ((qtdCotas.val() * 5)  > 100){
-            qtdCotas.val(100);
+        if ((qtdCotas.val() * 5)  > 99){
+            qtdCotas.val(99);
         }else{
             qtdCotas.val(qtdCotas.val() * 5);
         }
@@ -39,8 +39,8 @@ function initPage(){
     $('.cota-x10').click(function(e){
         var qtdCotas = $('input[name="qtdCotas"]');
 
-        if ((qtdCotas.val() * 10)  > 100){
-            qtdCotas.val(100);
+        if ((qtdCotas.val() * 10)  > 99){
+            qtdCotas.val(99);
         }else{
             qtdCotas.val(qtdCotas.val() * 10);
         }
