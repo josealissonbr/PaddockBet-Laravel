@@ -21,11 +21,12 @@ $('.editarProvaFrm').submit(function(e) {
                     title: 'Sucesso!',
                     text: data.msg
                 })
-            }elseSwal.fire({
+            }else{
+            Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Ocorreu um erro, verifique se todos os campos foram digitados corretamente.'
-                }){
+                })
 
             }
         },
