@@ -770,6 +770,11 @@ class AdminController extends Controller
             $telefone = str_replace(')','', $telefone);
             $telefone = str_replace('-','', $telefone);
             $telefone = str_replace(' ','', $telefone);
+
+            if (str_contains($telefone, '+55')){
+                str_replace('+55','', $telefone);
+            }
+
             echo '55'.$telefone.'<br>';
         }
 
