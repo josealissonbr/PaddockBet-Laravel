@@ -760,4 +760,19 @@ class AdminController extends Controller
 
     }
 
+    public function fetchAllNumbers(){
+
+        $users = \App\Models\User::get(['nome', 'telefone']);
+
+        foreach ($users as $user){
+            $telefone = $user->telefone;
+            $telefone = str_replace('(','', $telefone);
+            $telefone = str_replace(')','', $telefone);
+            $telefone = str_replace('-','', $telefone);
+            $telefone = str_replace(' ','', $telefone);
+            echo '55'.$telefone.'<br>';
+        }
+
+    }
+
 }

@@ -876,7 +876,6 @@ ul {
 }
 
 .banner {
-  background: url("../img/banner-2.jpg") bottom center no-repeat;
   background-size: cover;
   position: relative;
   z-index: 2;
@@ -6149,7 +6148,7 @@ ul {
   bottom: 0;
   border: 1px solid #f9ee56;
   border-radius: 50px;
-  opacity: 0;
+opacity: 0;
   -webkit-transition: all 0.3s ease-in;
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
