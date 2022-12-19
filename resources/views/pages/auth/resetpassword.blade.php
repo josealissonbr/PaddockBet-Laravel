@@ -134,29 +134,29 @@
                                 @csrf
 
                                 @if ($errors->any())
-                                @foreach ($errors->all() as $error)
-                                <div>
-                                    <span class="text-danger">{{ $error }}</span>
-                                </div>
-                                @endforeach
-                            @endif
-
-                                @if ($errors->has('email'))
-                                <div>
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                                </div>
+                                    @foreach ($errors->all() as $error)
+                                    <div>
+                                        <span class="text-danger">{{ $error }}</span>
+                                    </div>
+                                    @endforeach
                                 @endif
 
+                                @if ($errors->has('email'))
+                                    <div>
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    </div>
+                                    @endif
 
-                                @if(session()->has('success'))
-                                <div>
-                                    <span class="text-success">{{ session()->get('success') }}</span>
-                                </div>
 
-                                @php
-                                    Request::session()->flush('success');
-                                @endphp
-                            @endif
+                                    @if(session()->has('success'))
+                                    <div>
+                                        <span class="text-success">{{ session()->get('success') }}</span>
+                                    </div>
+
+                                    @php
+                                        Request::session()->flush('success');
+                                    @endphp
+                                @endif
 
                                 <input type="email" name="email" placeholder="Insira seu email">
 
