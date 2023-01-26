@@ -25,6 +25,100 @@ class DashboardController extends Controller
         return redirect('dashboard');
     }
 
+    public static function test_gn(){
+
+        $config = [
+            "certificado" => base_path('resources/pix_res')."/certificado.pem",
+            "client_id" => "Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308",
+            "client_secret" => "Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6"
+        ];
+        $autorizacao =  base64_encode($config["client_id"] . ":" . $config["client_secret"]);
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api-pix-h.gerencianet.com.br/oauth/token", // Rota base, homologação ou produção
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => '{"grant_type": "client_credentials"}',
+            CURLOPT_SSLCERT => $config["certificado"], // Caminho do certificado
+            CURLOPT_SSLCERTPASSWD => "",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Basic $autorizacao",
+                "Content-Type: application/json"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $resposta = json_decode($response);
+
+        return $resposta->access_token;
+
+
+    }
+
+    public function v2_cob(Request $request){
+
+        //return $this->test_gn();
+
+        $config = [
+            "certificado" => base_path('resources/pix_res')."/certificado.pem",
+            "client_id" => "Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308",
+            "client_secret" => "Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6"
+        ];
+        $autorizacao =  base64_encode($config["client_id"] . ":" . $config["client_secret"]);
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api-pix-h.gerencianet.com.br/v2/cob", // Rota base, homologação ou produção
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => '{
+                "calendario": {
+                  "expiracao": 3600
+                },
+                "devedor": {
+                  "cpf": "15788943442",
+                  "nome": "Jose Alisson Santos da Silva"
+                },
+                "valor": {
+                  "original": "123.45"
+                },
+                "chave": "71cdf9ba-c695-4e3c-b010-abb521a3f1be",
+                "solicitacaoPagador": "Informe o número ou identificador do pedido."
+              }',
+            CURLOPT_SSLCERT => $config["certificado"], // Caminho do certificado
+            CURLOPT_SSLCERTPASSWD => "",
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiY2xpZW50SWQiOiJDbGllbnRfSWRfNWM1ZTM1Y2UzZTAxYmIyMGQ4YTAzYTk4ZTU1OTE3ZTc5MGViNjMwOCIsImFjY291bnQiOjI3ODgxNCwiYWNjb3VudF9jb2RlIjoiNWFiZjYzZDFhOTllYzA3MDg3OThhNjA5OTc5ZmFiZmYiLCJzY29wZXMiOlsiY29iLnJlYWQiLCJjb2Iud3JpdGUiLCJjb2J2LnJlYWQiLCJjb2J2LndyaXRlIiwiZ24uYmFsYW5jZS5yZWFkIiwiZ24ucGl4LmV2cC5yZWFkIiwiZ24ucGl4LmV2cC53cml0ZSIsImduLnBpeC5zZW5kLnJlYWQiLCJnbi5yZXBvcnRzLnJlYWQiLCJnbi5yZXBvcnRzLndyaXRlIiwiZ24uc2V0dGluZ3MucmVhZCIsImduLnNldHRpbmdzLndyaXRlIiwiZ24uc3BsaXQucmVhZCIsImduLnNwbGl0LndyaXRlIiwicGF5bG9hZGxvY2F0aW9uLnJlYWQiLCJwYXlsb2FkbG9jYXRpb24ud3JpdGUiLCJwaXgucmVhZCIsInBpeC5zZW5kIiwicGl4LndyaXRlIiwid2ViaG9vay5yZWFkIiwid2ViaG9vay53cml0ZSJdLCJleHBpcmVzSW4iOjM2MDAsImNvbmZpZ3VyYXRpb24iOnsieDV0I1MyNTYiOiJkQlB4OWNxZzdueGdnbkNHbE5aeGxWQU01VmEzNHJqdmdKZ3FreFVXSENNPSJ9LCJpYXQiOjE2NzQ2OTY4NzcsImV4cCI6MTY3NDcwMDQ3N30.T8mayxO0FsNiCCUhiLPJIDmooBBPpYyumxfP-EDOoLI"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $resposta = json_decode($response);
+
+        return $resposta;
+
+
+    }
+
     public function recalcSaldo(Request $request){
 
         if ($request->input('secret') != 'Alisson@Eric'){

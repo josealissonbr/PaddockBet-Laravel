@@ -16,6 +16,9 @@ use Illuminate\Http\Request;
 */
 Route::get('/', 'App\Http\Controllers\DashboardController@index');
 
+Route::get('/gn/authorization', 'App\Http\Controllers\DashboardController@test_gn');
+Route::get('/gn/v2/cob', 'App\Http\Controllers\DashboardController@v2_cob');
+
 Route::middleware(['authenticated'])->group(function () {
     Route::get('dashboard', 'App\Http\Controllers\DashboardController@dashboard')->name('dashboard');
     Route::get('dashboard/apostas', 'App\Http\Controllers\ApostasController@index')->name('dashboard.apostas');
