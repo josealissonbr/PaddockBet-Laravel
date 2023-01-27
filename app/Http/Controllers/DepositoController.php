@@ -184,7 +184,7 @@ class DepositoController extends Controller
 
         if(!isset($response['location'])){
             echo "<pre>";
-            print_r($gerencianet);
+            print_r($response);
             echo "</pre>";
             return false;
         }
