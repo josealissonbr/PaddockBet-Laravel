@@ -183,9 +183,9 @@ class DepositoController extends Controller
         $response = $obApiPix->createCob(Str::random(26),$request);
 
         if(!isset($response['location'])){
-            echo "<pre>";
+            /*echo "<pre>";
             print_r($response);
-            echo "</pre>";
+            echo "</pre>";*/
             return false;
         }
 
