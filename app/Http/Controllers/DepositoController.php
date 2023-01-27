@@ -183,6 +183,7 @@ class DepositoController extends Controller
         $response = $obApiPix->createCob(Str::random(26),$request);
 
         if(!isset($response['location'])){
+            echo "retorno1 falso";
             return false;
         }
 
