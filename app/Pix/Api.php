@@ -61,10 +61,6 @@ class Api{
     return $this->send('GET','/v2/cob/'.$txid);
   }
 
-  public function consultCobList($parameters){
-    return $this->send('GET','/v2/cob?'.$parameters);
-  }
-
 
   /**
    * Método responsável por obter o token de acesso às APIs Pix

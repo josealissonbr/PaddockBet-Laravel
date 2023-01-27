@@ -156,11 +156,14 @@ class DepositoController extends Controller
          */
 
 
-        $certificado = base_path('resources/pix_res')."/paddock_prod.pem";
+        $cfgClientID= 'Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308';
+        $cfgClientSecret = 'Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6';
 
-        $obApiPix = new Api('https://api-pix.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
+        $certificado = base_path('resources/pix_res')."/certificado.pem";
+
+        $obApiPix = new Api('https://api-pix-h.gerencianet.com.br',
+                    'Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308',
+                    'Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6',
                     $certificado);
 
         //CORPO DA REQUISIÇÃO
@@ -175,7 +178,7 @@ class DepositoController extends Controller
             'valor' => [
                 'original' => $arrConfig['valorDeposito']
             ],
-            'chave' => "a76d07f0-273b-46fa-a766-b04add2c575b",
+            'chave' => "15788943442",
             'solicitacaoPagador' => 'Pagamento do pedido #'.$arrConfig['deposito']
         ];
 
@@ -187,8 +190,8 @@ class DepositoController extends Controller
         }
 
         //INSTANCIA PRINCIPAL DO PAYLOAD PIX
-        $obPayload = (new Payload)->setMerchantName('PaddockBet')
-        ->setMerchantCity('SAO PAULO')
+        $obPayload = (new Payload)->setMerchantName('AlissonSantos')
+        ->setMerchantCity('MACEIO')
         ->setAmount($response['valor']['original'])
         ->setTxid('***')
         ->setUrl($response['location'])
@@ -343,39 +346,11 @@ class DepositoController extends Controller
             return redirect(route('dashboard.depositos.historico'));
         }
 
-        //$access_token = $this->sicoob_RequisitarToken();
+        $access_token = $this->sicoob_RequisitarToken();
 
-        //$sicoob = $this->sicoob_ConsultarCobranca($access_token, $deposito->txid);
+        $sicoob = $this->sicoob_ConsultarCobranca($access_token, $deposito->txid);
 
-        $certificado = base_path('resources/pix_res')."/paddock_prod.pem";
-
-        $obApiPix = new Api('https://api-pix.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
-                    $certificado);
-
-        $gerencianet = $obApiPix->consultCob($deposito->txid);
-
-        if ($gerencianet['status'] != 'ATIVA'){
-            return 'Ocorreu um erro.';
-        }
-
-        /*echo "<pre>";
-        print_r($gerencianet);
-        echo "</pre>"; exit;*/
-
-        //INSTANCIA PRINCIPAL DO PAYLOAD PIX
-        $obPayload = (new Payload)->setMerchantName('PaddockBet')
-        ->setMerchantCity('SAO PAULO')
-        ->setAmount($gerencianet['valor']['original'])
-        ->setTxid('***')
-        ->setUrl($gerencianet['location'])
-        ->setUniquePayment(true);
-
-        //CÓDIGO DE PAGAMENTO PIX
-        $payloadQrCode = $obPayload->getPayload();
-
-        return view('pages.pagarDeposito', compact('deposito', 'gerencianet', 'payloadQrCode'));
+        return view('pages.pagarDeposito', compact('deposito', 'sicoob'));
     }
 
     public function _novoDeposito(Request $request){
@@ -459,10 +434,6 @@ class DepositoController extends Controller
             'deposito' => $deposito->id
         ]);
 
-        /*echo "<pre>";
-        print_r($cobranca);
-        echo "</pre>"; exit;*/
-
         $deposito->txid = $cobranca['txid'];
         $deposito->save();
 
@@ -477,7 +448,7 @@ class DepositoController extends Controller
         ]);
     }
 
-    public function _processPayments_bkp(Request $request){
+    public function _processPayments(Request $request){
         $inicio_datetime = Carbon::now()->subHours(20);
         $fim_datetime = Carbon::now();
 
@@ -512,82 +483,6 @@ class DepositoController extends Controller
             }
 
         }
-    }
-
-    public function _processPayments(Request $request){
-        $certificado = base_path('resources/pix_res')."/certificado.pem";
-
-        $obApiPix = new Api('https://api-pix-h.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
-                    $certificado);
-
-        //RESPOSTA DA REQUISIÇÃO DE CRIAÇÃO
-        $response = $obApiPix->consultCob("TWuE1jgZfuiXQiY83v6firqVfc");
-
-        //VERIFICA A EXISTÊNCIA DO ITEM 'LOCATION'
-        if(!isset($response['location'])){
-            echo 'Problemas ao consultar Pix dinâmico';
-            echo "<pre>";
-            print_r($response);
-            echo "</pre>"; exit;
-        }
-
-        //DEBUG DOS DADOS DO RETORNO
-        echo "<pre>";
-        print_r($response);
-        echo "</pre>"; exit;
-    }
-
-    public function _processPayments_v2(Request $request){
-
-        $inicio_datetime = Carbon::now()->subHours(20)->format('Y-m-d\TH:i:s.uP');
-        $fim_datetime = Carbon::now()->format('Y-m-d\TH:i:s.uP');
-        //return $fim_datetime;
-        $certificado = base_path('resources/pix_res')."/paddock_prod.pem";
-
-        $obApiPix = new Api('https://api-pix.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
-                    $certificado);
-
-        $response = $obApiPix->consultCobList('inicio='.$inicio_datetime.'&fim='.$fim_datetime.'&status=CONCLUIDA');
-
-        /*echo "<pre>";
-        print_r($response);
-        echo "</pre>"; exit;*/
-
-        foreach ($response['cobs'] as $cob){
-
-            if (!isset($cob['txid']))
-                continue;
-
-            $rDeposito = Depositos::where('txid', $cob['txid'])->where('situacao', '!=', 1)->get()->first();
-
-            if ($rDeposito){
-                $deposito = Depositos::find($rDeposito->id);
-
-                if ($deposito->situacao == 1){
-                    continue;
-                }
-
-                $deposito->situacao = 1;
-                $deposito->log_approver = "GerenciaNet";
-
-                $transacao = Transacoes::find($rDeposito->idTransacao);
-                $transacao->situacao = 1;
-
-                $user = User::find($deposito->idCliente);
-
-                $deposito->save();
-                $transacao->save();
-                $user->increment('saldo', $deposito->valor);
-            }else{
-                continue;
-            }
-
-        }
-
     }
 
     public function _checkDeposit(Request $request){
