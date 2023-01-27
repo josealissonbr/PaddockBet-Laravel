@@ -459,9 +459,9 @@ class DepositoController extends Controller
             'deposito' => $deposito->id
         ]);
 
-        /*echo "<pre>";
+        echo "<pre>";
         print_r($cobranca);
-        echo "</pre>"; exit;*/
+        echo "</pre>"; exit;
 
         $deposito->txid = $cobranca['txid'];
         $deposito->save();
