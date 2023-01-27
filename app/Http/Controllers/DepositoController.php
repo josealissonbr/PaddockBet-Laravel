@@ -489,6 +489,7 @@ class DepositoController extends Controller
     }
 
     public function _processPayments_bkp(Request $request){
+        return 'Ocorreu um erro';
         $inicio_datetime = Carbon::now()->subHours(20);
         $fim_datetime = Carbon::now();
 
