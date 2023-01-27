@@ -108,7 +108,7 @@ class DashboardController extends Controller
             echo "<pre>";
             print_r($response);
             echo "</pre>"; exit;
-          }
+        }
 
         //INSTANCIA PRINCIPAL DO PAYLOAD PIX
         $obPayload = (new Payload)->setMerchantName('AlissonSantos')
@@ -126,7 +126,7 @@ class DashboardController extends Controller
         //     echo "</pre>"; exit;
 
         //QR CODE
-        $obQrCode = new QrCode($payloadQrCode);
+        //$obQrCode = new QrCode($payloadQrCode);
 
         //IMAGEM DO QRCODE
        // $output = new Output\Png();

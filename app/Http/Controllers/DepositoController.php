@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Transacoes;
 use App\Models\Depositos;
 use App\Models\User;
 use Carbon\Carbon;
+use \App\Pix\Api;
+use \App\Pix\Payload;
 
 //require_once base_path('resources/views')."/phpqrcode/qrlib.php";
 require_once base_path('resources/views').'/funcoes_pix.php';
@@ -139,6 +142,68 @@ class DepositoController extends Controller
         $arrResponse = json_decode($response);
 
         return $arrResponse;
+    }
+
+    public function bacen_CriarCobranca($arrConfig){
+
+        /**
+         * [
+            'nome'  => $user->nome,
+            'cpf'   => $user->cpf,
+            'valorDeposito' => $valorDeposito,
+            'deposito' => $deposito->id
+            ]
+         */
+
+
+        $cfgClientID= 'Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308';
+        $cfgClientSecret = 'Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6';
+
+        $certificado = base_path('resources/pix_res')."/certificado.pem";
+
+        $obApiPix = new Api('https://api-pix-h.gerencianet.com.br',
+                    'Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308',
+                    'Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6',
+                    $certificado);
+
+        //CORPO DA REQUISIÇÃO
+        $request = [
+            'calendario' => [
+                'expiracao' => 3600
+            ],
+            'devedor' => [
+                'cpf' => $arrConfig['cpf'],
+                'nome' => $arrConfig['nome']
+            ],
+            'valor' => [
+                'original' => $arrConfig['valorDeposito']
+            ],
+            'chave' => "15788943442",
+            'solicitacaoPagador' => 'Pagamento do pedido #'.$arrConfig['deposito']
+        ];
+
+        //RESPOSTA DA REQUISIÇÃO DE CRIAÇÃO
+        $response = $obApiPix->createCob(Str::random(26),$request);
+
+        if(!isset($response['location'])){
+            return false;
+        }
+
+        //INSTANCIA PRINCIPAL DO PAYLOAD PIX
+        $obPayload = (new Payload)->setMerchantName('AlissonSantos')
+        ->setMerchantCity('MACEIO')
+        ->setAmount($response['valor']['original'])
+        ->setTxid('***')
+        ->setUrl($response['location'])
+        ->setUniquePayment(true);
+
+        //CÓDIGO DE PAGAMENTO PIX
+        $payloadQrCode = $obPayload->getPayload();
+
+        return [
+            'payload' => $payloadQrCode,
+            'txid'    => $response['txid'],
+        ];
     }
 
     public function sicoob_ListaCobranca($access_token){
@@ -358,12 +423,18 @@ class DepositoController extends Controller
             ]);
         }
 
-        $access_token = $this->sicoob_RequisitarToken();
-        $loc = $this->sicoob_CriarLocPayload($access_token);
+       // $access_token = $this->sicoob_RequisitarToken();
+        //$loc = $this->sicoob_CriarLocPayload($access_token);
         //return $loc;
-        $cobranca = $this->sicoob_CriarCobranca($access_token, $loc->id, $user->nome, $user->cpf, $valorDeposito, $deposito->id);
+        //$cobranca = $this->sicoob_CriarCobranca($access_token, $loc->id, $user->nome, $user->cpf, $valorDeposito, $deposito->id);
+        $cobranca = $this->bacen_CriarCobranca([
+            'nome'  => $user->nome,
+            'cpf'   => $user->cpf,
+            'valorDeposito' => $valorDeposito,
+            'deposito' => $deposito->id
+        ]);
 
-        $deposito->txid = $cobranca->txid;
+        $deposito->txid = $cobranca['txid'];
         $deposito->save();
 
         //Recalcular Saldo
@@ -373,7 +444,7 @@ class DepositoController extends Controller
             'status'        =>  true,
             'idTransacao'   =>  $transacao->idTransacao,
             'idDeposito'    =>  $deposito->id,
-            'pix'           =>  $cobranca->brcode
+            'pix'           =>  $cobranca['payload']
         ]);
     }
 
