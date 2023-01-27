@@ -462,9 +462,17 @@ class DepositoController extends Controller
             'deposito' => $deposito->id
         ]);
 
-        echo "<pre>";
+
+        /*echo "<pre>";
         print_r($cobranca);
-        echo "</pre>"; exit;
+        echo "</pre>"; exit;*/
+
+        if (!$cobranca){
+            return response()->json([
+                'status'    => false,
+                'msg'       => 'Ocorreu um erro',
+            ]);
+        }
 
         $deposito->txid = $cobranca['txid'];
         $deposito->save();
