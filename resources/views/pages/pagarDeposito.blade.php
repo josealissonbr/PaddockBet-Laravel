@@ -118,7 +118,7 @@
                             <div class="payment-values">
                                 <strong>Valor do pagamento:</strong>
                                 <strong>
-                                    <SPAN id="pix-payment-value">R$ {{number_format($sicoob->valor->original, 2, ',')}}</SPAN>
+                                    <SPAN id="pix-payment-value">R$ {{number_format($gerencianet['valor']['original'], 2, ',')}}</SPAN>
                                 </strong>
 
                                 <!--<P>Certifique-se de que o remetente do Pix corresponde ao CPF da sua conta.</P>-->
@@ -127,7 +127,7 @@
                             <input type="hidden" id="idDeposito" value="{{$deposito->id}}">
                             <input type="hidden" id="apikey" value="{{auth()->user()->apikey}}">
 
-                            <IMG class="qrcode" id="pix-qrcode" src="https://chart.googleapis.com/chart?chs=420x420&cht=qr&chl={{$sicoob->brcode}}" alt="QR Code PaddockBet">
+                            <IMG class="qrcode" id="pix-qrcode" src="https://chart.googleapis.com/chart?chs=420x420&cht=qr&chl={{$payloadQrCode}}" alt="QR Code PaddockBet">
 
                                 <div class="payment-values">
                                     <p>Tempo restante: <strong id="timerLbl">xxx</strong></p>
@@ -138,7 +138,7 @@
                             </div>
 
                             <div class="payment-info d-flex justify-content-center">
-                                <input type="text" class="form-control" id="linhaPix" value="{{$sicoob->brcode}}">
+                                <input type="text" class="form-control" id="linhaPix" value="{{$payloadQrCode}}">
                                 <button role="button" style="margin-left: 5px;" class="btn btn-primary" id="copy-btn" onclick="copyPix();" data-toggle="popover" title="Copiado!">
                                     <i class="fa fa-copy"></i>
                                 </button>
@@ -146,10 +146,9 @@
 
                             <div class="payment-info justify-content-center row" style="padding-top: 10px">
                                 <strong>Linha do Pix Digitável</strong>
-                                 <small>Caso não consiga copiar usando os métodos acima, copie a linha abaixo e cole na área "Pix Copia e Cola" no Aplicativo do seu banco</small>
-                                 <br><br><div class="col-md-12">
+                                <div class="col-md-12">
                                     <p type="text" class="" id="linhaPix2" style="word-wrap: break-word;">
-                                        {{$sicoob->brcode}}
+                                        {{$payloadQrCode}}
                                     </p>
                                 </div>
                             </div>

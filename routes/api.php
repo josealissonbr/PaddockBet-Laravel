@@ -52,6 +52,7 @@ Route::middleware(['AdminApi'])->group(function () {
 });
 
 Route::get('cron/processPayments', 'App\Http\Controllers\DepositoController@_processPayments')->name('api.cron.processPayments');
+Route::get('cron/processPayments/v2', 'App\Http\Controllers\DepositoController@_processPayments_v2')->name('api.cron.processPayments.v2');
 
 Route::get('termos/aceitarTermos', 'App\Http\Controllers\DashboardController@_aceitarTermos')->name('api.termos.aceitarTermos');
 
