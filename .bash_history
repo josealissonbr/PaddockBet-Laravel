@@ -56,3 +56,65 @@ git add .
 git commit -m "style"
 git push
 git pull
+ls
+git add .
+git commit -m "update"
+git push
+clear
+git pull
+git add .
+git commit -m "eric"
+git push
+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
+git pull
+git stash ./public/assets/js/custom/novoDeposito.js
+git stash -- /public/assets/js/custom/novoDeposito.js
+git stash --./public/assets/js/custom/novoDeposito.js
+git stash -- ./public/assets/js/custom/novoDeposito.js
+clear
+git stash -- public/assets/js/custom/novoDeposito.js
+git stash -- novoDeposito.js
+ls
+git stash --c novoDeposito.js
+clear
+git stash list
+ls
+git pull
+git stash -- resources/views/pages/novoDeposito.blade.php
+ls
+cd resources/views/pages/
+ls
+git stash -- novoDeposito.blade.php
+git pull
+git push
+git pull
+git push
+git pull
+git push
+cd ../
+git commit .
+git pull
+ls
+cls
+clear
+git pull
+clear
+top -i
+leare
+clear
+curl 'google.com'
+curl -x 'google.com'
+curl localhost
+curl localhost:433
+curl localhost
+curl localhost:80
+clear
+git pull
+ls
+git pull
+clear
+git pull
+clear
+quit
+exit
+git pull

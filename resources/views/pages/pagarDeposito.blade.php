@@ -146,7 +146,8 @@
 
                             <div class="payment-info justify-content-center row" style="padding-top: 10px">
                                 <strong>Linha do Pix Digitável</strong>
-                                <div class="col-md-12">
+                                 <small>Caso não consiga copiar usando os métodos acima, copie a linha abaixo e cole na área "Pix Copia e Cola" no Aplicativo do seu banco</small>
+                                 <br><br><div class="col-md-12">
                                     <p type="text" class="" id="linhaPix2" style="word-wrap: break-word;">
                                         {{$sicoob->brcode}}
                                     </p>
