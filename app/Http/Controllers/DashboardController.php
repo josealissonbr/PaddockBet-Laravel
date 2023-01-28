@@ -35,16 +35,16 @@ class DashboardController extends Controller
     public static function test_gn(){
 
         $config = [
-            "certificado" => base_path('resources/pix_res')."/certificado.pem",
-            "client_id" => "Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308",
-            "client_secret" => "Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6"
+            "certificado" => base_path('resources/pix_res')."/paddockbet-hort-prod.pem",
+            "client_id" => "Client_Id_eabcd54efab5da325c522cf079baf827456fd612",
+            "client_secret" => "Client_Secret_c90cea67f9416e0343818e9f24d7ba213120a26c"
         ];
         $autorizacao =  base64_encode($config["client_id"] . ":" . $config["client_secret"]);
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://api-pix-h.gerencianet.com.br/oauth/token", // Rota base, homologação ou produção
+            CURLOPT_URL => "https://api-pix.gerencianet.com.br/oauth/token", // Rota base, homologação ou produção
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -73,15 +73,11 @@ class DashboardController extends Controller
     }
 
     public function v2_cob(Request $request){
+        $certificado = base_path('resources/pix_res')."/paddockbet-hort-prod.pem";
 
-        $cfgClientID= 'Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308';
-        $cfgClientSecret = 'Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6';
-
-        $certificado = base_path('resources/pix_res')."/certificado.pem";
-
-        $obApiPix = new Api('https://api-pix-h.gerencianet.com.br',
-                    'Client_Id_5c5e35ce3e01bb20d8a03a98e55917e790eb6308',
-                    'Client_Secret_0c3ffea0e52f58f06e4ffe9cc74c59ddac4062d6',
+        $obApiPix = new Api('https://api-pix.gerencianet.com.br',
+                    'Client_Id_eabcd54efab5da325c522cf079baf827456fd612',
+                    'Client_Secret_c90cea67f9416e0343818e9f24d7ba213120a26c',
                     $certificado);
 
         //CORPO DA REQUISIÇÃO

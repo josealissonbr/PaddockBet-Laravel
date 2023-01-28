@@ -156,11 +156,11 @@ class DepositoController extends Controller
          */
 
 
-        $certificado = base_path('resources/pix_res')."/paddock_prod.pem";
+        $certificado = base_path('resources/pix_res')."/paddockbet-hort-prod.pem";
 
         $obApiPix = new Api('https://api-pix.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
+                    'Client_Id_eabcd54efab5da325c522cf079baf827456fd612',
+                    'Client_Secret_c90cea67f9416e0343818e9f24d7ba213120a26c',
                     $certificado);
 
         //CORPO DA REQUISIÇÃO
@@ -350,11 +350,11 @@ class DepositoController extends Controller
 
         //$sicoob = $this->sicoob_ConsultarCobranca($access_token, $deposito->txid);
 
-        $certificado = base_path('resources/pix_res')."/paddock_prod.pem";
+        $certificado = base_path('resources/pix_res')."/paddockbet-hort-prod.pem";
 
         $obApiPix = new Api('https://api-pix.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
+                    'Client_Id_eabcd54efab5da325c522cf079baf827456fd612',
+                    'Client_Secret_c90cea67f9416e0343818e9f24d7ba213120a26c',
                     $certificado);
 
         $gerencianet = $obApiPix->consultCob($deposito->txid);
@@ -527,11 +527,11 @@ class DepositoController extends Controller
     }
 
     public function _processPayments(Request $request){
-        $certificado = base_path('resources/pix_res')."/certificado.pem";
+        $certificado = base_path('resources/pix_res')."/paddockbet-hort-prod.pem";
 
-        $obApiPix = new Api('https://api-pix-h.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
+        $obApiPix = new Api('https://api-pix.gerencianet.com.br',
+                    'Client_Id_eabcd54efab5da325c522cf079baf827456fd612',
+                    'Client_Secret_c90cea67f9416e0343818e9f24d7ba213120a26c',
                     $certificado);
 
         //RESPOSTA DA REQUISIÇÃO DE CRIAÇÃO
@@ -556,11 +556,11 @@ class DepositoController extends Controller
         $inicio_datetime = Carbon::now()->subHours(20)->format('Y-m-d\TH:i:s.uP');
         $fim_datetime = Carbon::now()->format('Y-m-d\TH:i:s.uP');
         //return $fim_datetime;
-        $certificado = base_path('resources/pix_res')."/paddock_prod.pem";
+        $certificado = base_path('resources/pix_res')."/paddockbet-hort-prod.pem";
 
         $obApiPix = new Api('https://api-pix.gerencianet.com.br',
-                    'Client_Id_47635b105b722eeac5097868cce643be5c769413',
-                    'Client_Secret_03ce4d2a734287b2e3ef1d01296eacef2e2f34dc',
+                    'Client_Id_eabcd54efab5da325c522cf079baf827456fd612',
+                    'Client_Secret_c90cea67f9416e0343818e9f24d7ba213120a26c',
                     $certificado);
 
         $response = $obApiPix->consultCobList('inicio='.$inicio_datetime.'&fim='.$fim_datetime.'&status=CONCLUIDA');
