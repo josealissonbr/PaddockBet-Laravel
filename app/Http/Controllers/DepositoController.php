@@ -175,7 +175,7 @@ class DepositoController extends Controller
             'valor' => [
                 'original' => $arrConfig['valorDeposito']
             ],
-            'chave' => "a76d07f0-273b-46fa-a766-b04add2c575b",
+            'chave' => "06f9a613-7ad3-461e-9df6-85d90d4ba638",
             'solicitacaoPagador' => 'Pagamento do pedido #'.$arrConfig['deposito']
         ];
 
