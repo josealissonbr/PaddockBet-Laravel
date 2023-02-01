@@ -67,13 +67,13 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-3 d-xl-flex d-lg-flex d-block align-items-center">
                             <div class="row">
-                                <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
+                                {{--<div class="d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="{{url('/')}}">
                                             <img src="{{asset('assets/img/paddockbet.svg')}}" width="147" alt="logo">
                                         </a>
                                     </div>
-                                </div>
+                                </div>--}}
                                 {{--<div class="col-6 d-xl-none d-lg-none d-block">
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <i class="fas fa-bars"></i>
@@ -103,7 +103,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-6 col-md-8">
                         <div class="section-title">
-                            <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
+                            <div class="align-items-center">
                                 <div class="logo">
                                     <a href="{{url('/')}}">
                                         <img src="{{asset('/assets/img/paddockbet.svg')}}" width="294" alt="">
