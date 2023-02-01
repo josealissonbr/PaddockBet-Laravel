@@ -104,7 +104,7 @@
 
                                     <td class="text-light">{{Carbon\Carbon::parse($prova->dataProva)->format('d/m/Y H:i')}} </td>
                                     <td class="text-light">{{$prova->nomeProva}}</td>
-                                    <td class="text-light"> {{!is_null($prova->conjuntoVencedor->nomeConjunto) ? $prova->conjuntoVencedor->nomeConjunto : 'N/A'}}</td>
+                                    <td class="text-light"> {{!is_null($prova->conjuntoVencedor) ? $prova->conjuntoVencedor->nomeConjunto : 'N/A'}}</td>
 
                                     <td class="text-light">
                                         @php
