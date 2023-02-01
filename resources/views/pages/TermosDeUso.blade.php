@@ -32,7 +32,7 @@
 
         <!-- preloader begin -->
         <div class="preloader">
-            <img src="assets/img/preloader.gif" alt="">
+            <img src="assets/img/preloader.svg" alt="">
             <span>CARREGANDO...</span>
         </div>
         <!-- preloader end -->

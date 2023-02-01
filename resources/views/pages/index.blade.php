@@ -32,7 +32,7 @@
 
         <!-- preloader begin -->
         <div class="preloader">
-            <img src="{{asset('assets/img/preloader.gif')}}" alt="">
+            <img src="{{asset('assets/img/preloader.svg')}}" alt="">
             <span>{{env('PaddockBet')}}</span>
         </div>
         <!-- preloader end -->
