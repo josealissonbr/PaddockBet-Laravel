@@ -185,7 +185,7 @@
                 <div class="row justify-content-between">
                     <div class="col-xl-4 col-lg-5 col-md-10">
                         <div class="about-widget">
-                            <a class="logo" href="index.html">
+                            <a class="logo" href="#">
                                 <img src="assets/img/paddockbet.svg" alt="">
                             </a>
                             <p>PaddockBet: Seu site de apostas em Saltos.</p>

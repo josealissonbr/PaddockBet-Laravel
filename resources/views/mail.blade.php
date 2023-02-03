@@ -25,7 +25,7 @@
                     <tr>
                         <td style="text-align:center;">
                           <a href="https://rakeshmandal.com" title="logo" target="_blank">
-                            <img width="128" src="https://paddockbet.com/assets/img/paddockbet.svg" title="logo" alt="logo">
+                            <img width="150" src="https://paddockbet.com/assets/img/paddockbet.svg" title="logo" alt="logo">
                           </a>
                         </td>
                     </tr>

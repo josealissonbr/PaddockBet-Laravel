@@ -97,7 +97,7 @@
                                 <div class="col-xl-12 col-lg-12 col-6 d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="{{route('dashboard')}}">
-                                            <img src="{{asset('assets/img/paddockbet.svg')}}" width="147" alt="logo">
+                                            <img src="{{asset('assets/img/paddockbet.svg')}}" width="150" alt="logo">
                                         </a>
                                     </div>
                                 </div>

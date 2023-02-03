@@ -89,7 +89,7 @@
                             <div class="d-xl-block d-lg-block d-flex align-items-center">
                                     <div class="logo">
                                         <a href="{{url('/')}}">
-                                            <img src="{{asset('assets/img/paddockbet.svg')}}" width="147" alt="logo">
+                                            <img src="{{asset('assets/img/paddockbet.svg')}}" width="150" alt="logo">
                                         </a>
                                     </div>
                                 </div>
