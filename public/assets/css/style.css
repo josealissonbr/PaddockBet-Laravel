@@ -4799,7 +4799,7 @@ ul {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border: 1px solid rgba(248, 27, 100, 0.4);
+  border: 1px solid rgb(122 121 122 / 40%);
   margin-bottom: 10px;
   padding: 5px;
   border-radius: 5px;
