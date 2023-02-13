@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Ansonika">
+    <meta name="author" content="josealissonbr">
+    <link rel="icon" href="{{asset('assets/img/svg/favicon.svg')}}" sizes="any" type="image/svg+xml">
     <title>{{env('APP_NAME')}}</title>
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -33,7 +34,7 @@
 <body class="fixed-nav sticky-footer" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-        <a class="navbar-brand" href="{{'admin.home'}}"><img src="{{asset('assets/img/paddockbet.svg')}}" alt="" width="150" height="36"></a>
+        <a class="navbar-brand" href="{{'admin.home'}}"><img src="{{asset('assets/img/paddockbet.svg')}}?v=1" alt="" width="150" height="36"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

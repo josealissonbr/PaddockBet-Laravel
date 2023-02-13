@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{env('APP_NAME')}}</title>
         <!-- favicon -->
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="{{asset('assets/img/svg/favicon.svg')}}" sizes="any" type="image/svg+xml">
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <!-- fontawesome icon  -->
