@@ -84,7 +84,7 @@
             <div class="col-xl-8 col-lg-8 result pt-2">
                 <div class="result-sheet-cover">
                     <div class="result-sheet">
-                        <h4 class="result-title">Resultados</h4>
+                        <h4 class="result-title" style="color: #f3e429">Resultados</h4>
                         <table class="table">
                             <thead>
                                 <tr>

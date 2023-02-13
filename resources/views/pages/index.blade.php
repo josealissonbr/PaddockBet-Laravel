@@ -226,112 +226,15 @@
 
 
 
-        <!-- footer begin -->
-        <div class="footer" id="contact">
+       <!-- footer begin -->
+       <footer class="bg-dark py-3">
             <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-xl-4 col-lg-5 col-md-10">
-                        <div class="about-widget">
-                            <a class="logo" href="{{URL::to('/')}}">
-                                <img src="{{asset('assets/img/paddockbet.svg')}}" alt="">
-                            </a>
-                            <p>PaddockBet: O seu esporte preferido, com ainda mais emoção.</p>
-                            <div class="social">
-                                <ul>
-                                    <li>
-                                        <a href="#" class="social-icon">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                        <a href="#" class="social-icon">
-                                            <i class="fab fa-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                        <a href="#" class="social-icon">
-                                            <i class="fab fa-pinterest-p"></i>
-                                        </a>
-                                        <a href="#" class="social-icon">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="support">
-                                <ul>
-                                    <li>
-                                        <span class="icon">
-                                            <img src="{{asset('assets/img/svg/email.svg')}}" alt="">
-                                        </span>
-                                        <span class="text">
-                                            <span class="title">E-mail</span>
-                                            <span class="descr">{{env('MAIL_SUPPORT')}}</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="icon">
-                                            <img src="{{asset('assets/img/svg/phone-call.svg')}}" alt="">
-                                        </span>
-                                        <span class="text">
-                                            <span class="title">Telefone</span>
-                                            <span class="descr">+155000000000</span>
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                        <div class="useful-links">
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 col-md-3">
-                        <div class="useful-links">
-
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-2 col-md-3">
-                        <div class="useful-links">
-
-                        </div>
-                    </div>
-                </div>
-
+                <p class="text-center text-white">
+                    PaddockBet &copy; {{Carbon\Carbon::now()->format('Y')}} |  Todos os direitos reservados.
+                </p>
             </div>
-        </div>
+        </footer>
         <!-- footer end -->
-
-        <!-- notes begin -->
-        <div class="notes">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-10 col-lg-10">
-                        PaddockBet &copy; {{Carbon\Carbon::now()->format('Y')}} |  Todos os direitos reservados.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- notes end -->
-
-        <!-- copyright footer begin -->
-        <div class="copyright-footer">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-xl-5 col-md-6 col-lg-6 d-lg-flex d-lg-flex d-block align-items-center">
-                        <p class="copyright-text">
-                            <a href="#">{{env('APP_NAME')}}</a> © {{Carbon\Carbon::now()->format('Y')}}. POLÍTICA DE PRIVACIDADE
-                        </p>
-                    </div>
-                    <div class="text-right col-md-6 col-xl-4 col-lg-6 d-xl-flex d-lg-flex d-block align-items-center">
-                        <p class="copyright-text">
-
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- copyright footer end -->
 
         <!-- jquery -->
         <!-- <script src="assets/js/jquery.js"></script> -->
