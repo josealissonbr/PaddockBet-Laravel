@@ -350,7 +350,7 @@ class DepositoController extends Controller
 
         $sicoob = $this->sicoob_ConsultarCobranca($access_token, $deposito->txid);
 
-        return $sicoob;
+        //return $sicoob;
 
         if ($sicoob->status == 404){
             abort(404);
