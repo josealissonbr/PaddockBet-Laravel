@@ -346,6 +346,27 @@ class DepositoController extends Controller
             return redirect(route('dashboard.depositos.historico'));
         }
 
+        $access_token = $this->sicoob_RequisitarToken();
+
+        $sicoob = $this->sicoob_ConsultarCobranca($access_token, $deposito->txid);
+
+        return $sicoob;
+
+        if ($sicoob->status == 404){
+            abort(404);
+        }
+
+        return view('pages.pagarDeposito', compact('deposito', 'sicoob'));
+    }
+
+    public function pagarDeposito_GERENCIANET($idDeposito, Request $request){
+
+        $deposito = Depositos::find($idDeposito);
+
+        if ($deposito->idCliente != auth()->user()->id){
+            return redirect(route('dashboard.depositos.historico'));
+        }
+
         //$access_token = $this->sicoob_RequisitarToken();
 
         //$sicoob = $this->sicoob_ConsultarCobranca($access_token, $deposito->txid);
@@ -381,7 +402,7 @@ class DepositoController extends Controller
         return view('pages.pagarDeposito', compact('deposito', 'gerencianet', 'payloadQrCode'));
     }
 
-    public function _novoDeposito(Request $request){
+    public function _novoDeposito_GERENCIANET(Request $request){
 
         $user = User::where('apikey', $request->input('apikey'))->get()->first();
         if (!$user){
@@ -488,6 +509,95 @@ class DepositoController extends Controller
         ]);
     }
 
+    public function _novoDeposito(Request $request){
+
+        $user = User::where('apikey', $request->input('apikey'))->get()->first();
+        if (!$user){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Usuário não autenticado'
+            ]);
+        }
+
+        $valorDeposito = $request->input('valorDeposito');
+
+        $valorDeposito = str_replace(',', '.', $valorDeposito);
+        $valorDeposito = bcadd($valorDeposito   ,'0',2);
+
+        if (!$valorDeposito){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Valor para depósito inválido'
+            ]);
+        }
+
+        if ($valorDeposito < 0.01){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Valor mínimo para depósito é de R$1,00'
+            ]);
+        }
+
+        /*if ($user->saldo < $valorDeposito){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Saldo insuficiente'
+            ]);
+        }*/
+
+        $transacao = new Transacoes;
+
+        $transacao->tipo = 1;
+        $transacao->idCliente = $user->id;
+        $transacao->valor = $valorDeposito;
+        $transacao->situacao = 0;
+
+        $status = $transacao->save();
+
+        if (!$status){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Falha ao criar transacao',
+            ]);
+        }
+
+        $deposito = new Depositos;
+
+        $deposito->idTransacao = $transacao->idTransacao;
+        $deposito->idCliente = $user->id;
+        $deposito->valor = $valorDeposito;
+        $deposito->situacao = 0;
+
+        $status = $deposito->save();
+
+        if (!$status){
+            $transacao->situacao = 2;
+            $transacao->save();
+            return response()->json([
+                'status' => false,
+                'msg' => 'Falha ao criar depósito',
+            ]);
+        }
+
+        $access_token = $this->sicoob_RequisitarToken();
+        $loc = $this->sicoob_CriarLocPayload($access_token);
+        //return $loc;
+        $cobranca = $this->sicoob_CriarCobranca($access_token, $loc->id, $user->nome, $user->cpf, $valorDeposito, $deposito->id);
+
+        $deposito->txid = $cobranca->txid;
+        $deposito->save();
+
+        //Recalcular Saldo
+        \App\Helpers\mainHelper::recalcSaldo($user->id);
+
+        return response()->json([
+            'status'        =>  true,
+            'idTransacao'   =>  $transacao->idTransacao,
+            'idDeposito'    =>  $deposito->id,
+            'pix'           =>  $cobranca->brcode
+        ]);
+    }
+
     public function _processPayments_bkp(Request $request){
         return 'Ocorreu um erro';
         $inicio_datetime = Carbon::now()->subHours(20);
@@ -527,6 +637,43 @@ class DepositoController extends Controller
     }
 
     public function _processPayments(Request $request){
+        $inicio_datetime = Carbon::now()->subHours(20);
+        $fim_datetime = Carbon::now();
+
+        $access_token = $this->sicoob_RequisitarToken();
+
+        $response = $this->sicoob_ListaCobranca($access_token);
+
+        foreach ($response->cobs as $cob){
+
+            $rDeposito = Depositos::where('txid', $cob->txid)->where('situacao', '!=', 1)->get()->first();
+
+            if ($rDeposito){
+                $deposito = Depositos::find($rDeposito->id);
+
+                if ($deposito->situacao == 1){
+                    continue;
+                }
+
+                $deposito->situacao = 1;
+                $deposito->log_approver = "Sicoob";
+
+                $transacao = Transacoes::find($rDeposito->idTransacao);
+                $transacao->situacao = 1;
+
+                $user = User::find($deposito->idCliente);
+
+                $deposito->save();
+                $transacao->save();
+                $user->increment('saldo', $deposito->valor);
+            }else{
+                continue;
+            }
+
+        }
+    }
+
+    public function _processPayments_GERENCIANET(Request $request){
         $certificado = base_path('resources/pix_res')."/paddockbet-hort-prod.pem";
 
         $obApiPix = new Api('https://api-pix.gerencianet.com.br',
